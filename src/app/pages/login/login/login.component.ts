@@ -43,8 +43,8 @@ export class LoginComponent extends BaseComponent implements OnInit {
       formData.email,
       formData.password,
       () => {
-        console.log('yönlendirildi.');
         this.router.navigateByUrl('/page');
+        console.log(this.router.url);
       }
     );
   }

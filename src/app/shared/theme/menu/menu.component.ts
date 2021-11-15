@@ -23,12 +23,45 @@ export class MenuComponent extends BaseComponent implements OnInit {
   public async ngOnInit() {
     let menus: any = {};
 
-    menus = await this.menuService.getSideBarMenu().toPromise();
+    menus = {
+      children: [
+        {
+          children: [
+            {
+              children: [],
+              label: 'page.reservation',
+              url: '/page/reservation',
+            },
+            {
+              children: [],
+              label: 'page.rooms',
+              url: '/page/rooms',
+            },
+            {
+              children: [],
+              label: 'page.account',
+              url: '/page/account',
+            },
+            {
+              children: [],
+              label: 'page.company',
+              url: '/page/company',
+            },
+            {
+              children: [],
+              label: 'page.customer',
+              url: '/page/customer',
+            },
+          ],
+        },
+      ],
+      label: 'page.transactions',
+      url: '',
+    };
 
     setTimeout(() => {
       this.setMenusItems(menus.children);
     }, 1000);
-    let temp = 0;
     if (menus.children && menus.children instanceof Array) {
       (menus.children as any[]).forEach((i) => {
         switch (i.label) {
@@ -37,14 +70,14 @@ export class MenuComponent extends BaseComponent implements OnInit {
             break;
           }
           default: {
+            i.icon = 'fas fa-home';
+            i.label = 'page.transactions';
             break;
           }
         }
       });
-      if (temp != 0) {
-        (menus.children as any[]).splice(temp, 1);
-      }
     }
+    console.log(menus.children);
     this.items = [
       {
         icon: 'fas fa-home',
@@ -66,18 +99,6 @@ export class MenuComponent extends BaseComponent implements OnInit {
 
   @HostListener('document:click') public resetToggle() {
     this.toggle = false;
-  }
-  get dealerImage(): string {
-    // return `${this.utilServ.localStorageService.getItem(StorageKeys.organizationCode)}.png`;
-    // if (
-    //   this.utilServ.localStorageService.getItem(StorageKeys.LOGGED_ORG) ==
-    //   'LIKLJ'
-    // ) {
-    //   return 'vero.png';
-    // } else {
-    //   return `smarty.png`;
-    // }
-    return 'smarty5.png';
   }
 
   public updateExpandedState(e: MouseEvent, menu, index: number): void {
@@ -106,11 +127,6 @@ export class MenuComponent extends BaseComponent implements OnInit {
     } else {
       this.menusExpandPath[index] = menu;
     }
-
-    // console.log(
-    //   this.menusExpandPath[index] == menu,
-    //   this.menusExpandPath.length
-    // );
     this.menusExpandPath[index].expanded =
       !this.menusExpandPath[index].expanded;
   }

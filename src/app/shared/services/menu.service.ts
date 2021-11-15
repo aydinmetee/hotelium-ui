@@ -8,10 +8,10 @@ import { RestService } from './rest.service';
 })
 export class MenuService extends RestService {
   get apiUrl() {
-    return Urls.BASE_URL.toString() + '/menus';
+    return Urls.BASE_URL.toString() + '/menu';
   }
 
   public getSideBarMenu(): Observable<any> {
-    return this.restClientService.get(this.apiUrl + '/menu');
+    return this.restClientService.get(this.apiUrl);
   }
 }

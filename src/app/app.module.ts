@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import { Oauth2Service } from './shared/services/oauth2.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { PagesModule } from './pages/pages.module';
 import { ErrorPagesModule } from './pages/error-pages/errors-pages.module';
+import { AppInjector } from './shared/services/Injector.service';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -56,4 +57,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(injector: Injector) {
+    AppInjector.setInjector(injector);
+  }
+}
