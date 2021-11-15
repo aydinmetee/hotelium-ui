@@ -1,0 +1,104 @@
+:host {
+    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    width: 100%;
+    display: block;
+    background: #fff;
+}
+
+.main-div {
+    // padding-right: 2rem;
+    line-height: 60px;
+    /*margin-left: 300px;*/
+    height: 60px;
+    ;
+    &.menu-hidden {
+        margin-left: 50px;
+        p-breadcrumb {
+            margin-left: 1rem;
+        }
+    }
+    p-breadcrumb {
+        margin-left: 215px;
+    }
+}
+
+#personal-menu-header ,.dealer-info {
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    padding: 0 0.5rem 0 0.5rem;
+    opacity: 0.8;
+    &:hover {
+        opacity: 1;
+    }
+    .header-title {
+        font-weight: 500;
+        font-size: 14px;
+    }
+    img.user-image {
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        border: 1px solid #ccc;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) translateX(-100%);
+        left: 0;
+    }
+    img.dealer-image {
+        width: 100px;
+        height: 36px;
+        // border-radius: 100%;
+        // border: 1px solid #ccc;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) translateX(-100%);
+    }
+}
+
+@media(max-width :400px) {
+    div:first-child {
+        margin-left: 50px;
+        &.menu-hidden {
+            margin-left: 50px;
+        }
+    }
+}
+
+.dealer-info{
+    margin-right: 10px;
+    border-right: 1px solid;
+    border-color: #d0d0d0;
+    &::after{
+        content: '';
+    }
+    &::before{
+        content: '';
+        
+    }
+
+    &::before,&::after{
+        opacity: 0.8;
+        margin-left: 5px;
+    }
+
+    &:hover::before,&:hover::after{
+        opacity: 1;
+        
+    }
+}
+
+@media(max-width :770px) {
+    p-breadcrumb {
+        display: none;
+    }
+}
+
+.chat-btn {
+    font-size: 2.1rem;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 1.8rem;
+    margin-left: 20px;
+    &:hover {
+        opacity: 1;
+    }
+}

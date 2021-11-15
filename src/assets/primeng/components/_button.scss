@@ -1,0 +1,49 @@
+.ui-green-button,
+button.activate[_ngcontent-uts-c10],
+.ui-spinner-button.ui-spinner-up,
+.ui-spinner-button.ui-spinner-down,
+.ui-calendar-button {
+  // padding: 0.10rem 0.50rem !important;
+  // border-radius: 0.25rem !important;
+  background: var(--main-primary-color) !important;
+  border-color: var(--main-primary-color) !important;
+  border:none!important;
+  color: #fff !important; // font-size: 14px !important;
+  // font-family: "PT Sans", sans-serif;
+  // transition: box-shadow 0.5s ease-in-out, opacity 0.5s ease-in-out !important;
+  // &:not([disabled]):hover {
+  //     box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2) !important;
+  //     opacity: 0.8;
+  // }
+}
+
+.ui-dark-button {
+  background: var(--main-dark-color) !important;
+  border: 1px solid var(--main-dark-color)!important;
+  color: #fff !important;
+  border-color:var(--main-dark-color)!important;
+}
+
+.ui-dark-button:enabled:focus {
+  box-shadow: 0 0 0 0.2em #00243478 !important;
+}
+
+.ui-green-button:enabled:focus {
+  box-shadow: 0 0 0 0.2em var(--main-primary-color)69 !important;
+}
+
+
+body .ui-button.ui-button-icon-only{
+  width: 2em;
+}
+
+
+.ui-green-button:hover{
+  background:var(--main-light-color)!important;
+  border:1px solid var(--main-light-color)
+  }
+  
+  .ui-button-danger:hover{
+    background: #c90717!important;
+  }
+  

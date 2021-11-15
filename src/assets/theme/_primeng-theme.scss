@@ -1,0 +1,237 @@
+// html{
+//   font-family: sans-serif;
+// }
+// .ui-widget-header{
+//   background: #fff;
+//   border-top: 1px solid #d2d2d2;
+//   padding: 10px;
+// }
+// //-- start: scroll --//
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   background: #981268;
+// }
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+// //-- end: scroll --//
+// //-- start: ui --//
+// .ui-widget{
+//   font-family: Roboto, sans-serif;
+// }
+// .login-bg{
+//   font-size: 13px;
+// }
+// .ui-card {
+//   border-radius: 10px !important;
+//   box-shadow: 0 1rem 25px rgba(0, 0, 0, 0.15) !important;
+//   border: 1px solid rgba(152, 18, 104, 0.41) !important;
+// }
+// //-- end: ui --//
+// //-- start: checkbox --//
+// .ui-chkbox-box, .ui-chkbox-box.ui-state-active{
+//   border: 1px solid #981268;
+//   background: #fff;
+// }
+// .fa-check:before{
+//   color:#0b9736;
+// }
+// .ui-chkbox-box:focus{
+//   box-shadow: none!important;
+//   background: #fff;
+// }
+// .ui-chkbox-box.ui-state-focus.ui-state-active{
+//   background: #fff!important;
+// }
+// .ui-chkbox-box:not(.ui-state-disabled):not(.ui-state-active):hover{
+//   background: #fff;
+//   border: 1px solid #981268!important;
+// }
+// //-- end: checkbox --//
+// //-- start: left-right --//
+// .pull-right{
+//   float: right;
+// }
+// .pull-left{
+//   float: left;
+// }
+// //-- end: left-right --//
+// //-- start: input --//
+// .ui-inputtext{
+//   padding: 10px;
+//   margin-top: 10px;
+// }
+// .ui-inputtext:focus{
+//   box-shadow: none;
+//   border-color: #0190fe;
+// }
+// //-- end: input --//
+// //-- start: action-btn --//
+// .action-btn{
+//   padding: 0.25rem 0.50rem!important;
+//   border-radius: 0.25rem!important;
+// }
+// .btn-color{
+//   background: #981268!important;
+//   border: 1px solid #981268!important;
+//   color:#fff!important;
+//   font-size: 14px!important;
+// }
+// .btn-color:hover{
+//   background: #5d003c!important;
+// }
+// //-- end: action-btn --//
+// //-- start: login page --//
+// .login-block{
+//   padding: 1.50em;
+// }
+// .login-border{
+//   border-top: 1px solid #e4e9f0;
+//   margin: 1.42rem 0;
+// }
+// //-- end: login page --//
+// //-- start: table --//
+// .ui-table table{
+//   font-size: 14px;
+//   border:1px solid #d2d2d2;
+// }
+// .ui-table .ui-table-thead>tr>th{
+//   padding: .75rem;
+// }
+// .ui-table .ui-table-tbody > tr > td{
+//   vertical-align: top;
+//   border-top: 1px solid #D5D5D5;
+//   border-left: 0;
+//   border-right: 0;
+//   padding: .75rem;
+//   color: #000;
+// }
+// .ui-table .ui-table-thead > tr > th{
+//   background: #fff;
+//   border-left:0;
+//   border-right: 0;
+// }
+// .ui-table .ui-sortable-column:not(.ui-state-highlight):hover{
+//   background: #fff;
+// }
+// .ui-table .ui-sortable-column.ui-state-highlight{
+//   background: #fff;
+//   color:#222;
+// }
+// .ui-table .ui-table-tbody > tr.ui-state-highlight{
+//   color:#222;
+//   background: #f2f4f8!important;
+// }
+// .ui-table .ui-table-tbody > tr:nth-child(even){
+//   background: #fff;
+// }
+// .ui-table.ui-table-hoverable-rows .ui-table-tbody > tr:not(.ui-state-highlight):hover{
+//   background: #f2f4f8;
+// }
+// //-- end: table --//
+$main-color:#981268;
+.w-100 {
+    .ui-dropdown,
+    .ui-inputtext,
+    .ui-listbox {
+        width: 100% !important;
+    }
+    
+   
+    span.ui-dropdown-label.ui-inputtext { 
+        overflow: hidden;
+        
+    }
+}
+
+// .no-check-header .ui-listbox-header-w-checkbox { 
+//   display: none;
+// }
+.steps {
+    * {
+        transition: all 0.2s ease-in-out;
+    }
+    ul {
+        text-align: center;
+        display: table;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .ui-state-default {
+        border: none;
+    }
+    .ui-state-highlight {
+        .ui-steps-number {
+            transform: translateY(-10px);
+        }
+        .ui-steps-item {
+            opacity: 1;
+        }
+        background-color: transparent;
+        font-weight: bold;
+        color: black;
+        a {
+            color: #00b289 !important;
+        }
+    }
+    .ui-steps {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .ui-steps-item {
+        border-radius: 8px;
+        display: table-cell;
+        background-color: transparent;
+        float: none;
+        display: inline-block;
+        $number-width: 48px; // border-right: 1px solid $main-color;
+        // &:last-child { 
+        //   border-right: none;
+        // }
+        opacity: 0.8;
+        a {
+            text-align: center;
+            color: rgb(180, 180, 180)
+        }
+        .ui-steps-number {
+            width: $number-width;
+            height: $number-width;
+            background-color: $main-color;
+            border-radius: 100%;
+            line-height: $number-width;
+            margin: auto;
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 100%
+        }
+    }
+}
+
+.ui-button-icon-left.ui-clickable.fa.fa-fw.fa-check * {
+    color: #fff !important
+}
+
+.fa-check:before {
+    color: #fff;
+}
+
+p-card {
+    margin-bottom: 10px;
+    display: block;
+}
+
+// removr after update to angular 6 
+// .ui-table .ui-sortable-column .ui-sortable-column-icon {
+//     color: #fff;
+//     opacity: 0.6;
+//     transition: all 0.2s ease-in-out;
+//     &:hover {
+//         color: #fff !important;
+//         opacity: 1;
+//     }
+// }
+// .ui-table .ui-sortable-column:not(.ui-state-highlight):hover .ui-sortable-column-icon {
+//     color: #fff !important;
+//     opacity: 1;
+// }

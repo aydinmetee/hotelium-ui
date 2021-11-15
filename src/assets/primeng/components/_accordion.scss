@@ -1,0 +1,114 @@
+/*
+ primeng classes
+    .ui-accordion
+    .ui-accordion-header
+    .ui-accordion-content
+
+*/
+
+.sistek-accordion { 
+    
+    .ui-accordion { 
+    
+    }
+
+    .ui-accordion-header { 
+        background: #e9e9ea;
+        padding:0.20rem 0.20rem;
+        font-weight:bold;
+        border: 0px;
+
+        &.ui-state-active{
+            background-color:var(--main-primary-color);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            
+            a{
+                color:#fff;
+            }
+        }
+        a{
+            color: #514d6a;
+            font-size: 14px;
+            text-decoration: none;
+        }
+    }
+
+   
+    .ui-accordion-content {
+        background-color: #e9e9ea;
+    }
+
+}
+
+
+
+
+/*
+ primeng classes
+    .ui-accordion
+    .ui-accordion-header
+    .ui-accordion-content
+
+*/
+
+.sistek-accordion-child { 
+    
+    .ui-accordion { 
+    
+    }
+
+    .ui-accordion-header { 
+        background: #fff;
+        border:0px;
+        padding:0.20rem 0.20rem;
+        font-weight:bold;
+
+        &:hover, &:not(.ui-state-active):not(.ui-state-disabled):hover{
+            background-color: #fff;
+           
+            
+        }
+
+
+        &.ui-state-active{
+            background-color: var(--main-primary-color);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            
+            a{
+                color:#fff;
+
+                &:hover{
+                    background-color: var(--main-primary-color);
+                }
+            }
+        }
+        a{
+            color: #514d6a;
+            font-size: 14px;
+            text-decoration: none;
+
+            &:hover{
+                background-color: #fff;
+            }
+        }
+    }
+
+   
+    .ui-accordion-content {
+        background-color: #fff;
+        font-size: 14px;
+
+        p-checkbox{
+            margin-bottom: 5px;
+            display: inline-block;
+            .ui-chkbox-label{
+                cursor: pointer!important;
+            }
+            
+        }
+    }
+
+}
+

@@ -1,0 +1,37 @@
+.ui-inputtext{
+    padding: .55em;
+    font-size: 14px!important;
+    font-family: "PT Sans", sans-serif!important;
+
+    &:focus{
+        box-shadow: none;
+        border-color: #0190fe;
+    }
+}
+  
+  .ui-multiselect-filter-container {
+    .ui-inputtext{
+        padding-left: 25px;
+    }
+
+    span{
+        &.fa{
+            top:11px!important;
+        }
+    }
+    
+  }
+  
+  .label-color{
+    font-weight:bold;
+    color:var(--main-primary-color) !important;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 13px;
+    color:#5d5d5d;
+}
+
+input:disabled { 
+    background: #d2d2d2;
+}

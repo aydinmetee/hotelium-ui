@@ -1,0 +1,15 @@
+.ui-tieredmenu{
+    font-size: 15px;
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+
+    .ui-menuitem > .ui-menuitem-link:hover{
+            background-color: var(--main-primary-color)!important;
+        }
+}
+
+.ui-menuitem{
+    .ui-menuitem-link:hover{
+        background-color: var(--main-primary-color)!important;
+    }
+}
+

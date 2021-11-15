@@ -1,0 +1,17 @@
+label{
+    font-size: 14px;
+    color:#74708d;
+    display: block;
+    font-family: "PT Sans", sans-serif;
+  }
+
+ 
+  .ui-card-header label{
+    margin-bottom: 0px!important;
+    color: inherit!important;
+    font-weight: normal!important;
+}
+
+.ui-card-header .ui-multiselect-label{
+  font-weight: bold!important;
+}

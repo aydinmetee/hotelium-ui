@@ -1,0 +1,12 @@
+p-inputmask.ng-invalid.ng-touched { 
+    input { 
+        border: 1px solid red;
+        background: rgba(255, 0, 0, 0.35);
+        box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.2) inset !important;
+      
+        &::placeholder {
+          color:rgb(0, 0, 0);
+        }
+      
+    }
+}

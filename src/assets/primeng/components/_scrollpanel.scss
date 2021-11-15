@@ -1,0 +1,55 @@
+.app-menu.ui-scrollpanel {
+    background: #002434; // #333333; // background-image: linear-gradient(0deg, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(49, 49, 49), rgb(109, 109, 109), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));
+    // background-size: 100% 1600%;
+    // background-position: 0px 71.4286%;
+    ul li {
+        // border-top: 1px solid #696969;
+        &,
+        & a {
+            color: #fff;
+        }
+    }
+}
+
+.app-menu {
+    .ui-scrollpanel-content {
+        padding: 0 !important;
+    }
+}
+
+.ui-scrollpanel-content {
+    // a {
+    //     color: #fff !important;
+    //     &:hover {
+    //         background-color: #676767 !important;
+    //     }
+    //     &:active {
+    //         background-color: #676767 !important;
+    //     }
+    //     &:link {
+    //         padding: 0.7rem 0 0.7rem 0.7rem !important;
+    //     }
+    // }
+}
+
+// .menu-header {
+//     max-height: none !important;
+//     &.active>a {
+//         background-color: #676767 !important;
+//     }
+//     &::after {
+//         color: #fff;
+//     }
+// }
+// .app-menu .close-btn {
+//     background-color: $p-color !important;
+//     border: 1px solid $p-color !important;
+//     color: #fff !important;
+//     border-radius: 0px !important;
+//     opacity: 1 !important;
+// }
+.brand-scroll-panel {
+    .ui-scrollpanel-content {
+        width: 100%;
+    }
+}

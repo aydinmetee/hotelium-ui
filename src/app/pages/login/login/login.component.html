@@ -1,0 +1,117 @@
+<div class="overlay-bg"></div>
+<div class="bg-white h-full p-relative" *ngIf="form">
+  <div class="top-line"></div>
+  <div class="ui-g pt-3">
+    <div class="ui-lg-4 ui-g-12"></div>
+    <div class="ui-lg-4 ui-g-12 p-1" @fadeAndSlideUp>
+      <form novalidate [formGroup]="form" (submit)="login()">
+        <p-card class="nice-border" styleClass="ui-card-shadow">
+          <p-header
+            class="login-block"
+            style="
+              display: block;
+              padding: 0.5rem;
+              border-bottom: 1px solid rgba(204, 204, 204, 0.48);
+            "
+          >
+            <div class="ui-g">
+              <div class="ui-g-12 ui-lg-12 p-0">
+                <div class="text-center">
+                  <img
+                    [ngStyle]="{ width: '45%' }"
+                    src="./assets/img/logo.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </p-header>
+          <div class="ui-g" *ngIf="isLoginedByToken == false; else loginedTem">
+            <!-- <div class="ui-lg-12 ui-g-12 hr"></div> -->
+
+            <div class="ui-lg-12 ui-md-12 ui-g-12">
+              <label
+                ><b>{{ "emailUserCode" | translate }}</b></label
+              >
+              <input
+                type="text"
+                pInputText
+                name="email"
+                class="w-100"
+                formControlName="email"
+              />
+              <sis-validation-summary
+                [form]="form"
+                name="email"
+              ></sis-validation-summary>
+            </div>
+
+            <div class="ui-lg-12 ui-md-12 ui-g-12">
+              <label
+                ><b>{{ "login.password" | translate }}</b></label
+              >
+              <input
+                type="password"
+                class="w-100"
+                pPassword
+                [feedback]="false"
+                name="password"
+                formControlName="password"
+              />
+              <sis-validation-summary
+                [form]="form"
+                name="password"
+              ></sis-validation-summary>
+            </div>
+
+            <div class="ui-lg-12 ui-mf-12 ui-g-12">
+              <small class="forgotPassword">
+                <a href="#/login/forgot-password">{{
+                  "login.login-forgot-password" | translate
+                }}</a>
+              </small>
+            </div>
+            <!-- <div class="ui-lg-12 ui-g-12 hr"></div> -->
+          </div>
+          <ng-template #loginedTem>
+            <div class="ui-g">
+              <div class="ui-g-12 ui-lg-12 ui-md-12 text-center">
+                <h2>{{ "logined" | translate }}</h2>
+              </div>
+            </div>
+          </ng-template>
+          <p-footer
+            style="
+              display: block;
+              padding: 0.5rem;
+              border-top: 1px solid rgba(204, 204, 204, 0.48);
+            "
+            *ngIf="isLoginedByToken == false"
+          >
+            <div class="ui-g">
+              <div class="ui-lg-12 ui-g-12 ui-md-12 text-right">
+                <button
+                  [disabled]="isLoginValid"
+                  class="
+                    btn-login
+                    ui-green-button
+                    w-100
+                    ui-button
+                    ui-widget
+                    ui-state-default
+                    ui-corner-all
+                    ui-button-text-only
+                    p-0-5
+                  "
+                >
+                  <span>
+                    {{ "login.sign-in" | translate }}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </p-footer>
+        </p-card>
+      </form>
+    </div>
+  </div>
+</div>

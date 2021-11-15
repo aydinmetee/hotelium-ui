@@ -1,0 +1,43 @@
+.ui-multiselect{
+    float: right;
+    width: 100%;
+    &:not(.ui-state-disabled):hover{
+        background: #fff;
+    }
+    &:not(.ui-state-disabled):active{
+        background: #fff;
+    }
+    .ui-multiselect-label{
+        padding: .55em;
+        font-family: "Mulish", sans-serif;
+        text-align: left;
+    }
+
+    .ui-multiselect-trigger{
+        .fa{
+            margin-top: .7em;
+        }
+    }
+
+    &.ui-state-focus { 
+        box-shadow: none;
+    }
+}
+
+.ui-multiselect-header{
+
+    .ui-inputtext{
+        padding: .55em;
+        font-family: "Mulish", sans-serif;
+    }
+}
+
+.ui-multiselect-items{
+    font-family: "Mulish", sans-serif;
+}
+
+.ui-multiselect-item{
+    label{
+        cursor: pointer;
+    }
+}

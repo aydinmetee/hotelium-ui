@@ -1,0 +1,34 @@
+.ui-tabview {
+    .ui-tabview-nav > li.ui-state-active{
+        background: #ffffff;
+        font-weight: normal;
+        color: #555555;
+        border-bottom: 2px solid var(--main-primary-color);
+        border-left-color: #fff;
+        border-right-color: #fff;
+        border-top-color: #fff;
+    }
+ 
+
+    .ui-tabview-nav > li.ui-state-default{
+        background: #ffffff;
+        border-left-color: #fff;
+        border-right-color: #fff;
+        border-top-color: #fff;
+
+        &:hover{
+        background: #ffffff!important;
+        border-left-color: #fff!important;
+        border-right-color: #fff!important;
+        border-top-color: #fff!important;
+        border-bottom: 2px solid var(--main-primary-color)!important;
+        transition: none 86ms ease-out;
+        }
+    }
+
+    &.ui-tabview-top>.ui-tabview-nav{
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+  
+}

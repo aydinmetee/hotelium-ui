@@ -1,0 +1,10 @@
+.ui-paginator {
+    .ui-paginator-page{
+        padding:.4em;
+        
+        &.ui-state-active{
+            background-color: var(--main-primary-color);
+            border-color:var(--main-primary-color);
+        }
+    }
+}

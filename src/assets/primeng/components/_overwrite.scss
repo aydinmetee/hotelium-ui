@@ -1,0 +1,184 @@
+body {
+    .ui-dialog .ui-dialog-titlebar,
+    .ui-table .ui-table-caption,
+    .ui-table .ui-table-summary {
+        background: var(--main-dark-color);
+    }
+    .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+        border-color: var(--main-primary-color);
+        background-color: var(--main-primary-color);
+    }
+    .ui-accordion .ui-accordion-header a {
+        border-color: var(--main-dark-color);
+        background-color: var(--main-dark-color);
+    }
+    .ui-radiobutton .ui-radiobutton-box.ui-state-active:not(.ui-state-disabled):hover {
+        border-color: var(--main-primary-color);
+        background-color: var(--main-primary-color);
+        &,
+        &:focus {
+            outline: none;
+        }
+    }
+    .ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active a {
+        border-color: var(--main-primary-color);
+        background-color: var(--main-primary-color);
+        &,
+        &:focus {
+            outline: none;
+        }
+    }
+    .ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active:hover a {
+        border-color: var(--main-light-color);
+        background-color: var(--main-light-color);
+        outline: none;
+        &,
+        &:focus {
+            outline: none;
+        }
+    }
+    .ui-accordion .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover a {
+        border-color: var(--main-light-color);
+        background-color: var(--main-light-color);
+        outline: none;
+        &,
+        &:focus {
+            outline: none;
+        }
+    }
+    .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+        background-color: var(--main-primary-color);
+        &:hover {
+            background-color: var(--main-light-color);
+        }
+    }
+    .ui-steps .ui-steps-item.ui-state-highlight .ui-steps-number {
+        background-color: var(--main-primary-color);
+        box-shadow: 0 2px 5px rgba($color: var(--main-primary-color), $alpha: 0.5);
+        border: 1px solid var(--main-light-color);
+    }
+
+    .invalid-first li:nth-child(1) , .invalid-second li:nth-child(2) , .invalid-third li:nth-child(3)  {
+        &.ui-steps-item  {
+    
+            .ui-steps-number ,  {
+                box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.2) inset !important;
+                background: rgba(255, 0, 0, 0.35);
+                border: 1px solid red;
+                color: #fff;
+            }  
+        }
+        
+        &.ui-steps-item.ui-state-highlight{
+            .ui-steps-number ,  {
+                box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.4) inset !important;
+                background: rgba(255, 0, 0, 0.8);
+                color: #fff;
+            }  
+        }
+    }
+
+    
+    .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover {
+        border-color: var(--main-primary-color);
+        background-color: var(--main-primary-color);
+    }
+    .ui-chkbox .ui-chkbox-box.ui-state-active,
+    .ui-chkbox .ui-chkbox-box.ui-state-active.ui-state-focus {
+        border-color: var(--main-primary-color);
+        background-color: var(--main-primary-color);
+    }
+    .ui-chkbox .ui-chkbox-box.ui-state-focus {
+        color: var(--main-primary-color);
+    }
+    a {
+        color: var(--main-dark-color);
+        &:hover,
+        &:active {
+            color: var(--main-dark-color);
+        }
+    }
+    .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active,
+    .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
+    .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
+    .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active,
+    .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active:hover,
+    .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active:hover {
+        background-color: var(--main-primary-color);
+        border: 1px solid var(--main-primary-color);
+        outline: none;
+    }
+    .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+    .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight {
+        background: var(--main-primary-color);
+    }
+    .ui-table .ui-sortable-column.ui-state-highlight {
+        background-color: var(--main-primary-color);
+    }
+    .ui-progressbar .ui-progressbar-value {
+        background: var(--main-primary-color);
+    }
+    .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight {
+        background: rgba(187, 187, 187, 0.2);
+        color: var(--main-primary-color);
+    }
+    .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item {
+        margin: 0.25rem 0;
+    }
+    .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-close {
+        display: none;
+    }
+    .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container {
+       width: 85%;
+    }
+    .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-multiselect-filter-icon {
+        color: var(--main-dark-color);
+    }
+    .ui-multiselect .ui-multiselect-trigger {
+        color: var(--main-dark-color);
+    }
+}
+
+.btn-cf-reset {
+    width: 100%;
+    background-color: var(--main-dark-color) !important;
+    border: 1px solid var(--main-dark-color) !important;
+}
+
+@keyframes ui-progress-spinner-color {
+    0%,
+    100% {
+        stroke: var(--main-primary-color);
+    }
+}
+
+.tab-view .ui-tabview.ui-tabview-top .ui-tabview-nav li {
+    border: 1px solid #002434;
+    background-color: #002434;
+}
+
+.tab-view .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
+    background-color: #1a3a49;
+    border: 1px solid #1a3a49;
+}
+
+.tab-view .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active {
+    background-color: var(--main-primary-color);
+    border: 1px solid var(--main-primary-color);
+}
+
+.tab-view .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover {
+    background-color: var(--main-light-color);
+    border: 1px solid var(--main-light-color);
+}
+
+.ui-dialog-content {
+    overflow: auto;
+  }
+  

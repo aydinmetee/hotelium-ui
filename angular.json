@@ -46,6 +46,7 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
+              "aot": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -124,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "hotelium-ui"
+  "defaultProject": "hotelium-ui",
+  "cli": {
+    "analytics": false
+  }
 }

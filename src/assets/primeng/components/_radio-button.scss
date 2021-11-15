@@ -1,0 +1,22 @@
+.ui-radiobutton-box{
+    border:1px solid var(--main-primary-color);
+
+    &:not(.ui-state-disabled):not(.ui-state-active):hover{
+        border-color: var(--main-primary-color);
+        background-color: #fff;
+    }
+
+    &.ui-state-active{
+        border:1px solid var(--main-primary-color);
+        background: var(--main-primary-color);
+
+    }
+}
+.ui-radiobutton{
+    float: left;
+}
+    .ui-radiobutton-label{
+        cursor: pointer;
+        color:#74708d!important;
+        font-weight: normal!important;
+    }

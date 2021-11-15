@@ -1,0 +1,60 @@
+.ui-dialog {
+    font-family: "PT Sans", sans-serif;
+    .ui-dialog-titlebar {
+        border-bottom: 1px solid #e4e4e4;
+        .ui-dialog-title {
+            font-size: 1.15em !important;
+            font-weight: 500;
+        }
+    }
+    label {
+        color: $p-color;
+        font-weight: bold;
+        margin-bottom: .5em;
+    }
+    .ui-dropdown-label {
+        margin-bottom: 0px;
+    }
+    .ui-dialog-titlebar-icon {
+        color: #5d5d5d;
+        font-size: 18px;
+        &:hover {
+            border-color: #fff;
+            background: #fff;
+        }
+    }
+    left: 50% !important;
+    top: 50% !important;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.ui-dialog-content {
+    .ui-steps {
+        font-family: "PT Sans", sans-serif;
+    }
+}
+
+.ui-card {
+    font-family: "PT Sans", sans-serif;
+}
+
+.login-bg, .registration-bg {
+    background-size: cover !important;
+    background-position: top center !important;
+}
+
+.login-block .w-initial {
+    width: 30% !important;
+}
+
+.ui-title-bar {
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 10px;
+    
+}
+
+.ui-title{
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+

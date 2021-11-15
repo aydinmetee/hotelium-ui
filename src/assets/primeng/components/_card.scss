@@ -1,0 +1,19 @@
+.ui-card {
+    label {
+        color: var(--main-primary-color);
+        font-weight: bold;
+        margin-bottom: .5em;
+    }
+}
+
+.no-padding {
+    .ui-card-body {
+        padding: 0;
+    }
+}
+
+
+
+.ui-card-footer{
+    border-top: 1px solid #ccc !important
+}

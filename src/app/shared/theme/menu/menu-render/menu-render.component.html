@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let item of model" [ngClass]="{'menu-header':(item.children || []).length > 0,'active':item.expanded}"
+    (click)="item.expanded = !item.expanded">
+    <a [routerLink]="item.url ? item.url : []">
+      <i [class]="item.icon" *ngIf="item.icon"></i> {{item.label | translate}}
+    </a>
+    <app-menu-render [model]="item.children" class="sub-menu" *ngIf="item.children" [hidden]="!item.expanded"></app-menu-render>
+  </li>
+</ul>

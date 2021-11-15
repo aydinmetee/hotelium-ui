@@ -1,0 +1,117 @@
+// .ui-table .ui-table-tbody>tr.ui-state-highlight,
+.ui-table .ui-table-tbody>tr:nth-child(even).ui-state-highlight {
+    background-color: #eee !important;
+    color: #222 !important;
+}
+
+.ui-table {
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+    .ui-table-thead {
+        tr {
+            th {
+                background-color: var(--main-primary-color);
+                color: #fff;
+                padding: .75rem;
+                border: none;
+            }
+        }
+        .ui-sortable-column {
+            &:not(.ui-state-highlight):hover {
+                background: var(--main-primary-color);
+                color: #fff;
+            }
+            &.ui-state-highlight {
+                background-color: var(--main-primary-color);
+                color: #fff;
+            }
+        }
+    }
+    .ui-table-tbody>tr:nth-child(even) {
+        background-color: #eaf9f5;
+    }
+    .ui-table-tbody tr>td {
+        padding: .75rem;
+        border: none;
+    }
+}
+
+.ui-table-wrapper {
+    border: 1px solid #d9d9d9;
+    border-width: 0 1px 0 1px;
+}
+
+.ui-widget-header {
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
+}
+
+.ui-multiselect-panel {
+    .ui-widget-header {
+        border: none;
+        .ui-multiselect-filter-container {
+            width: 78%;
+        }
+    }
+    .ui-table .ui-table-tbody>tr.ui-state-highlight {
+        background-color: #edf1f5;
+        color: #002b56;
+    }
+}
+
+.ui-multiselect-header {
+    .ui-inputtext {
+        padding-left: 30px !important;
+    }
+}
+
+.discount-controllers {
+    * {
+        color: #aca9a8;
+    }
+    button span {
+        color: #fff;
+    } // font-family: roboto;
+    .ui-table .ui-table-tbody>tr:nth-child(even) {
+        background: #fff;
+    }
+    .ui-table .ui-table-thead tr th {
+        background-color: #fff !important;
+    }
+    th.bg-w {
+        background: #fff;
+        color: #aca9a8;
+    }
+    .label-input {
+        background: #fff !important;
+        border: none;
+        opacity: 1 !important;
+        width: initial;
+    }
+    .ui-table-wrapper {
+        border: none
+    }
+    .ui-table .ui-table-tbody>tr:nth-child(even) {
+        background-color: #fff !important;
+        color: red;
+    }
+}
+
+.print-datatable {
+    .ui-table-wrapper {
+        border: none;
+    }
+    tr.ui-state-highlight {
+        background-color: #ececec !important;
+        color: rgba(0, 0, 0, 0.61) !important;
+        font-weight: bold !important;
+    }
+    .ui-table .ui-table-thead tr th {
+        background-color: #b3b3b3;
+        color: #fff;
+        padding: .75rem;
+        border-right: 1px solid #868686;
+        &:last-child {
+            border: none;
+        }
+    }
+}

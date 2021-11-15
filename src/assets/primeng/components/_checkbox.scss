@@ -1,0 +1,56 @@
+.ui-chkbox-box{
+    font-family: "PT Sans", sans-serif;
+    border: 1px solid var(--main-primary-color);
+
+    &.ui-state-active{
+        border: 1px solid var(--main-primary-color);
+        background: #fff;
+    }
+
+    &:focus{
+        box-shadow: none!important;
+        background: #fff;
+        outline: none;
+    }
+    &.ui-state-focus.ui-state-active{
+        background: #fff!important;
+    }
+
+    &:hover, &:not(.ui-state-disabled):not(.ui-state-active):hover{
+        background: #fff;
+        border: 1px solid var(--main-primary-color)!important;
+    }
+}
+
+.ui-multiselect-items{
+
+    .ui-state-highlight{
+        background: none;
+        color:#000;
+    }
+}
+
+  .ui-chkbox .fa-check:before{
+      color:var(--main-primary-color);
+  }
+
+  .ui-chkbox-icon{
+      outline: none;
+  }
+  
+.ui-chkbox{
+      float: left;
+
+  }  
+  .ui-chkbox-label{
+      cursor: pointer;
+      float: left;
+      font-weight: normal!important;
+      color:#5d5d5d!important;
+  }
+
+  .ui-multiselect-item .ui-chkbox{
+      float: inherit!important;
+  }
+
+  

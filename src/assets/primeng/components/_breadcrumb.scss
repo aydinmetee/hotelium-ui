@@ -1,0 +1,33 @@
+p-breadcrumb {
+    width: 100%;
+    display: block;
+    // position: absolute;
+    // top: -24px;
+    // left: 50px;
+        padding: 0 !important; 
+        margin: 0 !important;
+        margin-bottom: 1rem !important;
+        
+    }
+    
+    .ui-breadcrumb {
+        background: none !important;
+        border: none !important;
+        font-size: 1rem;
+        padding: 0 !important; 
+    // margin: 1rem 0;
+    opacity: 0.8;
+    .fa-chevron-right:before {
+        content: "\F0DA";
+        color: var(--main-primary-color);
+        font-size: 15px;
+        padding-left: 5px;
+    }
+    .ui-menuitem-link:not([href="#"]) {
+        font-weight: bold;
+        &.ui-state-active {
+            border: none;
+            background: none;
+        }
+    }
+}

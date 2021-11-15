@@ -1,0 +1,130 @@
+/* status colors*/
+
+.circle {
+  width: 0.8rem;
+  height: 0.8rem;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 0.26rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.new {
+  color: #4285f4;
+  background: currentColor;
+  animation: fliker 1s ease-in-out infinite;
+  border: 1px solid darken($color: #4285f4, $amount: 10%);
+}
+.onway,
+.wait,
+.ready2pick,
+.send,
+.started,
+.wait4app,
+.delivered {
+  color: #f4b400;
+  background: currentColor;
+  animation: fliker 1s ease-in-out infinite;
+  border: 1px solid darken($color: #f4b400, $amount: 10%);
+}
+
+.ready {
+  color: #f4b400;
+  background: currentColor;
+  animation: fliker 1s ease-in-out infinite;
+  border: 1px solid darken($color: #f4b400, $amount: 10%);
+}
+
+.last_app,
+.app,
+.approve,
+.picked,
+.finished,
+.completed {
+  color: #0f9d58;
+  background: currentColor;
+  border: 1px solid darken($color: #0f9d58, $amount: 10%);
+}
+
+.error,
+.denied {
+  color: rgb(255, 0, 0);
+  background: currentColor;
+  border: 1px solid darken($color: rgb(255, 0, 0), $amount: 10%);
+}
+
+.processing {
+  color: #f4b400;
+  background: currentColor;
+  animation: fliker 1s ease-in-out infinite;
+  border: 1px solid darken($color: #f4b400, $amount: 10%);
+}
+
+.wh_app,
+.approved {
+  color: darken($color: #0f9d58, $amount: 10%);
+  background: currentColor;
+  border: 1px solid darken($color: #0f9d58, $amount: 20%);
+}
+
+.on_road {
+  color: darken($color: #fc9004, $amount: 10%);
+  background: currentColor;
+  border: 1px solid darken($color: #fc9004, $amount: 20%);
+}
+.empty_weighed {
+  color: darken($color: #fc9004, $amount: 10%);
+  background: currentColor;
+  border: 1px solid darken($color: #fc9004, $amount: 20%);
+}
+.loaded_weighed {
+  color: rgb(34, 74, 138);
+  background: currentColor;
+  border: 1px solid darken($color: rgb(34, 74, 138), $amount: 10%);
+}
+
+.arrived,
+.complete {
+  color: rgb(34, 74, 138);
+  background: currentColor;
+  border: 1px solid darken($color: rgb(34, 74, 138), $amount: 10%);
+}
+
+.cancel,
+.cancelled,
+.deny,
+.canceled {
+  color: #db4437;
+  background: currentColor;
+  border: 1px solid darken($color: #db4437, $amount: 10%);
+}
+
+//   .up_aft_aprvd {
+//     color: rgb(199, 199, 199);
+//     background: currentColor;
+//     border: 1px solid darken($color: rgb(199, 199, 199), $amount: 10%);
+//   }
+
+//   .cancel,
+//   .cancel_entry,
+//   .cancel_request {
+//     color: #830303;
+//     background: currentColor;
+//     border: 1px solid darken($color: #830303, $amount: 10%);
+//   }
+
+.fliker {
+  animation: fliker 1s ease-in-out infinite;
+}
+
+@keyframes fliker {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

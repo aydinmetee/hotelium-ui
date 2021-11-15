@@ -1,0 +1,23 @@
+p-calendar {
+    display: block;
+    width: 100%;
+  
+    & > span {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+      button {
+        right: 0;
+      }
+    }
+    .ui-calendar .ui-calendar-button {
+      position: absolute;
+      height: 100%;
+      width: 2em;
+      border-left: 0 none;
+      right: -1px;
+      border-radius: 0 !important;
+    }
+  }
+  
