@@ -70,8 +70,8 @@ export class MenuComponent extends BaseComponent implements OnInit {
             break;
           }
           default: {
-            i.icon = 'fas fa-home';
-            i.label = 'page.transactions';
+            i.icon = 'fas fa-shield-alt';
+            i.label = 'transactions';
             break;
           }
         }
@@ -81,7 +81,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
     this.items = [
       {
         icon: 'fas fa-home',
-        label: 'theme.menu.root-menu.dashboard',
+        label: 'dashboard',
         url: ['dashboard'],
       },
       ...menus.children,

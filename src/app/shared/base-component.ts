@@ -34,12 +34,14 @@ export class BaseComponent implements OnDestroy {
   public statusList: SelectItem[] = [];
 
   public searchObject: any = {};
+  public searchToggle = false;
   protected formsCon: ElementRef;
 
   @ViewChild('pTable', { static: true }) public dt: Table;
   protected hideLoaderAfterInit = true;
   public rowsPerPage = [10, 25, 50, 100, 500];
   public builder: FormBuilder;
+  public initStarted = true;
 
   constructor(
     protected componentService: RestService,
@@ -215,5 +217,107 @@ export class BaseComponent implements OnDestroy {
       this.t('alert.title.success'),
       this.t('alert.message.succesfully-updated')
     );
+  }
+
+  public loadLazy(e: any): void {
+    if (!this.initStarted) {
+      return;
+    }
+    this.pageNumber = e.first / e.rows;
+    this.sortField = e.sortField || this.sortFieldDef || 'creDate';
+    this.sortOrder = e.sortOrder === 1 ? 'DESC' : 'ASC';
+    this.pageSize = e.rows;
+    if (this.componentService && this.componentService.apiUrl) {
+      this.getPageData();
+    }
+  }
+
+  public search(): void {
+    this.pageNumber = 0;
+    this.searchObject = this.searchForm.value;
+    this.getPageData();
+  }
+
+  public reset(): void {
+    this.searchForm.reset();
+    this.searchObject = {};
+    this.getPageData();
+  }
+
+  public showCreateDialog(isAsyncCall: boolean = false) {
+    this.startDialogAction('create', null, isAsyncCall);
+  }
+
+  public startDialogAction(
+    type: 'create' | 'update' = 'create',
+    data?: any,
+    isAsyncCall: boolean = false
+  ): void {
+    this.invalidForm = false;
+    if (this.form) {
+      this.form.reset();
+    }
+    this.dialogType = true;
+
+    if (type === 'create') {
+      this.dialogTitle = this.t('create');
+      this.selectedItem = null;
+    } else {
+      this.selectedItem = data;
+      this.dialogTitle = this.t('update');
+      this.dialogType = false;
+      this.initUpdateDialog(data);
+    }
+
+    if (!isAsyncCall) {
+      this.after(() => (this.isDialogVisible = true));
+    }
+  }
+
+  public after(cb: any, timeout: number = 1): void {
+    setTimeout(() => {
+      if (cb instanceof Function) {
+        cb();
+      }
+    }, timeout);
+  }
+
+  public initUpdateDialog(data: any, e?: any): void {
+    this.form.reset({ ...data });
+  }
+
+  public showUpdateDialog(data: any, isAsyncCall: boolean = false): void {
+    this.startDialogAction('update', data, isAsyncCall);
+  }
+
+  public deleteDialog(
+    item?: any,
+    callback?: () => void,
+    config?: { message: string; alert?: { title: string; message: string } }
+  ) {
+    config = config || { message: 'pages.message.main-message' };
+    config.alert = config.alert || {
+      title: 'confirmation.success-message.title.deleted',
+      message: 'confirmation.success-message.message.deleted',
+    };
+
+    item = item || this.selectedItem;
+    // this.utilityService.confirmationService.confirm({
+    //   header: this.t('pages.message.caution'),
+    //   message: this.t(config.message),
+    //   acceptLabel: 'form.btn.yes',
+    //   accept: () => {
+    //     this.componentService.deleteObject(item).subscribe(res => {
+    //       this.utilityService.alertService.success(
+    //         this.t(config.alert.title),
+    //         this.t(config.alert.message)
+    //       );
+    //       this.getPageData();
+    //       if (callback) {
+    //         callback();
+    //       }
+    //     });
+    //   }
+    // });
   }
 }

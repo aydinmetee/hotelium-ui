@@ -1,0 +1,27 @@
+<!-- <span class="ui-column-title">{{ col.header }}</span> -->
+<div [ngClass]="col.textAlign">
+  <ng-container *ngIf="col.isNumber; else other">
+    {{ (+rowData[col.field] | mask: col.numberFormat) || 0 }}
+
+    <ng-container *ngIf="col.currencyField">
+      {{ rowData[col.currencyField] | currencyCode }}
+    </ng-container>
+
+    <ng-container *ngIf="col.showParentCurrency">
+      {{ parentCurrency | currencyCode }}
+    </ng-container>
+  </ng-container>
+  <ng-template #other>
+    <span
+      *ngIf="col.field.toString() === 'status'"
+      class="circle"
+      [ngClass]="rowData[col.field] | lowercase"
+    ></span>
+
+    {{
+      col.isDate
+        ? (rowData[col.field] | date: col.dateFormat)
+        : rowData[col.field]
+    }}
+  </ng-template>
+</div>

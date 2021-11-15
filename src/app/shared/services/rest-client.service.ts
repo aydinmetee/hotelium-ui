@@ -50,24 +50,14 @@ export class RestClientService {
   }
 
   public createAuthorizedRequestOptions(options?) {
+    this.access_token = this.localStorageService.getItem('TOKEN');
     let authOptions;
-    if (options) {
-      authOptions = options;
-      if (!authOptions.headers) {
-        authOptions.headers = new HttpHeaders();
-      }
-    } else {
-      authOptions = { headers: new HttpHeaders() };
-      authOptions.headers.set('Content-Type', 'application/json');
-    }
-    if (this.access_token === 'undefined' || this.access_token == null) {
-      this.access_token = this.localStorageService.getItem('TOKEN');
-    }
+    authOptions = { headers: new HttpHeaders() };
     authOptions.headers = new HttpHeaders();
     authOptions.headers = authOptions.headers
       .append('Content-Type', 'application/json')
       .append('Authorization', 'Bearer ' + this.access_token)
-      .append('Accept', 'application/json,application/xml;q=0.9,*/*;q=0.8');
+      .append('Accept', 'application/json');
 
     return authOptions;
   }

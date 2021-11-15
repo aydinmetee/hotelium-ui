@@ -30,7 +30,7 @@
 
             <div class="ui-lg-12 ui-md-12 ui-g-12">
               <label
-                ><b>{{ "emailUserCode" | translate }}</b></label
+                ><b>{{ "username" | translate }}</b></label
               >
               <input
                 type="text"
@@ -39,15 +39,11 @@
                 class="w-100"
                 formControlName="email"
               />
-              <sis-validation-summary
-                [form]="form"
-                name="email"
-              ></sis-validation-summary>
             </div>
 
             <div class="ui-lg-12 ui-md-12 ui-g-12">
               <label
-                ><b>{{ "login.password" | translate }}</b></label
+                ><b>{{ "password" | translate }}</b></label
               >
               <input
                 type="password"
@@ -57,20 +53,7 @@
                 name="password"
                 formControlName="password"
               />
-              <sis-validation-summary
-                [form]="form"
-                name="password"
-              ></sis-validation-summary>
             </div>
-
-            <div class="ui-lg-12 ui-mf-12 ui-g-12">
-              <small class="forgotPassword">
-                <a href="#/login/forgot-password">{{
-                  "login.login-forgot-password" | translate
-                }}</a>
-              </small>
-            </div>
-            <!-- <div class="ui-lg-12 ui-g-12 hr"></div> -->
           </div>
           <ng-template #loginedTem>
             <div class="ui-g">
@@ -104,7 +87,7 @@
                   "
                 >
                   <span>
-                    {{ "login.sign-in" | translate }}
+                    {{ "sign-in" | translate }}
                   </span>
                 </button>
               </div>

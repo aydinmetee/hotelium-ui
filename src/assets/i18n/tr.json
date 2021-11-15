@@ -1,1 +1,22 @@
-{}
+{
+    "username":"Kullanıcı Adı",
+    "password":"Parola",
+    "sign-in":"Giriş Yap",
+    "dashboard":"Ana Sayfa",
+    "transactions":"İşlemler",
+    "page":{
+        "reservation":"Rezervasyonlar",
+        "rooms":"Odalar",
+        "account":"Cari Hesap",
+        "customer":"Müşteriler",
+        "company":"Firmalar"
+    },
+    "add":"Ekle",
+    "search":"Ara",
+    "code":"Kod",
+    "capacity":"Kapasite",
+    "status":"Durum",
+    "action":"İşlem",
+    "update":"Güncelle",
+    "cancel":"İptal Et"
+}

@@ -16,6 +16,11 @@ const pageRoutes: Routes = [
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
+      {
+        path: 'rooms',
+        loadChildren: () =>
+          import('./room/room.module').then((m) => m.RoomModule),
+      },
     ],
   },
 ];

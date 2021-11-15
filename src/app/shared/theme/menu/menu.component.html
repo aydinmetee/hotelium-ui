@@ -17,6 +17,16 @@
         (click)="hidden = !hidden"
       ></span>
 
+      <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }">
+        <div class="text-center">
+          <img
+            class="dealer-image"
+            [src]="'./assets/img/logo.png'"
+            style="width: 160px"
+          />
+        </div>
+      </div>
+
       <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }"></div>
 
       <!-- <app-menu-render [model]="items"></app-menu-render> -->
@@ -80,24 +90,7 @@
             </ul>
           </li>
         </ul>
-        <ul style="bottom: 0px; position: absolute; width: 100%">
-          <li>
-            <a
-              href="https://www.smarty360.com/kullanim-kilavuzu.html"
-              target="_blank"
-            >
-              <i class="fa fa-question-circle"></i>
-              {{ "user-guide" | translate | uppercase }}
-            </a>
-          </li>
-        </ul>
       </div>
-
-      <!-- 🔴 this img like case a problem and overlap with thr menu item one time it redirect to smarty page while I was trying to click on web order page   -->
-
-      <!-- <footer>
-        <div class="text-center main-menu"></div>
-      </footer> -->
     </div>
   </div>
 </div>

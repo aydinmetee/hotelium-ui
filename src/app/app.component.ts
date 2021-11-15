@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     public loginloader: LoadingService,
     public utilServ: UtilityService
   ) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('tr');
   }
 
   ngOnInit() {
