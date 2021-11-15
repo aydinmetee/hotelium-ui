@@ -22,7 +22,6 @@ export class Oauth2Service {
   }
 
   public login(email: string, password: string, cb: any) {
-    // tslint:disable-next-line: max-line-length
     return this._http
       .post<any>(
         `${Urls.BASE_URL.toString()}/auth/login`,
@@ -38,10 +37,6 @@ export class Oauth2Service {
 
   public logout() {
     return this.clearAuthentication();
-  }
-
-  public refreshToken(refreshToken: string) {
-    this._restClientService.access_token = refreshToken;
   }
 
   public storeAuthentication(authToken: string) {
@@ -61,6 +56,9 @@ export class Oauth2Service {
 
   public handleAuthorization(authorizationInfo: any, cb) {
     this.storeAuthentication(authorizationInfo.accessToken);
+    if (cb) {
+      cb();
+    }
   }
 
   public handleLoginError(error: any) {

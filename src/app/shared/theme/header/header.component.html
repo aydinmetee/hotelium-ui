@@ -1,15 +1,7 @@
-<div class="main-div" [ngClass]="{'menu-hidden':menuHidden}">
+<div class="main-div" [ngClass]="{ 'menu-hidden': menuHidden }">
   &nbsp;
-  <a class="f-right c-pointer chat-btn p-relative" style="width: 50px;" (click)="chat.toggle()">
-    <i class="fa fa-comments"></i>
-    <span class="badge-red" @fadeAndSlideUp *ngIf="chat.messages as numMessages">{{numMessages}}</span>
 
-  </a>
-  <!-- <p-breadcrumb [model]="breadcrumbItem"></p-breadcrumb> -->
-
-
-
-  <a id="personal-menu-header" style="margin-left: 36px;" class="f-right c-pointer" (click)="menu.toggle($event)">
+  <!-- <a id="personal-menu-header" style="margin-left: 36px;" class="f-right c-pointer" (click)="menu.toggle($event)">
     <span>
       <img class="user-image" [src]="userImageUrl" alt="">
     </span>
@@ -18,63 +10,5 @@
 
       <i class="fa fa-angle-down" aria-hidden="true"></i>
     </span>
-  </a>
-
-  <a class="f-right dealer-info" (click)="loginByCustomeDealer()">
-    <span class="p-relative header-title" style="padding-left:36px ;">
-      <span style="cursor: pointer;display: inline-block;margin-right:5px;margin-left: 0.25rem;"><b>{{'dealerName' | translate }}: </b>{{customeDealer || user.dealerName}}</span><i _ngcontent-dcl-c211="" aria-hidden="true" class="fa fa-angle-down ng-tns-c211-4" style="cursor: pointer;"></i>
-    </span>
-  </a>
-
+  </a> -->
 </div>
-
-<p-tieredMenu [model]="items" [popup]="true" #menu @fade></p-tieredMenu>
-<chat-ui #chat></chat-ui>
-
-
-<p-dialog [header]="'updateUserDealer' | translate" [(visible)]="isDialogVisible" [responsive]="true"
-  [style]="{width : '600px', minWidth : '400px'}" [modal]="true" [draggable]="false"
-  [contentStyle]="{ 'max-height': '600px' }" (onHide)="resetUi()">
-  <div class="ui-g" [formGroup]="form">
-
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label>{{ "pages.user.dealer" | translate }}
-        <sis-required controlName="dealerId"></sis-required>
-      </label>
-
-      <p-dropdown [appendTo]="'body'" [options]="dealerList" class="w-100" formControlName="dealerId" #dealer
-        placeholder="{{ 'form.btn.select' | translate }}" filter="true" (onChange)="dealerChange(dealer.value)">
-      </p-dropdown>
-      <sis-validation-summary [form]="form" name="dealerId" [visable]="invalidForm">
-      </sis-validation-summary>
-
-    </div>
-
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label>{{ "pages.user.branch" | translate }}
-        <sis-required controlName="branchId"></sis-required>
-      </label>
-
-      <p-dropdown [appendTo]="'body'" [options]="branchList" class="w-100" formControlName="branchId"
-        placeholder="{{ 'form.btn.select' | translate }}" filter="true"></p-dropdown>
-
-      <sis-validation-summary [form]="form" name="branchId" [visable]="invalidForm">
-      </sis-validation-summary>
-
-    </div>
-  </div>
-
-
-
-  <p-footer>
-    <div class="ui-g">
-      <div class="ui-g-12 text-right">
-        <button type="button" pButton icon="fas fa-times" label="{{ 'form.btn.cancel' | translate }}"
-          (click)="isDialogVisible = false" class="ui-dark-button"></button>
-
-        <button type="button" pButton icon="fas fa-edit" label="{{ 'login.sign-in' | translate }}"
-          [disabled]="form.invalid" class="ui-green-button" (click)="setLogin()"></button>
-      </div>
-    </div>
-  </p-footer>
-</p-dialog>

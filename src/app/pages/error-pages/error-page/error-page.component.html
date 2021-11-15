@@ -1,0 +1,11 @@
+<!-- <div id="particles-js"></div> -->
+<div class="topRight error-code" [ngClass]="{ 'normalError':isNormalError}">
+  <p class="errorCode">
+    <!-- <i class="material-icons ">report_problem</i> -->
+    {{errorCode}}
+  </p>
+  <p class="errorMessage">{{errorMessage | translate}}</p>
+
+  <button pButton type="button" [routerLink]="'/page/dashboard'" label="Geri Dön" class="redBtn"
+    [ngClass]="{ 'btn-blue':isButtonError}"></button>
+</div>

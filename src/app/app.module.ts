@@ -19,6 +19,8 @@ import { ProgressButtonService } from './shared/services/progress-button.service
 import { LoginDialogService } from './pages/login/services/login-dialog.service';
 import { Oauth2Service } from './shared/services/oauth2.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { PagesModule } from './pages/pages.module';
+import { ErrorPagesModule } from './pages/error-pages/errors-pages.module';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -28,9 +30,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     BrowserModule,
+    PagesModule,
     BrowserAnimationsModule,
     RouterModule,
     PrimengModule,
+    ErrorPagesModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

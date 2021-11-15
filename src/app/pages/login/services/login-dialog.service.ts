@@ -18,9 +18,9 @@ export class LoginDialogService {
   ) {}
 
   public getLoginInfo(email: string, password: string, cb?, err?): void {
+    console.log('auth servis');
     this._oauth2Service
       .login(email, password, () => {
-        debugger;
         console.log('login success');
 
         if (cb) {

@@ -38,10 +38,12 @@ export class LoginComponent extends BaseComponent implements OnInit {
   public login() {
     const formData: { email: string; password: string } = this.form.value;
     this.showLoader();
+    console.log(this.router.config);
     this.loginDialogService.getLoginInfo(
       formData.email,
       formData.password,
       () => {
+        console.log('yönlendirildi.');
         this.router.navigateByUrl('/page');
       }
     );
