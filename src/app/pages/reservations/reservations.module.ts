@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PrimengModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AccountTransactionService } from '../account-transaction/services/account-transaction.service';
 import { ReservationDetailComponent } from './components/reservation-detail/reservation-detail.component';
 import { ReservationMasterComponent } from './components/reservation-master/reservation-master.component';
 import {
@@ -32,6 +33,10 @@ const routes: Routes = [
     TranslateModule,
     SharedModule,
   ],
-  providers: [ReservationMasterService, ReservationDetailService],
+  providers: [
+    ReservationMasterService,
+    ReservationDetailService,
+    AccountTransactionService,
+  ],
 })
 export class ReservationsModule {}

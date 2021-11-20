@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PrimengModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AccountTransactionService } from '../account-transaction/services/account-transaction.service';
 import { DashboardComponent } from './components/dashboard.component';
 
 const dashboardRoutes: Routes = [
@@ -21,6 +22,6 @@ const dashboardRoutes: Routes = [
     TranslateModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AccountTransactionService],
 })
 export class DashboardModule {}

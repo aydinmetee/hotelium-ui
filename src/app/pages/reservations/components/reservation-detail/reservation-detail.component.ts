@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountTransactionService } from 'src/app/pages/account-transaction/services/account-transaction.service';
 import { BaseComponent } from 'src/app/shared/base-component';
 import { LabelValue } from 'src/app/shared/models/label-value';
 import { TranslateKey } from 'src/app/shared/models/translate-key.enum';
@@ -76,7 +77,8 @@ export class ReservationDetailComponent
         header: this.t('customerFullName'),
         default: true,
       },
-      { field: 'bookAmount', header: this.t('bookAmount'), default: true },
+      { field: 'customerLegalId', header: this.t('legalId'), default: true },
+      { field: 'customerPhone', header: this.t('phone'), default: true },
     ];
 
     this.init();
@@ -107,8 +109,10 @@ export class ReservationDetailComponent
           this.searchForm.patchValue({
             roomCode: result.roomCode,
             description: result.description,
-            checkInDate: result.checkInDate,
-            checkOutDate: result.checkOutDate,
+            checkInDate: new Date(result.checkInDate),
+            checkOutDate: result.checkOutDate
+              ? new Date(result.checkOutDate)
+              : null,
             status: result.status,
           });
         });
@@ -129,18 +133,20 @@ export class ReservationDetailComponent
     const model = Object.assign({}, this.bookingForm.value);
     console.log(model);
     this.reservationDetailService.markAsBooking(model).subscribe(() => {
-      this.showUpdateMessage();
-      this.initDetail();
-      this.getPageData();
-      this.bookingDialog = false;
+      this.updateActions();
     });
   }
 
   public markAsCompleted() {
     this.reservationDetailService.markAsCompleted().subscribe(() => {
-      this.showUpdateMessage();
-      this.initDetail();
-      this.getPageData();
+      this.updateActions();
     });
+  }
+
+  public updateActions() {
+    this.showUpdateMessage();
+    this.initDetail();
+    this.getPageData();
+    this.bookingDialog = false;
   }
 }

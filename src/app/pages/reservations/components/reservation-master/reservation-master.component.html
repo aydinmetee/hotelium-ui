@@ -21,7 +21,7 @@
           class="w-100"
           name="description"
           formControlName="description"
-          maxlength="30"
+          maxlength="100"
         />
       </div>
       <div class="ui-lg-4 ui-md-4 ui-g-12">
@@ -45,6 +45,19 @@
           class="w-100"
           appendTo="body"
         ></p-dropdown>
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "bookAmount" | translate }}
+        </label>
+        <input
+          pInputText
+          type="number"
+          class="w-100"
+          name="bookAmount"
+          formControlName="bookAmount"
+          maxlength="30"
+        />
       </div>
     </div>
   </form>
@@ -131,15 +144,14 @@
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
 
-        <!-- <button
-            type="button"
-            *ngIf="rowData.status === 'DIRTY'"
-            pButton
-            icon="fas fa-pencil-alt"
-            (click)="markAsClean(rowData)"
-            [pTooltip]="'markAsClean' | translate"
-            class="ui-green-button"
-          ></button> -->
+        <button
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="initSourceUpdateDialog(rowData)"
+          [pTooltip]="'update' | translate"
+          class="ui-green-button"
+        ></button>
         <button
           type="button"
           pButton
@@ -218,6 +230,65 @@
           icon="fas fa-edit"
           label="{{ 'update' | translate }}"
           (action)="update()"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="isSourceDialogVisible"
+  [responsive]="true"
+  [style]="{ width: '400px', minWidth: 200 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+>
+  <div
+    class="pb-2"
+    [formGroup]="updateSourceForm"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label>{{ "amount" | translate }} </label>
+      <input
+        type="number"
+        class="w-100"
+        pInputText
+        name="amount"
+        formControlName="amount"
+      />
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label>{{ "source" | translate }} </label>
+      <p-dropdown
+        [options]="sourceList"
+        formControlName="source"
+        class="w-100"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'form.btn.cancel' | translate }}"
+          (click)="isSourceDialogVisible = false"
+          class="ui-dark-button"
+        ></button>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          (click)="updateTransactionSource()"
+          label="{{ 'updateTransactionSource' | translate }}"
           class="ui-green-button"
         ></button>
       </div>

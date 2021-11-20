@@ -7,4 +7,6 @@ export class ReservationMaster {
   roomCode: string;
   roomId: number;
   status: 'NEW' | 'BOOKING' | 'COMPLETED';
+  bookAmount: number;
+  source: 'DEBIT' | 'CASH' | 'BANK';
 }

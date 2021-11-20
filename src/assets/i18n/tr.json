@@ -2,7 +2,17 @@
     "username":"Kullanıcı Adı",
     "password":"Parola",
     "sign-in":"Giriş Yap",
-    "dashboard":"Ana Sayfa",
+    "dashboard":{
+        "title":"Ana Sayfa",
+        "month-name":"Ay",
+        "total-income":"Toplam Gelir",
+        "total-expense":"Toplam Gider",
+        "case-balance":"Güncel Kasa",
+        "cash-income":"Nakit Geliri",
+        "debit-income":"Kredi Kartı Geliri",
+        "bank-income":"Banka Geliri"
+
+    },
     "transactions":"İşlemler",
     "page":{
         "reservation":"Rezervasyonlar",
@@ -63,7 +73,8 @@
     "form":{
         "btn":{
             "back":"Geri",
-            "cancel":"İptal Et"
+            "cancel":"İptal Et",
+            "create":"Oluştur"
         }
     },
     "checkInDate":"Giriş Tarihi",
@@ -73,5 +84,50 @@
     "bookAmount":"Konaklama Tutarı",
     "customers":"Müşteriler",
     "markAsBooking":"Giriş Yaptı",
-    "markAsCompleted":"Çıkış Yaptı"
+    "markAsCompleted":"Çıkış Yaptı",
+    "calendar": {
+        "firstDayOfWeek": 1,
+        "dayNames": [
+          "Pazar",
+          "Pazartesi",
+          "Salı",
+          "Çarşamba",
+          "Perşembe",
+          "Cuma",
+          "Cumartesi"
+        ],
+        "dayNamesShort": ["Pzr", "Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt"],
+        "dayNamesMin": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+        "monthNames": [
+          "Ocak",
+          "Şubat",
+          "Mart",
+          "Nisan",
+          "Mayıs",
+          "Haziran",
+          "Temmuz",
+          "Ağustos",
+          "Eylül",
+          "Ekim",
+          "Kasım",
+          "Aralık"
+        ],
+        "monthNamesShort": [
+          "Oca",
+          "Şub",
+          "Mar",
+          "Nis",
+          "May",
+          "Haz",
+          "Tem",
+          "Ağu",
+          "Eyl",
+          "Eki",
+          "Kas",
+          "Ara"
+        ],
+        "today": "Bugün",
+        "clear": "Temizle"
+      },
+    "updateTransactionSource":"Kaynağı Güncelle"
 }

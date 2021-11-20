@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AccountTransactionService } from 'src/app/pages/account-transaction/services/account-transaction.service';
 import { BaseComponent } from 'src/app/shared/base-component';
 import { LabelValue } from 'src/app/shared/models/label-value';
 import { TranslateKey } from 'src/app/shared/models/translate-key.enum';
 import { UtilityService } from 'src/app/shared/services/utility.service';
+import { ReservationMaster } from '../../models/reservation-master';
 import { ReservationMasterService } from '../../services/reservation-master.service';
 
 @Component({
@@ -18,10 +20,14 @@ export class ReservationMasterComponent
 {
   roomsList: LabelValue<string, number>[] = [];
   statusList: LabelValue<string, string>[] = [];
+  public sourceList: LabelValue<string, string>[] = [];
+  updateSourceForm: FormGroup;
+  isSourceDialogVisible = false;
   constructor(
     private reservationMasterService: ReservationMasterService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private accountTransactionService: AccountTransactionService,
     utilityService: UtilityService
   ) {
     super(reservationMasterService, utilityService);
@@ -29,11 +35,18 @@ export class ReservationMasterComponent
       description: [null],
       roomId: [null],
       status: [null],
+      bookAmount: [null],
     });
 
     this.form = this.builder.group({
       roomId: [null, Validators.required],
       description: [null, Validators.required],
+    });
+
+    this.updateSourceForm = this.builder.group({
+      id: [null],
+      source: [null],
+      amount: [null],
     });
 
     this.utilityService.comboService.getRoomsList().subscribe((data) => {
@@ -45,6 +58,13 @@ export class ReservationMasterComponent
       { label: this.t('booking'), value: 'BOOKING' },
       { label: this.t('completed'), value: 'COMPLETED' },
     ];
+
+    this.sourceList = [
+      { label: this.t('select'), value: null },
+      { label: this.t('debit'), value: 'DEBIT' },
+      { label: this.t('cash'), value: 'CASH' },
+      { label: this.t('bank'), value: 'BANK' },
+    ];
   }
 
   ngOnInit(): void {
@@ -53,6 +73,27 @@ export class ReservationMasterComponent
       { field: 'id', header: this.t('id'), default: true },
       { field: 'roomCode', header: this.t('roomCode'), default: true },
       { field: 'description', header: this.t('description'), default: true },
+      {
+        field: 'checkInDate',
+        header: this.t('checkInDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
+      {
+        field: 'checkOutDate',
+        header: this.t('checkOutDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
+      { field: 'bookAmount', header: this.t('bookAmount'), default: true },
+      {
+        field: 'source',
+        header: this.t('source'),
+        default: true,
+        translateKey: TranslateKey.source,
+      },
       {
         field: 'status',
         header: this.t('status'),
@@ -68,5 +109,27 @@ export class ReservationMasterComponent
     if (id) {
       this.router.navigate([id, 'detail'], { relativeTo: this.activatedRoute });
     }
+  }
+
+  initSourceUpdateDialog(rowData: ReservationMaster) {
+    this.isSourceDialogVisible = true;
+    this.updateSourceForm.patchValue({
+      amount: rowData.bookAmount,
+      source: rowData.source,
+      id: rowData.accountTransactionId,
+    });
+    this.updateSourceForm.disable();
+    this.updateSourceForm.get('source').enable();
+  }
+
+  public updateTransactionSource() {
+    this.updateSourceForm.enable();
+    const model = Object.assign({}, this.updateSourceForm.value);
+
+    this.accountTransactionService.updateSource(model).subscribe(() => {
+      this.showUpdateMessage();
+      this.getPageData();
+      this.isSourceDialogVisible = false;
+    });
   }
 }

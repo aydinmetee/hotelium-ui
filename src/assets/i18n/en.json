@@ -1,1 +1,46 @@
-{}
+{
+    "calendar": {
+        "firstDayOfWeek": 1,
+        "dayNames": [
+          "Pazar",
+          "Pazartesi",
+          "Salı",
+          "Çarşamba",
+          "Perşembe",
+          "Cuma",
+          "Cumartesi"
+        ],
+        "dayNamesShort": ["Pzr", "Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt"],
+        "dayNamesMin": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+        "monthNames": [
+          "Ocak",
+          "Şubat",
+          "Mart",
+          "Nisan",
+          "Mayıs",
+          "Haziran",
+          "Temmuz",
+          "Ağustos",
+          "Eylül",
+          "Ekim",
+          "Kasım",
+          "Aralık"
+        ],
+        "monthNamesShort": [
+          "Oca",
+          "Şub",
+          "Mar",
+          "Nis",
+          "May",
+          "Haz",
+          "Tem",
+          "Ağu",
+          "Eyl",
+          "Eki",
+          "Kas",
+          "Ara"
+        ],
+        "today": "Bugün",
+        "clear": "Temizle"
+      }
+}

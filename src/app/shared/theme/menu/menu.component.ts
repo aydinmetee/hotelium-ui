@@ -81,7 +81,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
     this.items = [
       {
         icon: 'fas fa-home',
-        label: 'dashboard',
+        label: 'dashboard.title',
         url: ['dashboard'],
       },
       ...menus.children,

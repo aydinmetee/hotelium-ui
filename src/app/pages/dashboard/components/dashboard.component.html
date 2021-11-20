@@ -1,95 +1,37 @@
 <div>
-  <!-- <div class="web-order-title" *ngIf="isWebOrderVisible">
-    <span style="padding-left: 1rem">
-      <b>{{ "dashboard.web-orders" | translate }}</b>
-    </span>
-  </div> -->
   <div class="ui-g dashboard">
-    <!-- <div class="ui-g-12 ui-md-12 ui-lg-12  pb-0" *ngIf="isWebOrderVisible">
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-yellow">
-          <i class="fas fa-plus-circle fa-3x"></i>
-          <div class="title">
-            {{ "new" | translate }}
-          </div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ webOrderData.new || 0 }}
-          </div>
-        </p-card>
-      </div>
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-dark-blue">
-          <span>
-            <i class="fas fa-pause-circle fa-3x"></i>
-          </span>
-          <div class="title">{{ "dashboardWait4App" | translate }}</div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ webOrderData.wait4app || 0 }}
-          </div>
-        </p-card>
-      </div>
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-red">
-          <span>
-            <i class="fas fa-ban fa-3x"></i>
-          </span>
-          <div class="title">{{ "dashboardDenied" | translate }}</div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ webOrderData.denied || 0 }}
-          </div>
-        </p-card>
-      </div>
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-blue">
-          <span>
-            <i class="fas fa-times-circle fa-3x"></i>
-          </span>
-          <div class="title">{{ "dashboardCanceled" | translate }}</div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ webOrderData.canceled || 0 }}
-          </div>
-        </p-card>
-      </div>
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-purple">
-          <span>
-            <i class="fas fa-check-circle fa-3x"></i>
-          </span>
-          <div class="title">{{ "dashboardApproved" | translate }}</div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ webOrderData.approved || 0 }}
-          </div>
-        </p-card>
-      </div>
-      <div class="ui-g-12 ui-md-2 ui-lg-2">
-        <p-card styleClass="card-blue cardDashboard bg-c-green">
-          <span>
-            <i class="fas fa-equals fa-3x"></i>
-          </span>
-          <div class="title">{{ "total" | translate }}</div>
-          <div class="borderDashbord"></div>
-          <div class="count number-blue font-arial">
-            {{ totalWebOrder || 0 }}
-          </div>
-        </p-card>
-      </div>
-
-    </div> -->
-
     <div class="ui-g-12 ui-md-12 ui-lg-12 pb-0 pt-0">
+      <div class="ui-g-12 ui-md-3 ui-lg-3">
+        <p-card styleClass="card-green card-border">
+          <i class="fas fa-equals fa-3x dashboardIcon-3"></i>
+          <div class="title titleBgDasboard-3">
+            {{ "dashboard.month-name" | translate }}
+          </div>
+          <div class="count number-red font-arial">
+            {{ balance?.monthName | uppercase }}
+          </div>
+        </p-card>
+      </div>
       <div class="ui-g-12 ui-md-3 ui-lg-3">
         <p-card styleClass="card-blue card-border">
           <i class="fas fa-cubes dashboardIcon-1"></i>
           <div class="title titleBgDasboard-1">
-            {{ "dashboard.total-stock-cost" | translate }}
+            {{ "dashboard.total-income" | translate }}
           </div>
           <div class="count number-blue font-arial">
-            {{ 0 }}<small>{{ "₺" }}</small>
+            {{ balance?.totalIncome }}<small>{{ "₺" }}</small>
+          </div>
+        </p-card>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-lg-3">
+        <p-card styleClass="card-blue card-border">
+          <i class="fas fa-cubes dashboardIcon-1"></i>
+          <div class="title titleBgDasboard-1">
+            {{ "dashboard.total-expense" | translate }}
+          </div>
+          <div class="count number-blue font-arial">
+            {{ balance?.totalExpense }}<small>{{ "₺" }}</small>
           </div>
         </p-card>
       </div>
@@ -97,35 +39,48 @@
         <p-card styleClass="card-green card-border">
           <i class="fas fa-shopping-cart dashboardIcon-2"></i>
           <div class="title titleBgDasboard-2">
-            {{ "dashboard.daily-sales" | translate }}
+            {{ "dashboard.case-balance" | translate }}
           </div>
           <div class="count number-red font-arial">
-            {{ 0 }}<small>{{ "₺" }}</small>
+            {{ balance?.caseBalance }}<small>{{ "₺" }}</small>
+          </div>
+        </p-card>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-12 ui-lg-12 pb-0 pt-0">
+      <div class="ui-g-12 ui-md-4 ui-lg-4">
+        <p-card styleClass="card-green card-border">
+          <i class="fas fa-shopping-cart dashboardIcon-2"></i>
+          <div class="title titleBgDasboard-2">
+            {{ "dashboard.cash-income" | translate }}
+          </div>
+          <div class="count number-red font-arial">
+            {{ balance?.cashIncome }}<small>{{ "₺" }}</small>
           </div>
         </p-card>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-lg-3">
+      <div class="ui-g-12 ui-md-4 ui-lg-4">
         <p-card styleClass="card-green card-border">
           <i class="fas fa-equals fa-3x dashboardIcon-3"></i>
           <div class="title titleBgDasboard-3">
-            {{ "dashboard.total-stock-amount" | translate }}
+            {{ "dashboard.debit-income" | translate }}
           </div>
           <div class="count number-red font-arial">
-            0
+            {{ balance?.debitIncome }}
             <small>{{ "₺" }}</small>
           </div>
         </p-card>
       </div>
 
-      <div class="ui-g-12 ui-md-3 ui-lg-3">
+      <div class="ui-g-12 ui-md-4 ui-lg-4">
         <p-card styleClass="card-green card-border">
           <i class="fas fa-dollar-sign dashboardIcon-4"></i>
           <div class="title titleBgDasboard-4">
-            {{ "dashboard.average-inventory-cost" | translate }}
+            {{ "dashboard.bank-income" | translate }}
           </div>
           <div class="count number-red font-arial">
-            0<small>{{ "₺" }}</small>
+            {{ balance?.bankIncome }}<small>{{ "₺" }}</small>
           </div>
         </p-card>
       </div>

@@ -15,4 +15,15 @@ export class AccountTransactionService extends RestService {
       .post(this.apiUrl + '/expense', JSON.stringify(object))
       .pipe(catchError(this.handleError));
   }
+
+  public getMontlyBalance(): Observable<any> {
+    return this.restClientService.get(this.apiUrl + '/get-montly-balance');
+  }
+
+  public updateSource(object: any): Observable<any> {
+    return this.restClientService.put(
+      this.apiUrl + '/update-source',
+      JSON.stringify(object)
+    );
+  }
 }

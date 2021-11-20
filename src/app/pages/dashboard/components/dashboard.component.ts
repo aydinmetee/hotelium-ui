@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BaseComponent } from 'src/app/shared/base-component';
 import { UtilityService } from 'src/app/shared/services/utility.service';
+import { AccountTransactionService } from '../../account-transaction/services/account-transaction.service';
+import { Balance } from '../models/balance';
 
 interface Test {
   title: string;
@@ -13,6 +15,7 @@ interface Test {
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
+  public balance: Balance = new Balance();
   public filterOptions = [];
 
   public collectionData: any;
@@ -48,8 +51,17 @@ export class DashboardComponent extends BaseComponent implements OnInit {
   public chartColorDark = this.style.getPropertyValue('--main-dark-color');
   public mainColor = this.style.getPropertyValue('--main-primary-color');
 
-  constructor(_injector: Injector, utilServ: UtilityService) {
+  constructor(
+    _injector: Injector,
+    utilServ: UtilityService,
+    private accountTransactionService: AccountTransactionService
+  ) {
     super(null, utilServ);
+    this.hideloader();
+    accountTransactionService.getMontlyBalance().subscribe((data) => {
+      console.log(data);
+      this.balance = data;
+    });
 
     const monthBalance = [
       511778, 462878, 531736, 220222, 662562, 220008, 626282, 626771, 642643,
