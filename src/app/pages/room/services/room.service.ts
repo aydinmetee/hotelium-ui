@@ -7,4 +7,8 @@ export class RoomService extends RestService {
   get apiUrl() {
     return Urls.BASE_URL.toString() + '/room';
   }
+
+  public markAsClean(id: string) {
+    return this.restClientService.get(`${this.apiUrl}/${id}/mark-as-clean`);
+  }
 }

@@ -135,10 +135,11 @@
 
         <button
           type="button"
+          *ngIf="rowData.status === 'DIRTY'"
           pButton
           icon="fas fa-pencil-alt"
-          (click)="showUpdateDialog(rowData)"
-          [pTooltip]="'update' | translate"
+          (click)="markAsClean(rowData)"
+          [pTooltip]="'markAsClean' | translate"
           class="ui-green-button"
         ></button>
         <button
