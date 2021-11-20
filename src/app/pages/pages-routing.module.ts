@@ -21,6 +21,11 @@ const pageRoutes: Routes = [
         loadChildren: () =>
           import('./room/room.module').then((m) => m.RoomModule),
       },
+      {
+        path: 'customers',
+        loadChildren: () =>
+          import('./customer/customer.module').then((m) => m.CustomerModule),
+      },
     ],
   },
 ];

@@ -50,7 +50,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
             {
               children: [],
               label: 'page.customer',
-              url: '/page/customer',
+              url: '/page/customers',
             },
           ],
         },

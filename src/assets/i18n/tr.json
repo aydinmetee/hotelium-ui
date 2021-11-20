@@ -23,5 +23,19 @@
     "filled":"Dolu",
     "reserved":"Rezerve",
     "dirty":"Kirli",
-    "select":"Seçiniz"
+    "select":"Seçiniz",
+    "name":"Adı",
+    "lastname":"Soyadı",
+    "legalId":"T.C. Kimlik No",
+    "phone":"Telefon No",
+    "create":"Oluştur",
+    "alert":{
+        "title":{
+            "success":"Başarılı!"
+        },
+        "message":{
+            "succesfully-created":"Kayıt başarıyla oluşturuldu."
+        }
+    },
+    "companyName":"Firma Adı"
 }
