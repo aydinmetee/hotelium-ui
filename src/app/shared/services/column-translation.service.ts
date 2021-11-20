@@ -36,6 +36,30 @@ export class ColumnTranslationService {
           default:
             return this.t('no-translation');
         }
+
+      case TranslateKey.source:
+        switch (value) {
+          case 'DEBIT':
+            return this.t('debit');
+          case 'CASH':
+            return this.t('cash');
+          case 'BANK':
+            return this.t('bank');
+
+          default:
+            return this.t('no-translation');
+        }
+
+      case TranslateKey.transactionType:
+        switch (value) {
+          case 'INCOME':
+            return this.t('income');
+          case 'EXPENSE':
+            return this.t('expense');
+
+          default:
+            return this.t('no-translation');
+        }
       default:
         return value;
     }

@@ -13,7 +13,9 @@
   </ng-container>
   <ng-template #other>
     <span
-      *ngIf="col.field.toString() === 'status'"
+      *ngIf="
+        col.field.toString() === 'status' || col.field.toString() === 'type'
+      "
       class="circle"
       [ngClass]="rowData[col.field] | lowercase"
     ></span>

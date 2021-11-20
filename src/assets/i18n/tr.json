@@ -41,5 +41,14 @@
     "address":"Adres",
     "legalNo":"Vergi Kimlik No",
     "nameTitle":"Ünvan",
-    "taxOffice":"Vergi Dairesi"
+    "taxOffice":"Vergi Dairesi",
+    "amount":"Tutar",
+    "description":"Açıklama",
+    "source":"Kaynak",
+    "type":"Tip",
+    "debit":"Kredi Kartı",
+    "cash":"Nakit",
+    "bank":"Banka",
+    "income":"Gelir",
+    "expense":"Gider"
 }

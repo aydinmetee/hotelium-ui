@@ -31,6 +31,13 @@ const pageRoutes: Routes = [
         loadChildren: () =>
           import('./company/company.module').then((m) => m.CompanyModule),
       },
+      {
+        path: 'account-transactions',
+        loadChildren: () =>
+          import('./account-transaction/account-transaction.module').then(
+            (m) => m.AccountTransactionModule
+          ),
+      },
     ],
   },
 ];

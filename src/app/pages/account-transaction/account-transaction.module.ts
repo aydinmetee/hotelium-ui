@@ -4,19 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PrimengModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CompanyComponent } from './components/company/company.component';
-import { CompanyService } from './services/company.service';
+import { AccountTransactionComponent } from './components/account-transaction/account-transaction.component';
+import { AccountTransactionService } from './services/account-transaction.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'company', pathMatch: 'full' },
+  { path: '', redirectTo: 'account-transactions', pathMatch: 'full' },
   {
-    path: 'company',
-    component: CompanyComponent,
+    path: 'account-transactions',
+    component: AccountTransactionComponent,
   },
 ];
 
 @NgModule({
-  declarations: [CompanyComponent],
+  declarations: [AccountTransactionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -24,6 +24,6 @@ const routes: Routes = [
     TranslateModule,
     SharedModule,
   ],
-  providers: [CompanyService],
+  providers: [AccountTransactionService],
 })
-export class CompanyModule {}
+export class AccountTransactionModule {}

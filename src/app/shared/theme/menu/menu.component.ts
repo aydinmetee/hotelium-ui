@@ -40,7 +40,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
             {
               children: [],
               label: 'page.account',
-              url: '/page/account',
+              url: '/page/account-transactions',
             },
             {
               children: [],

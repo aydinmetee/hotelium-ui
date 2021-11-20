@@ -23,13 +23,15 @@
   border: 1px solid darken($color: #f4b400, $amount: 10%);
 }
 
-.clean {
+.clean,
+.income {
   color: #0f9d58;
   background: currentColor;
   border: 1px solid darken($color: #0f9d58, $amount: 10%);
 }
 
-.dirty {
+.dirty,
+.expense {
   color: rgb(255, 0, 0);
   background: currentColor;
   border: 1px solid darken($color: rgb(255, 0, 0), $amount: 10%);

@@ -8,7 +8,9 @@ export interface TableColumn<T> {
   isDate?: true;
   dateFormat?: string;
   isNumber?: boolean;
+  key?: number;
   numberFormat?: string;
+  currencyField?: keyof T;
   textAlign?: 'left' | 'center' | 'right';
   translateKey?: TranslateKey;
 }
