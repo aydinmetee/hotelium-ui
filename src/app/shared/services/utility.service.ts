@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from './alert.service';
+import { ComboService } from './combo.service';
 import { LoadingService } from './loading.service';
 import { LocalStorageService } from './local-storage.service';
 import { ProgressButtonService } from './progress-button.service';
@@ -18,6 +19,7 @@ export class UtilityService {
     public translateService: TranslateService,
     public loginloader: LoadingService,
     public alertService: AlertService,
-    public progressButtonService: ProgressButtonService
+    public progressButtonService: ProgressButtonService,
+    public comboService: ComboService
   ) {}
 }

@@ -15,8 +15,5 @@ export class SisColValueComponent implements OnInit {
 
   constructor(public colTranslateServ: ColumnTranslationService) {}
 
-  public ngOnInit() {
-    console.log(this.col);
-    console.log(this.rowData);
-  }
+  public ngOnInit() {}
 }

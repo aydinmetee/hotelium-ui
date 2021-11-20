@@ -50,5 +50,6 @@
     "cash":"Nakit",
     "bank":"Banka",
     "income":"Gelir",
-    "expense":"Gider"
+    "expense":"Gider",
+    "assign-company":"Firmaya Ata"
 }
