@@ -15,13 +15,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DatePipe } from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng';
 import { LoginModule } from './pages/login/login.module';
-import { ProgressButtonService } from './shared/services/progress-button.service';
 import { LoginDialogService } from './pages/login/services/login-dialog.service';
 import { Oauth2Service } from './shared/services/oauth2.service';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { PagesModule } from './pages/pages.module';
 import { ErrorPagesModule } from './pages/error-pages/errors-pages.module';
 import { AppInjector } from './shared/services/Injector.service';
+import { ColumnTranslationService } from './shared/services/column-translation.service';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -52,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MessageService,
     ConfirmationService,
     LoginDialogService,
+    ColumnTranslationService,
     Oauth2Service,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerService, multi: true },
   ],

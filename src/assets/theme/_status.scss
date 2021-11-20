@@ -9,91 +9,39 @@
   transition: all 0.2s ease-in-out;
 }
 
-.new {
+.reserved {
   color: #4285f4;
   background: currentColor;
   animation: fliker 1s ease-in-out infinite;
   border: 1px solid darken($color: #4285f4, $amount: 10%);
 }
-.onway,
-.wait,
-.ready2pick,
-.send,
-.started,
-.wait4app,
-.delivered {
+
+.filled {
   color: #f4b400;
   background: currentColor;
   animation: fliker 1s ease-in-out infinite;
   border: 1px solid darken($color: #f4b400, $amount: 10%);
 }
 
-.ready {
-  color: #f4b400;
-  background: currentColor;
-  animation: fliker 1s ease-in-out infinite;
-  border: 1px solid darken($color: #f4b400, $amount: 10%);
-}
-
-.last_app,
-.app,
-.approve,
-.picked,
-.finished,
-.completed {
+.clean {
   color: #0f9d58;
   background: currentColor;
   border: 1px solid darken($color: #0f9d58, $amount: 10%);
 }
 
-.error,
-.denied {
+.dirty {
   color: rgb(255, 0, 0);
   background: currentColor;
   border: 1px solid darken($color: rgb(255, 0, 0), $amount: 10%);
 }
 
-.processing {
-  color: #f4b400;
-  background: currentColor;
-  animation: fliker 1s ease-in-out infinite;
-  border: 1px solid darken($color: #f4b400, $amount: 10%);
-}
-
-.wh_app,
 .approved {
   color: darken($color: #0f9d58, $amount: 10%);
   background: currentColor;
   border: 1px solid darken($color: #0f9d58, $amount: 20%);
 }
 
-.on_road {
-  color: darken($color: #fc9004, $amount: 10%);
-  background: currentColor;
-  border: 1px solid darken($color: #fc9004, $amount: 20%);
-}
-.empty_weighed {
-  color: darken($color: #fc9004, $amount: 10%);
-  background: currentColor;
-  border: 1px solid darken($color: #fc9004, $amount: 20%);
-}
-.loaded_weighed {
-  color: rgb(34, 74, 138);
-  background: currentColor;
-  border: 1px solid darken($color: rgb(34, 74, 138), $amount: 10%);
-}
-
-.arrived,
-.complete {
-  color: rgb(34, 74, 138);
-  background: currentColor;
-  border: 1px solid darken($color: rgb(34, 74, 138), $amount: 10%);
-}
-
-.cancel,
-.cancelled,
-.deny,
-.canceled {
+.closed {
   color: #db4437;
   background: currentColor;
   border: 1px solid darken($color: #db4437, $amount: 10%);

@@ -21,7 +21,12 @@
     {{
       col.isDate
         ? (rowData[col.field] | date: col.dateFormat)
-        : rowData[col.field]
+        : colTranslateServ.getValue(
+            rowData[col.field],
+            col.translateKey,
+            col,
+            rowData
+          )
     }}
   </ng-template>
 </div>

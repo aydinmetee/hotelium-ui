@@ -16,6 +16,7 @@
           {{ "capacity" | translate }}
         </label>
         <input
+          pInputText
           type="number"
           class="w-100"
           name="capacity"
@@ -40,14 +41,12 @@
         <label>
           {{ "status" | translate }}
         </label>
-        <input
-          type="text"
-          class="w-100"
-          pInputText
-          name="status"
+        <p-dropdown
+          [options]="statusList"
           formControlName="status"
-          maxlength="100"
-        />
+          class="w-100"
+          appendTo="body"
+        ></p-dropdown>
       </div>
     </div>
   </form>

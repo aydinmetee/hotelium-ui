@@ -18,5 +18,10 @@
     "status":"Durum",
     "action":"İşlem",
     "update":"Güncelle",
-    "cancel":"İptal Et"
+    "cancel":"İptal Et",
+    "clean":"Temiz",
+    "filled":"Dolu",
+    "reserved":"Rezerve",
+    "dirty":"Kirli",
+    "select":"Seçiniz"
 }

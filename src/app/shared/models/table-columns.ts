@@ -1,3 +1,5 @@
+import { TranslateKey } from './translate-key.enum';
+
 export interface TableColumn<T> {
   default: boolean;
   field: keyof T;
@@ -8,6 +10,7 @@ export interface TableColumn<T> {
   isNumber?: boolean;
   numberFormat?: string;
   textAlign?: 'left' | 'center' | 'right';
+  translateKey?: TranslateKey;
 }
 
 export type TableColumns<T> = TableColumn<T>[];

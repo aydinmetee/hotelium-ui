@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { BaseComponent } from 'src/app/shared/base-component';
+import { TranslateKey } from 'src/app/shared/models/translate-key.enum';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import { RoomService } from '../../services/room.service';
 
@@ -27,15 +28,28 @@ export class RoomComponent extends BaseComponent implements OnInit {
       code: [null, [Validators.required]],
       capacity: [null, [Validators.required]],
     });
+
+    this.statusList = [
+      { label: this.t('select'), value: null },
+      { label: this.t('clean'), value: 'CLEAN' },
+      { label: this.t('dirty'), value: 'DIRTY' },
+      { label: this.t('filled'), value: 'FILLED' },
+      { label: this.t('reserved'), value: 'RESERVED' },
+    ];
   }
 
   ngOnInit(): void {
     this.hideloader();
     this.columns = [
-      { field: 'id', header: this.t('id'), default: false },
+      { field: 'id', header: this.t('id'), default: true },
       { field: 'code', header: this.t('code'), default: true },
       { field: 'capacity', header: this.t('capacity'), default: true },
-      { field: 'status', header: this.t('status'), default: true },
+      {
+        field: 'status',
+        header: this.t('status'),
+        default: true,
+        translateKey: TranslateKey.room,
+      },
     ];
 
     this.init();
