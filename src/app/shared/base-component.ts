@@ -11,6 +11,7 @@ export class BaseComponent implements OnDestroy {
   public searchForm: FormGroup;
   public dateFormat = 'dd/MM/yyyy HH:mm';
   public onlyDateFormat = 'dd/MM/yyyy';
+  public calendar: any = {};
 
   public selectedColumns: any;
   public columns: TableColumns<any> = [];
@@ -33,6 +34,8 @@ export class BaseComponent implements OnDestroy {
 
   public statusList: SelectItem[] = [];
 
+  public minDate = new Date();
+
   public searchObject: any = {};
   public searchToggle = false;
   protected formsCon: ElementRef;
@@ -48,6 +51,62 @@ export class BaseComponent implements OnDestroy {
     protected utilityService: UtilityService
   ) {
     this.builder = utilityService.builder;
+
+    this.calendar = {
+      firstDayOfWeek: 0,
+      dayNames: [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+      ],
+      dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      monthNames: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      monthNamesShort: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+      ],
+      today: 'Today',
+      clear: 'Clear',
+    };
+
+    this.minDate.setDate(this.minDate.getDate() - 1);
+  }
+
+  public calendarInit() {
+    this.transtaionInit(() => {
+      this.calendar = this.t('calendar');
+      if (this.hideLoaderAfterInit) {
+        // this.hideloader();
+      }
+    });
   }
 
   protected t(key: string): string {
@@ -66,6 +125,8 @@ export class BaseComponent implements OnDestroy {
     this.selectedColumns = this.columns
       .filter((i) => i.field !== 'id')
       .filter((i) => i.default);
+
+    this.calendarInit();
   }
 
   ngOnDestroy() {}

@@ -1,0 +1,260 @@
+<p-card styleClass="ui-card-shadow">
+  <p-header>
+    <h3 class="px-1 ui-title-bar">
+      <button
+        [routerLink]="'/page/reservations'"
+        pButton
+        icon="fas fa-arrow-left"
+        class="ui-green-button"
+        label="{{ 'form.btn.back' | translate }}"
+      ></button>
+      {{ "reservationMasterTitle" | translate }}
+    </h3>
+  </p-header>
+  <div [formGroup]="searchForm" [ngClass]="{ 'invalid-form': invalidForm }">
+    <div class="ui-g">
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "roomCode" | translate | titlecase }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="roomCode"
+          formControlName="roomCode"
+        />
+      </div>
+
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>{{ "description" | translate }} </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="description"
+          formControlName="description"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12 p-1">
+        <label style="padding-top: 20px"
+          >{{ "status" | translate }}:
+          <span
+            class="circle {{
+              reservationMaster.status | lowercase
+            }} ng-star-inserted"
+          ></span
+          >{{ reservationMaster.status | lowercase | translate }}
+        </label>
+      </div>
+
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label class="d-inline-block">{{ "checkInDate" | translate }}:</label>
+        {{ reservationMaster?.checkInDate | date: dateFormat }}
+      </div>
+
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label class="d-inline-block">{{ "checkOutDate" | translate }}:</label>
+        {{ reservationMaster?.checkOutDate | date: dateFormat }}
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="w-100 text-right">
+      <button
+        *ngIf="reservationMaster?.status === 'NEW'"
+        (click)="initBookingDialog()"
+        icon="fas fa-check"
+        pButton
+        label="{{ 'markAsBooking' | translate }}"
+        class="ui-green-button"
+        style="margin-bottom: 10px"
+      ></button>
+      <button
+        *ngIf="reservationMaster?.status === 'BOOKING'"
+        (click)="markAsCompleted()"
+        icon="fas fa-check"
+        pButton
+        label="{{ 'markAsCompleted' | translate }}"
+        class="ui-green-button"
+        style="margin-bottom: 10px"
+      ></button>
+    </div>
+  </p-footer>
+</p-card>
+
+<h3>
+  {{ "reservationDetailTitle" | translate }}
+</h3>
+<p-table
+  #pTable
+  [value]="data"
+  [columns]="selectedColumns"
+  [paginator]="true"
+  [rows]="pageSize"
+  [totalRecords]="total"
+  [lazy]="true"
+  (onLazyLoad)="loadLazy($event)"
+  [rowsPerPageOptions]="rowsPerPage"
+  [customSort]="true"
+  [reorderableColumns]="true"
+  [styleClass]="'grid'"
+  [responsive]="true"
+  [resizableColumns]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-left">
+          <button
+            (click)="showCreateDialog()"
+            pButton
+            icon="fas fa-plus"
+            class="ui-green-button"
+            label="{{ 'add' | translate }}"
+          ></button>
+          <button
+            (click)="searchToggle = !searchToggle"
+            pButton
+            icon="fas fa-search"
+            class="ui-green-button"
+            label="{{ 'search' | translate }}"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th
+        *ngFor="let col of columns"
+        [pSortableColumn]="col.field"
+        pReorderableColumn
+        pResizableColumn
+      >
+        {{ col.header }}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" class="ui-resizable-column">
+        <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="isDialogVisible"
+  [responsive]="true"
+  [style]="{ width: '800px', minWidth: 350 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+>
+  <div
+    class="pb-2"
+    [formGroup]="form"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <div class="ui-lg-6 ui-md-6 ui-g-6">
+        <label>{{ "customers" | translate }} </label>
+        <div class="w-100">
+          <p-dropdown
+            [options]="customerList"
+            formControlName="customerId"
+            class="w-100"
+            appendTo="body"
+          ></p-dropdown>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'form.btn.cancel' | translate }}"
+          (click)="isDialogVisible = false"
+          class="ui-dark-button"
+        ></button>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          (click)="create()"
+          label="{{ 'form.btn.create' | translate }}"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="bookingDialog"
+  [responsive]="true"
+  [style]="{ width: '400px', minWidth: 200 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+>
+  <div
+    class="pb-2"
+    [formGroup]="bookingForm"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label>{{ "amount" | translate }} </label>
+      <input
+        type="number"
+        class="w-100"
+        pInputText
+        name="amount"
+        formControlName="amount"
+      />
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label>{{ "source" | translate }} </label>
+      <p-dropdown
+        [options]="sourceList"
+        formControlName="source"
+        class="w-100"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'form.btn.cancel' | translate }}"
+          (click)="bookingDialog = false"
+          class="ui-dark-button"
+        ></button>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          (click)="markAsBooking()"
+          label="{{ 'markAsBooking' | translate }}"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>

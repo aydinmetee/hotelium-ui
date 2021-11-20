@@ -38,6 +38,13 @@ const pageRoutes: Routes = [
             (m) => m.AccountTransactionModule
           ),
       },
+      {
+        path: 'reservations',
+        loadChildren: () =>
+          import('./reservations/reservations.module').then(
+            (m) => m.ReservationsModule
+          ),
+      },
     ],
   },
 ];

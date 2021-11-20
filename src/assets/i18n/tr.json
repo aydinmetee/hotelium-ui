@@ -34,7 +34,9 @@
             "success":"Başarılı!"
         },
         "message":{
-            "succesfully-created":"Kayıt başarıyla oluşturuldu."
+            "succesfully-created":"Kayıt başarıyla oluşturuldu.",
+            "succesfully-updated":"Kayıt başarıyla güncellendi."
+
         }
     },
     "companyName":"Firma Adı",
@@ -51,5 +53,25 @@
     "bank":"Banka",
     "income":"Gelir",
     "expense":"Gider",
-    "assign-company":"Firmaya Ata"
+    "assign-company":"Firmaya Ata",
+    "rooms":"Odalar",
+    "roomCode":"Oda No",
+    "new":"Yeni",
+    "booking":"Konaklıyor",
+    "completed":"Tamamlandı",
+    "reservationMasterTitle":"Reservasyon Bilgileri",
+    "form":{
+        "btn":{
+            "back":"Geri",
+            "cancel":"İptal Et"
+        }
+    },
+    "checkInDate":"Giriş Tarihi",
+    "checkOutDate":"Çıkış Tarihi",
+    "reservationDetailTitle":"Reservasyon Detayı",
+    "customerFullName":"Müşteri Adı Soyadı",
+    "bookAmount":"Konaklama Tutarı",
+    "customers":"Müşteriler",
+    "markAsBooking":"Giriş Yaptı",
+    "markAsCompleted":"Çıkış Yaptı"
 }

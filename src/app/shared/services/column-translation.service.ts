@@ -60,6 +60,18 @@ export class ColumnTranslationService {
           default:
             return this.t('no-translation');
         }
+      case TranslateKey.reservationStatus:
+        switch (value) {
+          case 'NEW':
+            return this.t('new');
+          case 'BOOKING':
+            return this.t('booking');
+          case 'COMPLETED':
+            return this.t('completed');
+
+          default:
+            return this.t('no-translation');
+        }
       default:
         return value;
     }

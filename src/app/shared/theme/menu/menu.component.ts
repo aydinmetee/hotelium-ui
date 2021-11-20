@@ -30,7 +30,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
             {
               children: [],
               label: 'page.reservation',
-              url: '/page/reservation',
+              url: '/page/reservations',
             },
             {
               children: [],
