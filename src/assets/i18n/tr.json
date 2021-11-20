@@ -37,5 +37,9 @@
             "succesfully-created":"Kayıt başarıyla oluşturuldu."
         }
     },
-    "companyName":"Firma Adı"
+    "companyName":"Firma Adı",
+    "address":"Adres",
+    "legalNo":"Vergi Kimlik No",
+    "nameTitle":"Ünvan",
+    "taxOffice":"Vergi Dairesi"
 }

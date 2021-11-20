@@ -26,6 +26,11 @@ const pageRoutes: Routes = [
         loadChildren: () =>
           import('./customer/customer.module').then((m) => m.CustomerModule),
       },
+      {
+        path: 'companys',
+        loadChildren: () =>
+          import('./company/company.module').then((m) => m.CompanyModule),
+      },
     ],
   },
 ];

@@ -1,0 +1,267 @@
+<p-card styleClass="search-box" *ngIf="searchToggle">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-6 title">
+          {{ "search" | translate }}
+        </div>
+      </div>
+    </div>
+  </p-header>
+
+  <form [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="ui-g">
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "address" | translate }}
+        </label>
+        <input
+          pInputText
+          type="text"
+          class="w-100"
+          name="address"
+          formControlName="address"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "nameTitle" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="nameTitle"
+          formControlName="nameTitle"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "legalNo" | translate }}
+        </label>
+        <input
+          type="number"
+          class="w-100"
+          pInputText
+          name="legalNo"
+          formControlName="legalNo"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "taxOffice" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="taxOffice"
+          formControlName="taxOffice"
+          maxlength="30"
+        />
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <div class="w-100 text-right">
+      <button
+        (click)="reset()"
+        pButton
+        icon="fas fa-times"
+        label="{{ 'cancel' | translate }}"
+        class="ui-dark-button"
+      ></button>
+      <button
+        (click)="search()"
+        pButton
+        icon="fas fa-search"
+        label="{{ 'search' | translate }}"
+        class="ui-green-button"
+      ></button>
+    </div>
+  </p-footer>
+</p-card>
+
+<p-table
+  #pTable
+  [value]="data"
+  [columns]="selectedColumns"
+  [paginator]="true"
+  [rows]="pageSize"
+  [totalRecords]="total"
+  [lazy]="true"
+  (onLazyLoad)="loadLazy($event)"
+  [rowsPerPageOptions]="rowsPerPage"
+  [customSort]="true"
+  [reorderableColumns]="true"
+  [styleClass]="'grid'"
+  [responsive]="true"
+  [resizableColumns]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-left">
+          <button
+            (click)="showCreateDialog()"
+            pButton
+            icon="fas fa-plus"
+            class="ui-green-button"
+            label="{{ 'add' | translate }}"
+          ></button>
+          <button
+            (click)="searchToggle = !searchToggle"
+            pButton
+            icon="fas fa-search"
+            class="ui-green-button"
+            label="{{ 'search' | translate }}"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th
+        *ngFor="let col of columns"
+        [pSortableColumn]="col.field"
+        pReorderableColumn
+        pResizableColumn
+      >
+        {{ col.header }}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+      <th>
+        {{ "action" | translate }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" class="ui-resizable-column">
+        <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+      <td class="text-center">
+        <span class="ui-column-title">{{ "g.action" | translate }}</span>
+
+        <!-- <button
+            type="button"
+            *ngIf="rowData.status === 'DIRTY'"
+            pButton
+            icon="fas fa-pencil-alt"
+            (click)="markAsClean(rowData)"
+            [pTooltip]="'markAsClean' | translate"
+            class="ui-green-button"
+          ></button> -->
+        <button
+          type="text"
+          class="ui-button-danger"
+          (click)="deleteDialog(rowData)"
+          [pTooltip]="'delete' | translate"
+          pButton
+          icon="fas fa-trash"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="isDialogVisible"
+  [responsive]="true"
+  [style]="{ width: '800px', minWidth: 350 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+>
+  <div
+    class="pb-2"
+    [formGroup]="form"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <label>{{ "nameTitle" | translate }} </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="nameTitle"
+        required
+        maxlength="100"
+      />
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <label>{{ "legalNo" | translate }} </label>
+      <input
+        type="number"
+        class="w-100"
+        pInputText
+        formControlName="legalNo"
+        required
+        maxlength="10"
+      />
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <label>{{ "address" | translate }} </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="address"
+        required
+        maxlength="100"
+      />
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <label>{{ "taxOffice" | translate }} </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="taxOffice"
+        required
+        maxlength="100"
+      />
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'cancel' | translate }}"
+          (click)="isDialogVisible = false"
+          class="ui-dark-button"
+        ></button>
+
+        <button
+          *ngIf="dialogType"
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          label="{{ 'create' | translate }}"
+          (click)="create()"
+          class="ui-green-button"
+        ></button>
+
+        <button
+          *ngIf="!dialogType"
+          type="button"
+          pButton
+          icon="fas fa-edit"
+          label="{{ 'update' | translate }}"
+          (action)="update()"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>

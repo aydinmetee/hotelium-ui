@@ -45,7 +45,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
             {
               children: [],
               label: 'page.company',
-              url: '/page/company',
+              url: '/page/companys',
             },
             {
               children: [],
