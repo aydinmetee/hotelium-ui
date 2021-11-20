@@ -20,7 +20,13 @@ export class RestService {
     searchObject: any
   ): Observable<PaginationResult<any>> {
     const url =
-      this.apiUrl + '/search?page=' + pageNumber + '&size=' + pageInSize;
+      this.apiUrl +
+      '/search?page=' +
+      pageNumber +
+      '&size=' +
+      pageInSize +
+      '&sort=' +
+      sort;
     return this.restClientService
       .post(url, JSON.stringify(searchObject))
       .pipe(catchError(this.handleError));

@@ -24,7 +24,7 @@ export class BaseComponent implements OnDestroy {
 
   public data;
   public total = 0;
-  public sortKey = 'creDate,DESC';
+  public sortKey = 'id,ASC';
   public pageNumber = 0;
   public sortField: string;
   public sortFieldDef: string;
@@ -238,7 +238,7 @@ export class BaseComponent implements OnDestroy {
           .findPageableObjects(
             this.pageNumber,
             this.pageSize,
-            `${this.sortField || 'creDate'},${this.sortOrder || 'DESC'}`,
+            `${this.sortField || 'id'},${this.sortOrder || 'DESC'}`,
             this.searchObject
           )
           .subscribe((res) => {
@@ -284,9 +284,10 @@ export class BaseComponent implements OnDestroy {
     if (!this.initStarted) {
       return;
     }
+    console.log(e);
     this.pageNumber = e.first / e.rows;
-    this.sortField = e.sortField || this.sortFieldDef || 'creDate';
-    this.sortOrder = e.sortOrder === 1 ? 'DESC' : 'ASC';
+    this.sortField = e.sortField || this.sortFieldDef || 'id';
+    this.sortOrder = e.sortOrder === 1 ? 'ASC' : 'DESC';
     this.pageSize = e.rows;
     if (this.componentService && this.componentService.apiUrl) {
       this.getPageData();

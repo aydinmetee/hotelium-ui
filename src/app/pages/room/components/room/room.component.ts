@@ -51,7 +51,8 @@ export class RoomComponent extends BaseComponent implements OnInit {
         translateKey: TranslateKey.room,
       },
     ];
-
+    this.sortFieldDef = 'code';
+    this.sortOrder = 'ASC';
     this.init();
   }
 
