@@ -11,5 +11,10 @@ export class Urls {
     subDirectory: '',
   });
 
-  public static BASE_URL: BaseUrl = Urls.MeteEnv;
+  public static HerokuEnv: BaseUrl = new BaseUrl({
+    url: 'https://hotelium.herokuapp.com',
+    subDirectory: '',
+  });
+
+  public static BASE_URL: BaseUrl = Urls.HerokuEnv;
 }

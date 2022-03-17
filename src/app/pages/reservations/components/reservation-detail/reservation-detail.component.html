@@ -52,13 +52,11 @@
         <label>{{ "checkInDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
-          [minDate]="minDate"
           name="checkInDate"
           formControlName="checkInDate"
           [locale]="calendar"
           [showIcon]="true"
           appendTo="body"
-          [showTime]="true"
         ></p-calendar>
       </div>
 
@@ -66,13 +64,11 @@
         <label>{{ "checkOutDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
-          [minDate]="minDate"
           name="checkOutDate"
           formControlName="checkOutDate"
           [locale]="calendar"
           [showIcon]="true"
           appendTo="body"
-          [showTime]="true"
         ></p-calendar>
       </div>
     </div>

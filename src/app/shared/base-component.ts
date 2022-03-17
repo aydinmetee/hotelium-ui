@@ -1,4 +1,4 @@
-import { ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TableColumns } from './models/table-columns';
 import { SelectItem } from 'primeng/api';
@@ -6,7 +6,10 @@ import { Table } from 'primeng/table';
 import { RestService } from './services/rest.service';
 import { UtilityService } from './services/utility.service';
 
-export class BaseComponent implements OnDestroy {
+@Component({
+  template: '',
+})
+export abstract class BaseComponent implements OnDestroy {
   public form: FormGroup;
   public searchForm: FormGroup;
   public dateFormat = 'dd/MM/yyyy HH:mm';
@@ -216,7 +219,7 @@ export class BaseComponent implements OnDestroy {
     return new Promise((res) => {
       setTimeout(() => {
         this.utilityService.loginloader.isLoading = false;
-        res();
+        res(null);
       }, timeOut);
     });
   }
@@ -247,7 +250,7 @@ export class BaseComponent implements OnDestroy {
             // if (this.hideLoaderAfterInit) {
             this.hideloader();
             // }
-            resolve();
+            resolve(null);
           });
       }
     });
