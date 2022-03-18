@@ -57,6 +57,8 @@
           [locale]="calendar"
           [showIcon]="true"
           appendTo="body"
+          [minDate]="minDate"
+          [showTime]="true"
         ></p-calendar>
       </div>
 
@@ -69,6 +71,8 @@
           [locale]="calendar"
           [showIcon]="true"
           appendTo="body"
+          [minDate]="minDate"
+          [showTime]="true"
         ></p-calendar>
       </div>
     </div>
@@ -121,19 +125,14 @@
       <div class="ui-g">
         <div class="ui-lg-6 ui-md-6 ui-g-12 text-left">
           <button
+            *ngIf="reservationMaster?.status === 'NEW'"
             (click)="showCreateDialog()"
             pButton
             icon="fas fa-plus"
             class="ui-green-button"
             label="{{ 'add' | translate }}"
           ></button>
-          <button
-            (click)="searchToggle = !searchToggle"
-            pButton
-            icon="fas fa-search"
-            class="ui-green-button"
-            label="{{ 'search' | translate }}"
-          ></button>
+          &nbsp;
         </div>
       </div>
     </div>
@@ -165,7 +164,7 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -177,10 +176,11 @@
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
     <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
         <label>{{ "customers" | translate }} </label>
         <div class="w-100">
           <p-dropdown
+            [filter]="true"
             [options]="customerList"
             formControlName="customerId"
             class="w-100"

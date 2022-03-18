@@ -132,4 +132,17 @@ export class ReservationMasterComponent
       this.isSourceDialogVisible = false;
     });
   }
+
+  public create() {
+    if (this.isInValid()) {
+      return;
+    }
+    this.showLoader();
+    const model = Object.assign({}, this.form.value);
+    this.reservationMasterService.createObject(model).subscribe(
+      this.createHandler((result) => {
+        this.navToDetail(result.id);
+      })
+    );
+  }
 }

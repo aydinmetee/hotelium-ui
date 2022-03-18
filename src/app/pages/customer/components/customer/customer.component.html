@@ -55,12 +55,12 @@
           {{ "legalId" | translate }}
         </label>
         <input
-          type="number"
+          type="text"
           class="w-100"
           pInputText
           name="legalId"
           formControlName="legalId"
-          maxlength="30"
+          [maxLength]="11"
         />
       </div>
       <div class="ui-lg-4 ui-md-4 ui-g-12">
@@ -68,12 +68,14 @@
           {{ "phone" | translate }}
         </label>
         <input
-          type="number"
+          type="text"
           class="w-100"
           pInputText
           name="phone"
           formControlName="phone"
-          maxlength="30"
+          [placeholder]="phoneNumberFormat"
+          [mask]="phoneNumberFormat"
+          [maxLength]="10"
         />
       </div>
     </div>
@@ -160,11 +162,18 @@
       </td>
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
-
         <button
           type="button"
           pButton
           icon="fas fa-pencil-alt"
+          (click)="showUpdateDialog(rowData)"
+          class="ui-green-button"
+          [pTooltip]="'update' | translate"
+        ></button>
+        <button
+          type="button"
+          pButton
+          icon="far fa-building"
           (click)="assignCompanyDialog(rowData)"
           [pTooltip]="'assignCompany' | translate"
           class="ui-green-button"
@@ -222,23 +231,23 @@
     <div class="ui-lg-6 ui-md-6 ui-g-6">
       <label>{{ "legalId" | translate }} </label>
       <input
-        type="number"
+        type="text"
         class="w-100"
         pInputText
         formControlName="legalId"
         required
-        maxlength="100"
+        [maxLength]="11"
       />
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-6">
       <label>{{ "phone" | translate }} </label>
       <input
-        type="number"
+        type="text"
         class="w-100"
         pInputText
         formControlName="phone"
-        required
-        maxlength="100"
+        [placeholder]="phoneNumberFormat"
+        [mask]="phoneNumberFormat"
       />
     </div>
   </div>
@@ -270,7 +279,7 @@
           pButton
           icon="fas fa-edit"
           label="{{ 'update' | translate }}"
-          (action)="update()"
+          (click)="update()"
           class="ui-green-button"
         ></button>
       </div>

@@ -14,7 +14,7 @@ import { CustomerService } from '../../services/customer.service';
 export class CustomerComponent extends BaseComponent implements OnInit {
   isCompanyDialogVisible = false;
   companyList: LabelValue<string, number>[] = [];
-  companyId: number = 0;
+  companyId: string;
   constructor(
     private customerService: CustomerService,
     utilityService: UtilityService
@@ -51,9 +51,9 @@ export class CustomerComponent extends BaseComponent implements OnInit {
     this.hideloader();
     this.columns = [
       { field: 'id', header: this.t('id'), default: false },
-      { field: 'companyName', header: this.t('companyName'), default: true },
       { field: 'name', header: this.t('name'), default: true },
       { field: 'lastname', header: this.t('lastname'), default: true },
+      { field: 'companyName', header: this.t('companyName'), default: true },
       { field: 'legalId', header: this.t('legalId'), default: true },
       { field: 'phone', header: this.t('phone'), default: true },
     ];
@@ -64,7 +64,9 @@ export class CustomerComponent extends BaseComponent implements OnInit {
   public assignCompanyDialog(rowData: any) {
     this.dialogTitle = this.t('assign-company');
     this.selectedItem = rowData;
+    this.companyId = this.selectedItem.companyId;
     this.isCompanyDialogVisible = true;
+    console.log(this.selectedItem);
   }
 
   public assignCompany() {
