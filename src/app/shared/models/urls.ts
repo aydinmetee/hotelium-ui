@@ -16,5 +16,5 @@ export class Urls {
     subDirectory: '',
   });
 
-  public static BASE_URL: BaseUrl = Urls.NewEnv;
+  public static BASE_URL: BaseUrl = Urls.HerokuEnv;
 }
