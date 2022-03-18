@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from './alert.service';
 import { ComboService } from './combo.service';
@@ -20,6 +21,7 @@ export class UtilityService {
     public loginloader: LoadingService,
     public alertService: AlertService,
     public progressButtonService: ProgressButtonService,
-    public comboService: ComboService
+    public comboService: ComboService,
+    public router: Router
   ) {}
 }

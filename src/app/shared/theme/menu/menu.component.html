@@ -11,12 +11,6 @@
       [class]="'app-menu'"
       [ngStyle]="{ height: '100%', postion: 'fixed', top: '0' }"
     >
-      <span
-        class="close-btn fas c-pointer fas fa-thumbtack"
-        [ngClass]="{ opacity: hidden, '': !hidden }"
-        (click)="hidden = !hidden"
-      ></span>
-
       <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }">
         <div class="text-center">
           <img
@@ -30,8 +24,8 @@
       <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }"></div>
 
       <!-- <app-menu-render [model]="items"></app-menu-render> -->
-      <div class="main-menu">
-        <ul>
+      <div class="main-menu main-nav">
+        <ul class="unstyled list-hover-slide">
           <li
             *ngFor="let root of items"
             [ngClass]="{
@@ -88,6 +82,13 @@
                 </ul>
               </li>
             </ul>
+          </li>
+        </ul>
+        <ul class="unstyled footer">
+          <li>
+            <a (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> {{ "logout" | translate }}
+            </a>
           </li>
         </ul>
       </div>
