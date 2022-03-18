@@ -76,6 +76,13 @@ export class AccountTransactionComponent
         default: true,
         translateKey: TranslateKey.transactionType,
       },
+      {
+        field: 'creDate',
+        header: this.t('creDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
     ];
 
     this.init();

@@ -100,6 +100,13 @@ export class ReservationMasterComponent
         default: true,
         translateKey: TranslateKey.reservationStatus,
       },
+      {
+        field: 'creDate',
+        header: this.t('creDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
     ];
 
     this.init();

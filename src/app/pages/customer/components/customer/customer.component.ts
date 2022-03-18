@@ -56,6 +56,20 @@ export class CustomerComponent extends BaseComponent implements OnInit {
       { field: 'companyName', header: this.t('companyName'), default: true },
       { field: 'legalId', header: this.t('legalId'), default: true },
       { field: 'phone', header: this.t('phone'), default: true },
+      {
+        field: 'creDate',
+        header: this.t('creDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
+      {
+        field: 'updDate',
+        header: this.t('updDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
     ];
 
     this.init();

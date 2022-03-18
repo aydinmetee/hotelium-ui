@@ -137,5 +137,7 @@
     "markAsClean":"Temizlendi",
     "phoneNumberFormat": "(000) 000 00 00",
     "assignCompany":"Firma Ata",
-    "logout":"Çıkış Yap"
+    "logout":"Çıkış Yap",
+    "creDate":"Oluşturulma Tarihi",
+    "updDate":"Güncellenme Tarihi"
 }
