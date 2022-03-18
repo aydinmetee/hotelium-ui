@@ -170,7 +170,7 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -181,7 +181,7 @@
     #formsCon
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label>{{ "amount" | translate }} </label>
       <input
         type="number"
@@ -192,7 +192,16 @@
         maxlength="100"
       />
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label>{{ "source" | translate }} </label>
+      <p-dropdown
+        [options]="sourceList"
+        formControlName="source"
+        class="w-100"
+        appendTo="body"
+      ></p-dropdown>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label>{{ "description" | translate }} </label>
       <input
         type="text"
@@ -202,15 +211,6 @@
         required
         maxlength="10"
       />
-    </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "source" | translate }} </label>
-      <p-dropdown
-        [options]="sourceList"
-        formControlName="source"
-        class="w-100"
-        appendTo="body"
-      ></p-dropdown>
     </div>
   </div>
   <p-footer>

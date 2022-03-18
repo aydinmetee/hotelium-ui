@@ -100,6 +100,13 @@ export class ReservationMasterComponent
         default: true,
         translateKey: TranslateKey.reservationStatus,
       },
+      {
+        field: 'creDate',
+        header: this.t('creDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
     ];
 
     this.init();
@@ -131,5 +138,18 @@ export class ReservationMasterComponent
       this.getPageData();
       this.isSourceDialogVisible = false;
     });
+  }
+
+  public create() {
+    if (this.isInValid()) {
+      return;
+    }
+    this.showLoader();
+    const model = Object.assign({}, this.form.value);
+    this.reservationMasterService.createObject(model).subscribe(
+      this.createHandler((result) => {
+        this.navToDetail(result.id);
+      })
+    );
   }
 }

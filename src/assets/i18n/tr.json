@@ -129,5 +129,15 @@
         "today": "Bugün",
         "clear": "Temizle"
       },
-    "updateTransactionSource":"Kaynağı Güncelle"
+    "updateTransactionSource":"Kaynağı Güncelle",
+    "details":"Detaya Git",
+    "g":{
+        "error":"Hata!"
+    },
+    "markAsClean":"Temizlendi",
+    "phoneNumberFormat": "(000) 000 00 00",
+    "assignCompany":"Firma Ata",
+    "logout":"Çıkış Yap",
+    "creDate":"Oluşturulma Tarihi",
+    "updDate":"Güncellenme Tarihi"
 }

@@ -38,6 +38,20 @@ export class CompanyComponent extends BaseComponent implements OnInit {
       { field: 'legalNo', header: this.t('legalNo'), default: true },
       { field: 'nameTitle', header: this.t('nameTitle'), default: true },
       { field: 'taxOffice', header: this.t('taxOffice'), default: true },
+      {
+        field: 'creDate',
+        header: this.t('creDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
+      {
+        field: 'updDate',
+        header: this.t('updDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.dateFormat,
+      },
     ];
 
     this.init();

@@ -35,6 +35,7 @@ export class ReservationDetailComponent
   ) {
     super(reservationDetailService, utilityService);
     this.reservationDetailService.reservationMasterId = '';
+    console.log(this.minDate);
 
     this.searchForm = this.builder.group({
       roomCode: [null],
@@ -65,6 +66,7 @@ export class ReservationDetailComponent
     this.utilityService.comboService.getCustomersList().subscribe((data) => {
       this.customerList = [{ label: this.t('select'), value: null }, ...data];
     });
+    this.calendarInit();
   }
 
   ngOnInit(): void {
@@ -115,6 +117,7 @@ export class ReservationDetailComponent
               : null,
             status: result.status,
           });
+          this.searchForm.disable();
         });
     });
   }

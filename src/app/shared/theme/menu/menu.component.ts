@@ -26,37 +26,31 @@ export class MenuComponent extends BaseComponent implements OnInit {
     menus = {
       children: [
         {
-          children: [
-            {
-              children: [],
-              label: 'page.reservation',
-              url: '/page/reservations',
-            },
-            {
-              children: [],
-              label: 'page.rooms',
-              url: '/page/rooms',
-            },
-            {
-              children: [],
-              label: 'page.account',
-              url: '/page/account-transactions',
-            },
-            {
-              children: [],
-              label: 'page.company',
-              url: '/page/companys',
-            },
-            {
-              children: [],
-              label: 'page.customer',
-              url: '/page/customers',
-            },
-          ],
+          children: [],
+          label: 'page.reservation',
+          url: '/page/reservations',
+        },
+        {
+          children: [],
+          label: 'page.rooms',
+          url: '/page/rooms',
+        },
+        {
+          children: [],
+          label: 'page.account',
+          url: '/page/account-transactions',
+        },
+        {
+          children: [],
+          label: 'page.company',
+          url: '/page/companys',
+        },
+        {
+          children: [],
+          label: 'page.customer',
+          url: '/page/customers',
         },
       ],
-      label: 'page.transactions',
-      url: '',
     };
 
     setTimeout(() => {
@@ -69,9 +63,28 @@ export class MenuComponent extends BaseComponent implements OnInit {
             i.icon = 'fas fa-shield-alt';
             break;
           }
+          case 'page.reservation': {
+            i.icon = 'far fa-calendar-alt';
+            break;
+          }
+          case 'page.customer': {
+            i.icon = 'far fa-address-book';
+            break;
+          }
+          case 'page.company': {
+            i.icon = 'far fa-building';
+            break;
+          }
+          case 'page.rooms': {
+            i.icon = 'fas fa-home';
+            break;
+          }
+          case 'page.account': {
+            i.icon = 'fas fa-coins';
+            break;
+          }
           default: {
             i.icon = 'fas fa-shield-alt';
-            i.label = 'transactions';
             break;
           }
         }
@@ -144,5 +157,13 @@ export class MenuComponent extends BaseComponent implements OnInit {
       this.menusExpandPath[i].expanded = false;
     }
     this.menusExpandPath.splice(index, this.menusExpandPath.length);
+  }
+
+  public logout() {
+    this.showLoader();
+    this.utilityService.router.navigateByUrl('/login').then(() => {
+      this.utilityService.localStorageService.clearAll();
+      this.hideloader();
+    });
   }
 }

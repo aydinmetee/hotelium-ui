@@ -22,6 +22,7 @@ import { PagesModule } from './pages/pages.module';
 import { ErrorPagesModule } from './pages/error-pages/errors-pages.module';
 import { AppInjector } from './shared/services/Injector.service';
 import { ColumnTranslationService } from './shared/services/column-translation.service';
+import { NgxMaskModule } from './shared/ngx-mask';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     PrimengModule,
     ErrorPagesModule,
+    NgxMaskModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

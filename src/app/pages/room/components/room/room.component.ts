@@ -57,8 +57,7 @@ export class RoomComponent extends BaseComponent implements OnInit {
   }
 
   public markAsClean(rowData: any) {
-    this.roomService
-      .markAsClean(rowData.id)
-      .subscribe(() => this.updateHandler);
+    this.showLoader();
+    this.roomService.markAsClean(rowData.id).subscribe(this.updateHandler());
   }
 }

@@ -34,7 +34,7 @@ export class ColumnTranslationService {
             return this.t('filled');
 
           default:
-            return this.t('no-translation');
+            return '';
         }
 
       case TranslateKey.source:
@@ -47,7 +47,7 @@ export class ColumnTranslationService {
             return this.t('bank');
 
           default:
-            return this.t('no-translation');
+            return '';
         }
 
       case TranslateKey.transactionType:
@@ -58,7 +58,7 @@ export class ColumnTranslationService {
             return this.t('expense');
 
           default:
-            return this.t('no-translation');
+            return '';
         }
       case TranslateKey.reservationStatus:
         switch (value) {
@@ -70,7 +70,7 @@ export class ColumnTranslationService {
             return this.t('completed');
 
           default:
-            return this.t('no-translation');
+            return '';
         }
       default:
         return value;

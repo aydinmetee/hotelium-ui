@@ -385,4 +385,8 @@ export abstract class BaseComponent implements OnDestroy {
     //   }
     // });
   }
+
+  public get phoneNumberFormat(): string {
+    return this.t('phoneNumberFormat');
+  }
 }
