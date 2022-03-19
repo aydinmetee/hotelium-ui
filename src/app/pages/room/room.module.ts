@@ -6,6 +6,7 @@ import { PrimengModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RoomComponent } from './components/room/room.component';
 import { RoomService } from './services/room.service';
+import { RoomViewComponent } from './components/room-view/room-view.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'room', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [RoomComponent],
+  declarations: [RoomComponent, RoomViewComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

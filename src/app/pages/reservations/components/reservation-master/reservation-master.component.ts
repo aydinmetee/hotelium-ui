@@ -40,13 +40,13 @@ export class ReservationMasterComponent
 
     this.form = this.builder.group({
       roomId: [null, Validators.required],
-      description: [null, Validators.required],
+      description: [null],
     });
 
     this.updateSourceForm = this.builder.group({
       id: [null],
-      source: [null],
-      amount: [null],
+      source: [null, [Validators.required]],
+      amount: [null, [Validators.required, Validators.min(1)]],
     });
 
     this.utilityService.comboService.getRoomsList().subscribe((data) => {

@@ -33,8 +33,8 @@ export class AccountTransactionComponent
     });
 
     this.form = this.builder.group({
-      amount: [null, Validators.required],
-      description: [null, Validators.required],
+      amount: [null, [Validators.required, Validators.min(1)]],
+      description: [null],
       source: [null, Validators.required],
       type: ['EXPENSE'],
     });
