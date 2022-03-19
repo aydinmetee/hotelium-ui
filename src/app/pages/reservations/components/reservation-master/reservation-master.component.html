@@ -163,6 +163,16 @@
       </td>
     </tr>
   </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td
+        [attr.colspan]="columns.length"
+        style="text-align: center !important; font-weight: bold"
+      >
+        {{ "no-results-found" | translate }}
+      </td>
+    </tr>
+  </ng-template>
 </p-table>
 
 <p-dialog
@@ -181,24 +191,39 @@
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
     <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "rooms" | translate }} </label>
+      <label
+        >{{ "rooms" | translate }}
+        <form-required controlName="roomId"></form-required>
+      </label>
       <p-dropdown
         [options]="roomsList"
         formControlName="roomId"
         class="w-100"
         appendTo="body"
       ></p-dropdown>
+      <form-validation-summary
+        [form]="form"
+        name="roomId"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "description" | translate }} </label>
+      <label
+        >{{ "description" | translate }}
+        <form-required controlName="description"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
         pInputText
         formControlName="description"
-        required
         maxlength="255"
       />
+      <form-validation-summary
+        [form]="form"
+        name="description"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>
@@ -253,7 +278,10 @@
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
     <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label>{{ "amount" | translate }} </label>
+      <label
+        >{{ "amount" | translate }}
+        <form-required controlName="amount"></form-required>
+      </label>
       <input
         type="number"
         class="w-100"
@@ -261,15 +289,28 @@
         name="amount"
         formControlName="amount"
       />
+      <form-validation-summary
+        [form]="updateSourceForm"
+        name="amount"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label>{{ "source" | translate }} </label>
+      <label
+        >{{ "source" | translate }}
+        <form-required controlName="source"></form-required>
+      </label>
       <p-dropdown
         [options]="sourceList"
         formControlName="source"
         class="w-100"
         appendTo="body"
       ></p-dropdown>
+      <form-validation-summary
+        [form]="updateSourceForm"
+        name="source"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>

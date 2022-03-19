@@ -74,7 +74,16 @@
         "btn":{
             "back":"Geri",
             "cancel":"İptal Et",
-            "create":"Oluştur"
+            "create":"Oluştur",
+            "no":"Hayır",
+            "yes":"Evet"
+        },
+        "validation":{
+            "required":"Bu alan zorunludur.",
+            "optionally":"Opsiyonel",
+            "maxlength":"Maksimum uzunluğu aştınız.",
+            "minlength":"Minumum uzunluğun altındasınız.",
+            "min":"Daha büyük bir değer girin."
         }
     },
     "checkInDate":"Giriş Tarihi",
@@ -139,5 +148,20 @@
     "assignCompany":"Firma Ata",
     "logout":"Çıkış Yap",
     "creDate":"Oluşturulma Tarihi",
-    "updDate":"Güncellenme Tarihi"
+    "updDate":"Güncellenme Tarihi",
+    "message":{
+        "main-message":"Kayıt silinecek onaylıyor musunuz?",
+        "caution":"Dikkat"
+    },
+    "delete":"Kaydı Sil",
+    "confirmation":{
+        "success-message":{
+            "message":{
+                "deleted":"Kayıt başarıyla silindi."
+            }
+        }
+    },
+    "close":"Kapat",
+    "reset":"Temizle",
+    "no-results-found":"Kayıt Bulunamadı"    
 }

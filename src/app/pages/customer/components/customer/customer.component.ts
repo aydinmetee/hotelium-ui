@@ -30,9 +30,9 @@ export class CustomerComponent extends BaseComponent implements OnInit {
 
     this.form = this.builder.group({
       lastname: [null, Validators.required],
-      legalId: [null, Validators.required],
+      legalId: [null, [Validators.required, Validators.minLength(11)]],
       name: [null, Validators.required],
-      phone: [null, Validators.required],
+      phone: [null, [Validators.required, Validators.minLength(10)]],
     });
 
     this.utilityService.comboService.getCompanyList().subscribe((data) => {

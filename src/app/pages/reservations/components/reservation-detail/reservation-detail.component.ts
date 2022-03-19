@@ -51,7 +51,7 @@ export class ReservationDetailComponent
     });
 
     this.bookingForm = this.builder.group({
-      amount: [null, Validators.required],
+      amount: [null, [Validators.required, Validators.min(1)]],
       masterId: [null, Validators.required],
       source: [null, Validators.required],
     });
@@ -151,5 +151,9 @@ export class ReservationDetailComponent
     this.initDetail();
     this.getPageData();
     this.bookingDialog = false;
+  }
+
+  public onHideEvent() {
+    this.bookingForm.reset();
   }
 }

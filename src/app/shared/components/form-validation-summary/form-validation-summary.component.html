@@ -1,0 +1,19 @@
+<div class="form-control-error-list" *ngIf="visable || isInvalid()">
+  <ul>
+    <li *ngIf="control.hasError('required')">
+      {{ "form.validation.required" | translate }}
+    </li>
+    <li *ngIf="control.hasError('maxlength')">
+      {{ "form.validation.maxlength" | translate }}
+    </li>
+    <li *ngIf="control.hasError('minlength')">
+      {{ "form.validation.minlength" | translate }}
+    </li>
+    <li *ngIf="control.hasError('pattern')">
+      {{ "form.validation.pattern" | translate }}
+    </li>
+    <li *ngIf="control.hasError('min')">
+      {{ "form.validation.min" | translate }}
+    </li>
+  </ul>
+</div>

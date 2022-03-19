@@ -360,30 +360,30 @@ export abstract class BaseComponent implements OnDestroy {
     callback?: () => void,
     config?: { message: string; alert?: { title: string; message: string } }
   ) {
-    config = config || { message: 'pages.message.main-message' };
+    config = config || { message: 'message.main-message' };
     config.alert = config.alert || {
-      title: 'confirmation.success-message.title.deleted',
+      title: 'alert.title.success',
       message: 'confirmation.success-message.message.deleted',
     };
 
     item = item || this.selectedItem;
-    // this.utilityService.confirmationService.confirm({
-    //   header: this.t('pages.message.caution'),
-    //   message: this.t(config.message),
-    //   acceptLabel: 'form.btn.yes',
-    //   accept: () => {
-    //     this.componentService.deleteObject(item).subscribe(res => {
-    //       this.utilityService.alertService.success(
-    //         this.t(config.alert.title),
-    //         this.t(config.alert.message)
-    //       );
-    //       this.getPageData();
-    //       if (callback) {
-    //         callback();
-    //       }
-    //     });
-    //   }
-    // });
+    this.utilityService.confirmationService.confirm({
+      header: this.t('message.caution'),
+      message: this.t(config.message),
+      acceptLabel: 'form.btn.yes',
+      accept: () => {
+        this.componentService.deleteObject(item).subscribe((res) => {
+          this.utilityService.alertService.success(
+            this.t(config.alert.title),
+            this.t(config.alert.message)
+          );
+          this.getPageData();
+          if (callback) {
+            callback();
+          }
+        });
+      },
+    });
   }
 
   public get phoneNumberFormat(): string {

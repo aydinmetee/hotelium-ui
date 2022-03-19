@@ -26,7 +26,7 @@ export class RoomComponent extends BaseComponent implements OnInit {
 
     this.form = this.builder.group({
       code: [null, [Validators.required]],
-      capacity: [null, [Validators.required]],
+      capacity: [null, [Validators.required, Validators.min(1)]],
     });
 
     this.statusList = [

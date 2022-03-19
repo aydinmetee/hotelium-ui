@@ -36,19 +36,9 @@
           formControlName="description"
         />
       </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12 p-1">
-        <label style="padding-top: 20px"
-          >{{ "status" | translate }}:
-          <span
-            class="circle {{
-              reservationMaster.status | lowercase
-            }} ng-star-inserted"
-          ></span
-          >{{ reservationMaster.status | lowercase | translate }}
-        </label>
-      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12"></div>
 
-      <div class="ui-lg-6 ui-md-6 ui-g-6">
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>{{ "checkInDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
@@ -62,7 +52,7 @@
         ></p-calendar>
       </div>
 
-      <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>{{ "checkOutDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
@@ -74,6 +64,17 @@
           [minDate]="minDate"
           [showTime]="true"
         ></p-calendar>
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12 p-1">
+        <label style="padding-top: 20px"
+          >{{ "status" | translate }}:
+          <span
+            class="circle {{
+              reservationMaster.status | lowercase
+            }} ng-star-inserted"
+          ></span
+          >{{ reservationMaster.status | lowercase | translate }}
+        </label>
       </div>
     </div>
   </div>
@@ -158,6 +159,16 @@
       </td>
     </tr>
   </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td
+        [attr.colspan]="columns.length"
+        style="text-align: center !important; font-weight: bold"
+      >
+        {{ "no-results-found" | translate }}
+      </td>
+    </tr>
+  </ng-template>
 </p-table>
 
 <p-dialog
@@ -177,7 +188,10 @@
   >
     <div class="ui-lg-12 ui-md-12 ui-g-12">
       <div class="ui-lg-12 ui-md-12 ui-g-12">
-        <label>{{ "customers" | translate }} </label>
+        <label
+          >{{ "customers" | translate }}
+          <form-required controlName="customerId"></form-required>
+        </label>
         <div class="w-100">
           <p-dropdown
             [filter]="true"
@@ -185,7 +199,13 @@
             formControlName="customerId"
             class="w-100"
             appendTo="body"
+            emptyFilterMessage="{{ 'no-results-found' | translate }}"
           ></p-dropdown>
+          <form-validation-summary
+            [form]="form"
+            name="customerId"
+            [visable]="invalidForm"
+          ></form-validation-summary>
         </div>
       </div>
     </div>
@@ -222,6 +242,7 @@
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
+  (onHide)="onHideEvent()"
 >
   <div
     class="pb-2"
@@ -230,23 +251,40 @@
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
     <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label>{{ "amount" | translate }} </label>
+      <label
+        >{{ "amount" | translate }}
+        <form-required controlName="amount"></form-required>
+      </label>
       <input
         type="number"
         class="w-100"
         pInputText
         name="amount"
         formControlName="amount"
+        [min]="1"
       />
+      <form-validation-summary
+        [form]="bookingForm"
+        name="amount"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label>{{ "source" | translate }} </label>
+      <label
+        >{{ "source" | translate }}
+        <form-required controlName="source"></form-required>
+      </label>
       <p-dropdown
         [options]="sourceList"
         formControlName="source"
         class="w-100"
         appendTo="body"
       ></p-dropdown>
+      <form-validation-summary
+        [form]="bookingForm"
+        name="source"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>

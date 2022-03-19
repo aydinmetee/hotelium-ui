@@ -189,13 +189,23 @@
       </td>
     </tr>
   </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td
+        [attr.colspan]="columns.length"
+        style="text-align: center !important; font-weight: bold"
+      >
+        {{ "no-results-found" | translate }}
+      </td>
+    </tr>
+  </ng-template>
 </p-table>
 
 <p-dialog
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -206,8 +216,11 @@
     #formsCon
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "name" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "name" | translate }}
+        <form-required controlName="name"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
@@ -216,9 +229,17 @@
         required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="name"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "lastname" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "lastname" | translate }}
+        <form-required controlName="lastname"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
@@ -227,9 +248,17 @@
         required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="lastname"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "legalId" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "legalId" | translate }}
+        <form-required controlName="legalId"></form-required
+      ></label>
       <input
         type="text"
         class="w-100"
@@ -238,9 +267,17 @@
         required
         [maxLength]="11"
       />
+      <form-validation-summary
+        [form]="form"
+        name="legalId"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "phone" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "phone" | translate }}
+        <form-required controlName="phone"></form-required
+      ></label>
       <input
         type="text"
         class="w-100"
@@ -249,6 +286,11 @@
         [placeholder]="phoneNumberFormat"
         [mask]="phoneNumberFormat"
       />
+      <form-validation-summary
+        [form]="form"
+        name="phone"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>
@@ -291,7 +333,7 @@
   [header]="dialogTitle"
   [(visible)]="isCompanyDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -305,6 +347,7 @@
     <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label>
         {{ "companyName" | translate }}
+        <span style="color: red">*</span>
       </label>
       <p-dropdown
         [options]="companyList"
@@ -312,6 +355,8 @@
         [ngModelOptions]="{ standalone: true }"
         class="w-100"
         appendTo="body"
+        [filter]="true"
+        emptyFilterMessage="{{ 'no-results-found' | translate }}"
       ></p-dropdown>
     </div>
   </div>
@@ -330,8 +375,8 @@
         <button
           type="button"
           pButton
-          icon="fas fa-edit"
-          label="{{ 'update' | translate }}"
+          icon="fas fa-check"
+          label="{{ 'assignCompany' | translate }}"
           (click)="assignCompany()"
           class="ui-green-button"
         ></button>

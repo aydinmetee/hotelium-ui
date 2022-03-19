@@ -1,0 +1,5 @@
+<span *ngIf="isRequired; else optionally" class="error-required">*</span>
+
+<ng-template #optionally>
+  <span class="optionally">{{ "form.validation.optionally" | translate }}</span>
+</ng-template>
