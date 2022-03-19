@@ -146,7 +146,6 @@ export function getFileIcon(fileName: string): string {
   }
 }
 
-
 export function getFormatedDate(date: Date): string {
   if (date instanceof Date) {
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
@@ -170,39 +169,65 @@ export function nameof(args: any = {}): string {
   return Object.keys(args)[0] || 'none';
 }
 
-export function setRatioValueLimit(form: FormGroup, valueControl: string, ratioControl: string) {
-  console.log('jkfsdjkjfk')
-  form.get(valueControl).valueChanges.subscribe(value => {
-    if ((form.get(ratioControl).value === 'RATIO' || +form.get(ratioControl).value === 0) && value > 100) {
+export function setRatioValueLimit(
+  form: FormGroup,
+  valueControl: string,
+  ratioControl: string
+) {
+  console.log('jkfsdjkjfk');
+  form.get(valueControl).valueChanges.subscribe((value) => {
+    if (
+      (form.get(ratioControl).value === 'RATIO' ||
+        +form.get(ratioControl).value === 0) &&
+      value > 100
+    ) {
       form.get(valueControl).setValue(100);
     }
   });
 
-  form.get(ratioControl).valueChanges.subscribe(value => {
-    if ((value === 'RATIO' || +value === 0) && (+form.get(valueControl).value || 0) > 100) {
+  form.get(ratioControl).valueChanges.subscribe((value) => {
+    if (
+      (value === 'RATIO' || +value === 0) &&
+      (+form.get(valueControl).value || 0) > 100
+    ) {
       form.get(valueControl).setValue(100);
     }
   });
-
-
 }
 
 export function decodeHtmlTextMessage(message: string): string {
-
   function unescapeHtml(unsafe) {
     return unsafe
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, "'");
   }
 
   function decodeHtml(html) {
-    var txt = document.createElement("textarea");
+    var txt = document.createElement('textarea');
     txt.innerHTML = html;
     return txt.value;
   }
 
-  return decodeHtml(unescapeHtml(message))
+  return decodeHtml(unescapeHtml(message));
+}
+
+export function getPeriodDates(startDate, daysToAdd) {
+  var aryDates = [];
+
+  for (var i = 0; i < daysToAdd; i++) {
+    var currentDate = new Date();
+    currentDate.setDate(startDate.getDate() + i);
+    aryDates.push(
+      currentDate.getDate() +
+        '/' +
+        (currentDate.getMonth() + 1) +
+        '/' +
+        currentDate.getFullYear()
+    );
+  }
+
+  return aryDates;
 }

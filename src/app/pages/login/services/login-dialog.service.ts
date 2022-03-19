@@ -27,17 +27,6 @@ export class LoginDialogService {
           cb();
         }
       })
-      .pipe(
-        catchError((e) => {
-          const err: string = e.error.code;
-          this.alertService.error(
-            this.translateService.instant('g.error'),
-            e.error.message
-          );
-
-          return observableThrowError(err);
-        })
-      )
       .subscribe(null, err);
   }
 

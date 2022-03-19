@@ -56,7 +56,7 @@
         (click)="reset()"
         pButton
         icon="fas fa-times"
-        label="{{ 'cancel' | translate }}"
+        label="{{ 'reset' | translate }}"
         class="ui-dark-button"
       ></button>
       <button
@@ -171,26 +171,41 @@
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
     <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "code" | translate }} </label>
+      <label
+        >{{ "code" | translate }}
+        <form-required controlName="code"></form-required>
+      </label>
+
       <input
         type="text"
         class="w-100"
         pInputText
         formControlName="code"
-        required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="code"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "capacity" | translate }} </label>
+      <label
+        >{{ "capacity" | translate }}
+        <form-required controlName="capacity"></form-required>
+      </label>
       <input
         type="number"
         class="w-100"
         pInputText
         formControlName="capacity"
-        required
-        maxlength="100"
+        [min]="1"
       />
+      <form-validation-summary
+        [form]="form"
+        name="capacity"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>
@@ -200,7 +215,7 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'cancel' | translate }}"
+          label="{{ 'close' | translate }}"
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
