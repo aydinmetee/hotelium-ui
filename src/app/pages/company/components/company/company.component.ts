@@ -24,7 +24,7 @@ export class CompanyComponent extends BaseComponent implements OnInit {
 
     this.form = this.builder.group({
       address: [null, Validators.required],
-      legalNo: [null, Validators.required],
+      legalNo: [null, [Validators.required, Validators.minLength(10)]],
       nameTitle: [null, Validators.required],
       taxOffice: [null, Validators.required],
     });

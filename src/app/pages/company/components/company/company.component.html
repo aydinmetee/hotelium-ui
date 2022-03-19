@@ -147,16 +147,14 @@
       </td>
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
-
-        <!-- <button
-            type="button"
-            *ngIf="rowData.status === 'DIRTY'"
-            pButton
-            icon="fas fa-pencil-alt"
-            (click)="markAsClean(rowData)"
-            [pTooltip]="'markAsClean' | translate"
-            class="ui-green-button"
-          ></button> -->
+        <button
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="showUpdateDialog(rowData)"
+          class="ui-green-button"
+          [pTooltip]="'update' | translate"
+        ></button>
         <button
           type="text"
           class="ui-button-danger"
@@ -174,7 +172,7 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -185,49 +183,77 @@
     #formsCon
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "nameTitle" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "nameTitle" | translate }}
+        <form-required controlName="nameTitle"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
         pInputText
         formControlName="nameTitle"
-        required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="nameTitle"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "legalNo" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "legalNo" | translate }}
+        <form-required controlName="legalNo"></form-required>
+      </label>
       <input
-        type="number"
+        type="text"
         class="w-100"
         pInputText
         formControlName="legalNo"
-        required
         maxlength="10"
       />
+      <form-validation-summary
+        [form]="form"
+        name="legalNo"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "address" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "address" | translate }}
+        <form-required controlName="address"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
         pInputText
         formControlName="address"
-        required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="address"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
-      <label>{{ "taxOffice" | translate }} </label>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "taxOffice" | translate }}
+        <form-required controlName="taxOffice"></form-required>
+      </label>
       <input
         type="text"
         class="w-100"
         pInputText
         formControlName="taxOffice"
-        required
         maxlength="100"
       />
+      <form-validation-summary
+        [form]="form"
+        name="taxOffice"
+        [visable]="invalidForm"
+      ></form-validation-summary>
     </div>
   </div>
   <p-footer>
@@ -258,7 +284,7 @@
           pButton
           icon="fas fa-edit"
           label="{{ 'update' | translate }}"
-          (action)="update()"
+          (click)="update()"
           class="ui-green-button"
         ></button>
       </div>
