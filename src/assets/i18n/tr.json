@@ -76,7 +76,9 @@
             "cancel":"İptal Et",
             "create":"Oluştur",
             "no":"Hayır",
-            "yes":"Evet"
+            "yes":"Evet",
+            "close":"Kapat",
+            "reset":"Temizle"
         },
         "validation":{
             "required":"Bu alan zorunludur.",
@@ -163,5 +165,6 @@
     },
     "close":"Kapat",
     "reset":"Temizle",
-    "no-results-found":"Kayıt Bulunamadı"    
+    "no-results-found":"Kayıt Bulunamadı",
+    "reservationDate":"Rezervasyon Tarihi" 
 }

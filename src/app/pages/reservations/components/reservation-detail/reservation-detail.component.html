@@ -36,7 +36,18 @@
           formControlName="description"
         />
       </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12"></div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>{{ "reservationDate" | translate }}</label>
+        <p-calendar
+          [dateFormat]="'dd/mm/yy'"
+          name="reservationDate"
+          formControlName="reservationDate"
+          [locale]="calendar"
+          [showIcon]="true"
+          appendTo="body"
+          [minDate]="minDate"
+        ></p-calendar>
+      </div>
 
       <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>{{ "checkInDate" | translate }}</label>
@@ -217,7 +228,7 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'form.btn.cancel' | translate }}"
+          label="{{ 'form.btn.close' | translate }}"
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
@@ -250,7 +261,28 @@
     #formsCon
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
-    <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "checkInDate" | translate }}
+        <form-required controlName="checkInDate"></form-required>
+      </label>
+      <p-calendar
+        [dateFormat]="'dd/mm/yy'"
+        name="checkInDate"
+        formControlName="checkInDate"
+        [locale]="calendar"
+        [showIcon]="true"
+        appendTo="body"
+        [minDate]="minDate"
+        [showTime]="true"
+      ></p-calendar>
+      <form-validation-summary
+        [form]="bookingForm"
+        name="checkInDate"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label
         >{{ "amount" | translate }}
         <form-required controlName="amount"></form-required>
@@ -269,7 +301,7 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label
         >{{ "source" | translate }}
         <form-required controlName="source"></form-required>
@@ -294,7 +326,7 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'form.btn.cancel' | translate }}"
+          label="{{ 'form.btn.close' | translate }}"
           (click)="bookingDialog = false"
           class="ui-dark-button"
         ></button>

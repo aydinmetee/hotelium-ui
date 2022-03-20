@@ -1,7 +1,8 @@
 export class ReservationMaster {
   accountTransactionId: number;
-  checkInDate: string;
+  checkInDate: Date;
   checkOutDate: Date;
+  reservationDate: Date;
   description: string;
   id: number;
   roomCode: string;

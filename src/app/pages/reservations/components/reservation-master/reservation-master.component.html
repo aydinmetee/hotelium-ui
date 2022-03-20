@@ -179,7 +179,7 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '800px', minWidth: 350 }"
+  [style]="{ width: '400px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
@@ -190,7 +190,27 @@
     #formsCon
     [ngClass]="{ 'invalid-form': invalidForm }"
   >
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "reservationDate" | translate }}
+        <form-required controlName="reservationDate"></form-required>
+      </label>
+      <p-calendar
+        [dateFormat]="'dd/mm/yy'"
+        name="reservationDate"
+        formControlName="reservationDate"
+        [locale]="calendar"
+        [showIcon]="true"
+        appendTo="body"
+        [minDate]="minDate"
+      ></p-calendar>
+      <form-validation-summary
+        [form]="form"
+        name="reservationDate"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label
         >{{ "rooms" | translate }}
         <form-required controlName="roomId"></form-required>
@@ -207,7 +227,7 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-6">
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label
         >{{ "description" | translate }}
         <form-required controlName="description"></form-required>

@@ -41,6 +41,7 @@ export class ReservationMasterComponent
     this.form = this.builder.group({
       roomId: [null, Validators.required],
       description: [null],
+      reservationDate: [new Date(), Validators.required],
     });
 
     this.updateSourceForm = this.builder.group({
@@ -73,6 +74,13 @@ export class ReservationMasterComponent
       { field: 'id', header: this.t('id'), default: true },
       { field: 'roomCode', header: this.t('roomCode'), default: true },
       { field: 'description', header: this.t('description'), default: true },
+      {
+        field: 'reservationDate',
+        header: this.t('reservationDate'),
+        default: true,
+        isDate: true,
+        dateFormat: this.onlyDateFormat,
+      },
       {
         field: 'checkInDate',
         header: this.t('checkInDate'),

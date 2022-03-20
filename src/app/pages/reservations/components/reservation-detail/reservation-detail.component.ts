@@ -43,6 +43,7 @@ export class ReservationDetailComponent
       checkInDate: [null],
       checkOutDate: [null],
       status: [null],
+      reservationDate: [null],
     });
 
     this.form = this.builder.group({
@@ -54,6 +55,7 @@ export class ReservationDetailComponent
       amount: [null, [Validators.required, Validators.min(1)]],
       masterId: [null, Validators.required],
       source: [null, Validators.required],
+      checkInDate: [new Date(), Validators.required],
     });
 
     this.sourceList = [
@@ -111,10 +113,13 @@ export class ReservationDetailComponent
           this.searchForm.patchValue({
             roomCode: result.roomCode,
             description: result.description,
-            checkInDate: new Date(result.checkInDate),
+            checkInDate: result.checkInDate
+              ? new Date(result.checkInDate)
+              : null,
             checkOutDate: result.checkOutDate
               ? new Date(result.checkOutDate)
               : null,
+            reservationDate: new Date(result.reservationDate),
             status: result.status,
           });
           this.searchForm.disable();
