@@ -7,12 +7,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RoomComponent } from './components/room/room.component';
 import { RoomService } from './services/room.service';
 import { RoomViewComponent } from './components/room-view/room-view.component';
+import { ReservationMasterService } from '../reservations/services/reservation-master.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'room', pathMatch: 'full' },
   {
     path: 'room',
-    component: RoomComponent,
+    component: RoomViewComponent,
   },
 ];
 
@@ -25,6 +26,6 @@ const routes: Routes = [
     TranslateModule,
     SharedModule,
   ],
-  providers: [RoomService],
+  providers: [RoomService, ReservationMasterService],
 })
 export class RoomModule {}

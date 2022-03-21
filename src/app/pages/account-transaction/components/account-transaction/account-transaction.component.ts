@@ -24,7 +24,7 @@ export class AccountTransactionComponent
   ) {
     super(accountTransactionService, utilityService);
     this.searchForm = this.builder.group({
-      amount: [null],
+      amount: [null, [Validators.min(1)]],
       description: [null],
       firstDate: [null],
       lastDate: [null],

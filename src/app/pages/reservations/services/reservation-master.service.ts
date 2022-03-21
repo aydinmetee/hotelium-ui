@@ -10,6 +10,10 @@ export class ReservationMasterService extends RestService {
   get apiUrl() {
     return Urls.BASE_URL.toString() + '/reservation';
   }
+
+  public getWeeklyReservations() {
+    return this.restClientService.get(`${this.apiUrl}/get-weekly-reservations`);
+  }
 }
 
 @Injectable()

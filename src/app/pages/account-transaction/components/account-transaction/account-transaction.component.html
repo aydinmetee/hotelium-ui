@@ -21,8 +21,13 @@
           class="w-100"
           name="amount"
           formControlName="amount"
-          maxlength="30"
+          [min]="1"
         />
+        <form-validation-summary
+          [form]="searchForm"
+          name="amount"
+          [visable]="invalidForm"
+        ></form-validation-summary>
       </div>
       <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>
@@ -67,7 +72,7 @@
         (click)="reset()"
         pButton
         icon="fas fa-times"
-        label="{{ 'cancel' | translate }}"
+        label="{{ 'reset' | translate }}"
         class="ui-dark-button"
       ></button>
       <button
@@ -76,6 +81,7 @@
         icon="fas fa-search"
         label="{{ 'search' | translate }}"
         class="ui-green-button"
+        [disabled]="searchForm.invalid"
       ></button>
     </div>
   </p-footer>
@@ -177,7 +183,7 @@
         class="w-100"
         pInputText
         formControlName="amount"
-        maxlength="100"
+        [min]="1"
       />
       <form-validation-summary
         [form]="form"
@@ -228,7 +234,7 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'cancel' | translate }}"
+          label="{{ 'close' | translate }}"
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
