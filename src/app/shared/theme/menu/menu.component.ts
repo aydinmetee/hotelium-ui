@@ -26,27 +26,22 @@ export class MenuComponent extends BaseComponent implements OnInit {
     menus = {
       children: [
         {
-          children: [],
           label: 'page.reservation',
           url: '/page/reservations',
         },
         {
-          children: [],
           label: 'page.rooms',
           url: '/page/rooms',
         },
         {
-          children: [],
           label: 'page.account',
           url: '/page/account-transactions',
         },
         {
-          children: [],
           label: 'page.company',
           url: '/page/companys',
         },
         {
-          children: [],
           label: 'page.customer',
           url: '/page/customers',
         },

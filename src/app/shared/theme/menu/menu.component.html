@@ -1,97 +1,20 @@
-<div class="container">
-  <button
-    id="mneu-toggle"
-    (click)="!(toggle = !toggle); $event.stopPropagation()"
-  >
-    <i class="fas fa-bars fa-3x"></i>
-  </button>
-
-  <div class="app-menu-continer" [ngClass]="{ active: toggle, hidden: hidden }">
-    <div
-      [class]="'app-menu'"
-      [ngStyle]="{ height: '100%', postion: 'fixed', top: '0' }"
-    >
-      <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }">
-        <div class="text-center">
-          <img
-            class="dealer-image"
-            [src]="'./assets/img/logo.png'"
-            style="width: 160px"
-          />
-        </div>
-      </div>
-
-      <div class="t-center" [ngStyle]="{ 'padding-top.rem': 1.5 }"></div>
-
-      <!-- <app-menu-render [model]="items"></app-menu-render> -->
-      <div class="main-menu main-nav">
-        <ul class="unstyled list-hover-slide">
-          <li
-            *ngFor="let root of items"
-            [ngClass]="{
-              'menu-header': (root.children || []).length > 0,
-              active: root.expanded
-            }"
-            (click)="updateExpandedState($event, root, 0)"
+<header class="header" role="banner">
+  <h1 class="logo">
+    <a href="#">Hotel<span>ium</span></a>
+  </h1>
+  <div class="nav-wrap">
+    <nav class="main-nav" role="navigation">
+      <ul class="unstyled list-hover-slide">
+        <li *ngFor="let root of items">
+          <a
+            [routerLink]="root.url ? root.url : null"
+            routerLinkActive="active-link"
           >
-            <a
-              [routerLink]="root.url ? root.url : null"
-              routerLinkActive="active-link"
-              [ngClass]="{ 'disable-route': !root.url }"
-            >
-              <i [class]="root.icon" *ngIf="root.icon"></i>
-              {{ root.label | translate }}
-            </a>
-
-            <ul *ngIf="root.children">
-              <li
-                *ngFor="let l1 of root.children"
-                [ngClass]="{
-                  'menu-header': (l1.children || []).length > 0,
-                  active: l1.expanded
-                }"
-                (click)="updateExpandedState($event, l1, 1)"
-              >
-                <a
-                  [routerLink]="l1.url ? l1.url : null"
-                  routerLinkActive="active-link"
-                  [ngClass]="{ 'disable-route': !l1.url }"
-                >
-                  <i [class]="l1.icon" *ngIf="l1.icon"></i>
-                  {{ l1.label | translate }}
-                </a>
-
-                <ul *ngIf="l1.children">
-                  <li
-                    *ngFor="let l2 of l1.children"
-                    [ngClass]="{
-                      'menu-header': (l2.children || []).length > 0,
-                      active: l2.expanded
-                    }"
-                    (click)="updateExpandedState($event, l2, 2)"
-                  >
-                    <a
-                      [routerLink]="l2.url ? l2.url : null"
-                      routerLinkActive="active-link"
-                      [ngClass]="{ 'disable-route': !l2.url }"
-                    >
-                      <i [class]="l2.icon" *ngIf="l2.icon"></i>
-                      {{ l2.label | translate }}
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="unstyled footer">
-          <li>
-            <a (click)="logout()">
-              <i class="fas fa-sign-out-alt"></i> {{ "logout" | translate }}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+            <i [class]="root.icon" *ngIf="root.icon"></i>
+            {{ root.label | translate }}
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-</div>
+</header>
