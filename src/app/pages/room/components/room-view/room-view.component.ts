@@ -38,6 +38,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     this.form = this.builder.group({
       code: [null, [Validators.required]],
       capacity: [null, [Validators.required, Validators.min(1)]],
+      valid: [null],
     });
 
     this.statusList = [
@@ -60,6 +61,12 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
         header: this.t('status'),
         default: true,
         translateKey: TranslateKey.room,
+      },
+      {
+        field: 'valid',
+        header: this.t('valid'),
+        default: true,
+        translateKey: TranslateKey.valid,
       },
     ];
     this.initTableData();
@@ -143,6 +150,20 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     const model = Object.assign({}, this.form.value);
     this.roomService.createObject(model).subscribe(
       this.createHandler(() => {
+        this.initTableData();
+      })
+    );
+  }
+
+  public update() {
+    if (this.isInValid()) {
+      return;
+    }
+
+    this.showLoader();
+    const model = Object.assign({}, this.selectedItem, this.form.value);
+    this.roomService.updateObject(model).subscribe(
+      this.updateHandler(() => {
         this.initTableData();
       })
     );

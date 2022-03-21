@@ -86,6 +86,10 @@
             "maxlength":"Maksimum uzunluğu aştınız.",
             "minlength":"Minumum uzunluğun altındasınız.",
             "min":"Daha büyük bir değer girin."
+        },
+        "radio":{
+            "active":"Aktif",
+            "disable":"Pasif"
         }
     },
     "checkInDate":"Giriş Tarihi",
@@ -161,6 +165,9 @@
             "message":{
                 "deleted":"Kayıt başarıyla silindi."
             }
+        },
+        "cancel-message":{
+            "reservation-cancel":"Rezervasyon iptal edilecek. Onaylıyor musunuz?"
         }
     },
     "close":"Kapat",
@@ -168,5 +175,8 @@
     "no-results-found":"Kayıt Bulunamadı",
     "reservationDate":"Rezervasyon Tarihi",
     "room-availability":"Oda-Müsaitlik Tablosu",
-    "available":"Müsait"
+    "available":"Müsait",
+    "valid":"Durum",
+    "warning":"Uyarı",
+    "cancelled":"İptal Edildi"
 }

@@ -14,6 +14,12 @@ export class ReservationMasterService extends RestService {
   public getWeeklyReservations() {
     return this.restClientService.get(`${this.apiUrl}/get-weekly-reservations`);
   }
+
+  public markAsCancelled(id: string) {
+    return this.restClientService.get(
+      `${Urls.BASE_URL.toString()}/reservation/${id}/mark-as-cancelled`
+    );
+  }
 }
 
 @Injectable()

@@ -160,4 +160,14 @@ export class ReservationMasterComponent
       })
     );
   }
+
+  async markAsCancelled(rowData: any) {
+    await this.confirm({
+      message: 'confirmation.cancel-message.reservation-cancel',
+    });
+    this.showLoader();
+    this.reservationMasterService
+      .markAsCancelled(rowData.id)
+      .subscribe(this.updateHandler());
+  }
 }

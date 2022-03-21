@@ -34,7 +34,8 @@
 }
 
 .dirty,
-.expense {
+.expense,
+.cancelled {
   color: rgb(255, 0, 0);
   background: currentColor;
   border: 1px solid darken($color: rgb(255, 0, 0), $amount: 10%);

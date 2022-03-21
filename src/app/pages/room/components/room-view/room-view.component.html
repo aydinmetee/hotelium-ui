@@ -132,7 +132,14 @@
       </td>
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
-
+        <button
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="showUpdateDialog(rowData)"
+          class="ui-green-button"
+          [pTooltip]="'update' | translate"
+        ></button>
         <button
           type="button"
           *ngIf="rowData.status === 'DIRTY'"
@@ -259,6 +266,29 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12" *ngIf="!dialogType">
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label>{{ "valid" | translate }}</label>
+        <div class="ui-lg-12 ui-md-12 ui-g-12">
+          <div class="ui-lg-3 ui-md-6 ui-g-12 p-0">
+            <p-radioButton
+              name="valid"
+              [value]="true"
+              formControlName="valid"
+              label="{{ 'form.radio.active' | translate }}"
+            ></p-radioButton>
+          </div>
+          <div class="ui-lg-6 ui-md-6 ui-g-12 p-0">
+            <p-radioButton
+              name="valid"
+              [value]="false"
+              formControlName="valid"
+              label="{{ 'form.radio.disable' | translate }}"
+            ></p-radioButton>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <p-footer>
     <div class="ui-g">
@@ -288,7 +318,7 @@
           pButton
           icon="fas fa-edit"
           label="{{ 'update' | translate }}"
-          (action)="update()"
+          (click)="update()"
           class="ui-green-button"
         ></button>
       </div>

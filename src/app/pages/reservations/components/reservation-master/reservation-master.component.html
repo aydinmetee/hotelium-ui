@@ -143,15 +143,6 @@
       </td>
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
-
-        <button
-          type="button"
-          pButton
-          icon="fas fa-pencil-alt"
-          (click)="initSourceUpdateDialog(rowData)"
-          [pTooltip]="'update' | translate"
-          class="ui-green-button"
-        ></button>
         <button
           type="button"
           pButton
@@ -159,6 +150,25 @@
           (click)="navToDetail(rowData.id)"
           class="ui-green-button"
           [pTooltip]="'details' | translate"
+        ></button>
+        <button
+          *ngIf="rowData.status != 'COMPLETED'"
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="initSourceUpdateDialog(rowData)"
+          [pTooltip]="'update' | translate"
+          class="ui-green-button"
+        ></button>
+
+        <button
+          *ngIf="rowData.status == 'NEW'"
+          type="button"
+          pButton
+          icon="fas fa-times"
+          (click)="markAsCancelled(rowData)"
+          [pTooltip]="'cancel' | translate"
+          class="ui-button-danger"
         ></button>
       </td>
     </tr>

@@ -15,11 +15,12 @@ export class ComboService {
   constructor(private _http: RestClientService) {}
 
   public getRoomsList(status?: any): Observable<LabelValue<string, number>[]> {
-    let body = {};
+    let body = {
+      valid: true,
+      status: null,
+    };
     if (status) {
-      body = {
-        status: status,
-      };
+      body.status = status;
     }
     return this._http.post(`${this.apiUrl}/rooms`, JSON.stringify(body)).pipe(
       map((arr) =>
