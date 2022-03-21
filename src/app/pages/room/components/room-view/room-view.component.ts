@@ -90,7 +90,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
   }
 
   public columnCreator(period: 'WEEKLY' | 'MONTHLY' = 'WEEKLY'): void {
-    const dates = getPeriodDates(new Date(), period == 'WEEKLY' ? 7 : 30);
+    const dates = getPeriodDates(new Date(), period == 'WEEKLY' ? 7 : 10);
     this.dateList = [this.t('roomCode'), ...dates];
     this.prepareDateIndex(dates);
   }
@@ -115,11 +115,12 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
   public tableDataPrepare(rooms: any[], reservations: any[]) {
     this.defaultTablePrepare(rooms);
     reservations.forEach((res) => {
+      console.log(res);
       const modifierIndex = this.availableData.findIndex(
         (x) => x.roomCode == res.roomCode
       );
       const reservationDateIndex = this.dateIndexList.find(
-        (x) => x.selectedDate == onlyDateModifier(new Date(res.reservationDate))
+        (x) => x.selectedDate == onlyDateModifier(new Date(res.resarvationDate))
       );
       console.log(this.availableData[modifierIndex].available);
       this.availableData[modifierIndex].available[reservationDateIndex.index] =

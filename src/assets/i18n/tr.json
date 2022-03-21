@@ -69,7 +69,7 @@
     "new":"Yeni",
     "booking":"Konaklıyor",
     "completed":"Tamamlandı",
-    "reservationMasterTitle":"Reservasyon Bilgileri",
+    "reservationMasterTitle":"Rezervasyon Bilgileri",
     "form":{
         "btn":{
             "back":"Geri",
@@ -94,7 +94,7 @@
     },
     "checkInDate":"Giriş Tarihi",
     "checkOutDate":"Çıkış Tarihi",
-    "reservationDetailTitle":"Reservasyon Detayı",
+    "reservationDetailTitle":"Rezervasyon Detayı",
     "customerFullName":"Müşteri Adı Soyadı",
     "bookAmount":"Konaklama Tutarı",
     "customers":"Müşteriler",
@@ -178,5 +178,6 @@
     "available":"Müsait",
     "valid":"Durum",
     "warning":"Uyarı",
-    "cancelled":"İptal Edildi"
+    "cancelled":"İptal Edildi",
+    "duration":"Gece Sayısı"
 }

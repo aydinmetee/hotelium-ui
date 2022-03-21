@@ -7,9 +7,9 @@
 $sans: "Source Sans Pro", Helvetica, Arial, sans-serif;
 
 // COLORS
-$orange: var(--main-light-color);
+$orange: var(--main-primary-color);
 $gray: var(--main-dark-color);
-$gray-shine: var(--main-primary-color);
+$gray-shine: var(--main-light-color);
 $white-off: #dfdbd9;
 
 // REUSABLE STYLES
@@ -39,8 +39,8 @@ $white-off: #dfdbd9;
 }
 
 .logo {
-  text-transform: lowercase;
-  font: 300 2em $sans;
+  text-transform: titlecase;
+  font: 400 2em $sans;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -55,7 +55,7 @@ $white-off: #dfdbd9;
     &:hover {
       color: #fff;
       span {
-        color: $orange;
+        color: $gray-shine;
       }
     }
   }
@@ -77,11 +77,11 @@ $white-off: #dfdbd9;
   }
 
   a {
-    padding: 1.1em 0;
+    padding: 1.1em 1em;
     color: $white-off;
     font: 400 1.125em $sans;
     text: {
-      align: center;
+      align: start;
       transform: titlecase;
     }
 
@@ -149,4 +149,8 @@ $white-off: #dfdbd9;
       }
     }
   }
+}
+
+i {
+  padding-right: 5px;
 }
