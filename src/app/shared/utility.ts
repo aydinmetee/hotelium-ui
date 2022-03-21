@@ -214,19 +214,19 @@ export function decodeHtmlTextMessage(message: string): string {
   return decodeHtml(unescapeHtml(message));
 }
 
+export function onlyDateModifier(date) {
+  return (
+    date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+  );
+}
+
 export function getPeriodDates(startDate, daysToAdd) {
   var aryDates = [];
 
   for (var i = 0; i < daysToAdd; i++) {
     var currentDate = new Date();
     currentDate.setDate(startDate.getDate() + i);
-    aryDates.push(
-      currentDate.getDate() +
-        '/' +
-        (currentDate.getMonth() + 1) +
-        '/' +
-        currentDate.getFullYear()
-    );
+    aryDates.push(onlyDateModifier(currentDate));
   }
 
   return aryDates;

@@ -166,5 +166,7 @@
     "close":"Kapat",
     "reset":"Temizle",
     "no-results-found":"Kayıt Bulunamadı",
-    "reservationDate":"Rezervasyon Tarihi" 
+    "reservationDate":"Rezervasyon Tarihi",
+    "room-availability":"Oda-Müsaitlik Tablosu",
+    "available":"Müsait"
 }
