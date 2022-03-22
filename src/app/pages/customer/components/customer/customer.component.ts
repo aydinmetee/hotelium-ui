@@ -33,6 +33,7 @@ export class CustomerComponent extends BaseComponent implements OnInit {
       legalId: [null, [Validators.required, Validators.minLength(11)]],
       name: [null, Validators.required],
       phone: [null, [Validators.required, Validators.minLength(10)]],
+      valid: [null],
     });
 
     this.utilityService.comboService.getCompanyList().subscribe((data) => {

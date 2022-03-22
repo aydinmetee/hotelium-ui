@@ -30,7 +30,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     super(roomService, utilityService);
 
     this.searchForm = this.builder.group({
-      capacity: [null],
+      capacity: [null, Validators.min(1)],
       code: [null],
       status: [null],
     });
