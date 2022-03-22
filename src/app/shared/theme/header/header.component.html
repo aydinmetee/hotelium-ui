@@ -1,12 +1,9 @@
-<div class="main-div" [ngClass]="{ 'menu-hidden': menuHidden }">
-  <!-- <a id="personal-menu-header" style="margin-left: 36px;" class="f-right c-pointer" (click)="menu.toggle($event)">
-    <span>
-      <img class="user-image" [src]="userImageUrl" alt="">
-    </span>
-    <span class="header-title">
-      {{user.name + ' ' + user.lastName}}
-
-      <i class="fa fa-angle-down" aria-hidden="true"></i>
-    </span>
-  </a> -->
-</div>
+<p-menubar [model]="items">
+  <button
+    (click)="logout()"
+    pButton
+    class="ui-dark-button"
+    label="{{ 'logout' | translate }}"
+    icon="pi pi-power-off"
+  ></button>
+</p-menubar>

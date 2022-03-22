@@ -153,12 +153,4 @@ export class MenuComponent extends BaseComponent implements OnInit {
     }
     this.menusExpandPath.splice(index, this.menusExpandPath.length);
   }
-
-  public logout() {
-    this.showLoader();
-    this.utilityService.router.navigateByUrl('/login').then(() => {
-      this.utilityService.localStorageService.clearAll();
-      this.hideloader();
-    });
-  }
 }
