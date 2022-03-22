@@ -178,14 +178,6 @@
           [pTooltip]="'assignCompany' | translate"
           class="ui-green-button"
         ></button>
-        <button
-          type="text"
-          class="ui-button-danger"
-          (click)="deleteDialog(rowData)"
-          [pTooltip]="'delete' | translate"
-          pButton
-          icon="fas fa-trash"
-        ></button>
       </td>
     </tr>
   </ng-template>
@@ -291,6 +283,29 @@
         name="phone"
         [visable]="invalidForm"
       ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12" *ngIf="!dialogType">
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label>{{ "valid" | translate }}</label>
+        <div class="ui-lg-12 ui-md-12 ui-g-12">
+          <div class="ui-lg-6 ui-md-6 ui-g-12 p-0">
+            <p-radioButton
+              name="valid"
+              [value]="true"
+              formControlName="valid"
+              label="{{ 'form.radio.active' | translate }}"
+            ></p-radioButton>
+          </div>
+          <div class="ui-lg-6 ui-md-6 ui-g-12 p-0">
+            <p-radioButton
+              name="valid"
+              [value]="false"
+              formControlName="valid"
+              label="{{ 'form.radio.disable' | translate }}"
+            ></p-radioButton>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <p-footer>

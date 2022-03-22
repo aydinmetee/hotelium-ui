@@ -68,10 +68,15 @@ export class ColumnTranslationService {
             return this.t('booking');
           case 'COMPLETED':
             return this.t('completed');
-
+          case 'CANCELLED':
+            return this.t('cancelled');
           default:
             return '';
         }
+      case TranslateKey.valid:
+        return value
+          ? this.t('form.radio.active')
+          : this.t('form.radio.disable');
       default:
         return value;
     }

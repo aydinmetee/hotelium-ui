@@ -30,7 +30,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     super(roomService, utilityService);
 
     this.searchForm = this.builder.group({
-      capacity: [null],
+      capacity: [null, Validators.min(1)],
       code: [null],
       status: [null],
     });
@@ -38,6 +38,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     this.form = this.builder.group({
       code: [null, [Validators.required]],
       capacity: [null, [Validators.required, Validators.min(1)]],
+      valid: [null],
     });
 
     this.statusList = [
@@ -61,6 +62,12 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
         default: true,
         translateKey: TranslateKey.room,
       },
+      {
+        field: 'valid',
+        header: this.t('valid'),
+        default: true,
+        translateKey: TranslateKey.valid,
+      },
     ];
     this.initTableData();
 
@@ -83,7 +90,7 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
   }
 
   public columnCreator(period: 'WEEKLY' | 'MONTHLY' = 'WEEKLY'): void {
-    const dates = getPeriodDates(new Date(), period == 'WEEKLY' ? 7 : 30);
+    const dates = getPeriodDates(new Date(), period == 'WEEKLY' ? 7 : 10);
     this.dateList = [this.t('roomCode'), ...dates];
     this.prepareDateIndex(dates);
   }
@@ -108,11 +115,12 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
   public tableDataPrepare(rooms: any[], reservations: any[]) {
     this.defaultTablePrepare(rooms);
     reservations.forEach((res) => {
+      console.log(res);
       const modifierIndex = this.availableData.findIndex(
         (x) => x.roomCode == res.roomCode
       );
       const reservationDateIndex = this.dateIndexList.find(
-        (x) => x.selectedDate == onlyDateModifier(new Date(res.reservationDate))
+        (x) => x.selectedDate == onlyDateModifier(new Date(res.resarvationDate))
       );
       console.log(this.availableData[modifierIndex].available);
       this.availableData[modifierIndex].available[reservationDateIndex.index] =
@@ -143,6 +151,20 @@ export class RoomViewComponent extends BaseComponent implements OnInit {
     const model = Object.assign({}, this.form.value);
     this.roomService.createObject(model).subscribe(
       this.createHandler(() => {
+        this.initTableData();
+      })
+    );
+  }
+
+  public update() {
+    if (this.isInValid()) {
+      return;
+    }
+
+    this.showLoader();
+    const model = Object.assign({}, this.selectedItem, this.form.value);
+    this.roomService.updateObject(model).subscribe(
+      this.updateHandler(() => {
         this.initTableData();
       })
     );

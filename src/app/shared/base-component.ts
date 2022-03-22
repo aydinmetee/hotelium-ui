@@ -389,4 +389,23 @@ export abstract class BaseComponent implements OnDestroy {
   public get phoneNumberFormat(): string {
     return this.t('phoneNumberFormat');
   }
+
+  public confirm({
+    title = 'warning',
+    message = 'confirmOperation',
+    passConfirm = false,
+  } = {}): Promise<any> {
+    return new Promise((res) => {
+      if (passConfirm) {
+        res(null);
+      } else {
+        this.utilityService.confirmationService.confirm({
+          header: this.t(title),
+          message: this.t(message),
+          accept: () => res(null),
+          acceptLabel: 'form.btn.yes',
+        });
+      }
+    });
+  }
 }

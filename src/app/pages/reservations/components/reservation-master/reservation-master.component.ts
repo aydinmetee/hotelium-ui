@@ -42,6 +42,7 @@ export class ReservationMasterComponent
       roomId: [null, Validators.required],
       description: [null],
       reservationDate: [new Date(), Validators.required],
+      duration: [1, [Validators.required, Validators.min(1)]],
     });
 
     this.updateSourceForm = this.builder.group({
@@ -81,6 +82,7 @@ export class ReservationMasterComponent
         isDate: true,
         dateFormat: this.onlyDateFormat,
       },
+      { field: 'duration', header: this.t('duration'), default: true },
       {
         field: 'checkInDate',
         header: this.t('checkInDate'),
@@ -159,5 +161,15 @@ export class ReservationMasterComponent
         this.navToDetail(result.id);
       })
     );
+  }
+
+  async markAsCancelled(rowData: any) {
+    await this.confirm({
+      message: 'confirmation.cancel-message.reservation-cancel',
+    });
+    this.showLoader();
+    this.reservationMasterService
+      .markAsCancelled(rowData.id)
+      .subscribe(this.updateHandler());
   }
 }

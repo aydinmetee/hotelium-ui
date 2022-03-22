@@ -1,105 +1,101 @@
-
-
 :root {
-  --main-primary-color: #068991;
-  --main-light-color:#41bac0;
-  --main-dark-color:#002434;
-  --chart-light-color:rgba(6, 137, 145, 0.43);
+  --main-primary-color: #7bae7f;
+  --main-secondary-color: #f4d35e;
+  --main-light-color: #454851;
+  --main-dark-color: #73956f;
+  --chart-light-color: rgba(6, 137, 145, 0.43);
 }
 
 .default_theme {
   --main-primary-color: #068991;
-  --main-light-color:#41bac0;
-  --main-dark-color:#002434;
-  --chart-light-color:rgba(6, 137, 145, 0.43);
+  --main-light-color: #41bac0;
+  --main-dark-color: #002434;
+  --chart-light-color: rgba(6, 137, 145, 0.43);
 }
 
-
 .aloha {
-  --main-primary-color: #0BA799;
-  --main-dark-color:#002434;
-  --main-light-color:#098d81;
-  --chart-light-color:rgba(11, 167, 153, 0.43);
+  --main-primary-color: #0ba799;
+  --main-dark-color: #002434;
+  --main-light-color: #098d81;
+  --chart-light-color: rgba(11, 167, 153, 0.43);
 }
 
 .ufo-green {
-  --main-primary-color: #1FB36C;
+  --main-primary-color: #1fb36c;
   --main-dark-color: #002434;
-  --main-light-color:#179558;
-  --chart-light-color:rgba(31, 179, 108, 0.43);
+  --main-light-color: #179558;
+  --chart-light-color: rgba(31, 179, 108, 0.43);
 }
 
 .dayflower {
-  --main-primary-color: #268FDA;
+  --main-primary-color: #268fda;
   --main-dark-color: #002434;
-  --main-light-color:#1f7dc1;
-  --chart-light-color:rgba(38, 143, 218, 0.43);
+  --main-light-color: #1f7dc1;
+  --chart-light-color: rgba(38, 143, 218, 0.43);
 }
 
 .deep-cherry {
-  --main-primary-color: #900C3F;
+  --main-primary-color: #900c3f;
   --main-dark-color: #002434;
-  --main-light-color:#7a0a35;
-  --chart-light-color:rgba(144, 12, 63, 0.43);
+  --main-light-color: #7a0a35;
+  --chart-light-color: rgba(144, 12, 63, 0.43);
 }
 
 .deep-lilac {
-  --main-primary-color: #9C62B5;
+  --main-primary-color: #9c62b5;
   --main-dark-color: #002434;
-  --main-light-color:rgb(188, 131, 212);
-  --chart-light-color:rgba(156, 98, 181, 0.43);
+  --main-light-color: rgb(188, 131, 212);
+  --chart-light-color: rgba(156, 98, 181, 0.43);
 }
 
 .dark-denim {
-  --main-primary-color: #2B425A;
+  --main-primary-color: #2b425a;
   --main-dark-color: #002434;
-  --main-light-color:rgb(61, 90, 121);
-  --chart-light-color:rgba(43, 66, 90, 0.43);
+  --main-light-color: rgb(61, 90, 121);
+  --chart-light-color: rgba(43, 66, 90, 0.43);
 }
 
 .tanned-leather {
-  --main-primary-color: #F5B802;
+  --main-primary-color: #f5b802;
   --main-dark-color: #002434;
-  --main-light-color:rgb(241, 208, 107);
-  --chart-light-color:rgba(245, 184, 2, 0.43);
+  --main-light-color: rgb(241, 208, 107);
+  --chart-light-color: rgba(245, 184, 2, 0.43);
 }
 
 .dark-cheddar {
-  --main-primary-color: #ED8018;
+  --main-primary-color: #ed8018;
   --main-dark-color: #002434;
-  --main-light-color:rgb(240, 157, 81);
-  --chart-light-color:rgba(237, 128, 24, 0.43);
+  --main-light-color: rgb(240, 157, 81);
+  --chart-light-color: rgba(237, 128, 24, 0.43);
 }
 
 .carmine-pink {
-  --main-primary-color: #F15836;
+  --main-primary-color: #f15836;
   --main-dark-color: #002434;
-  --main-light-color:rgb(241, 115, 87);
-  --chart-light-color:rgba(241, 88, 54, 0.43);
+  --main-light-color: rgb(241, 115, 87);
+  --chart-light-color: rgba(241, 88, 54, 0.43);
 }
 
 .sweet-pink {
   --main-primary-color: rgb(241, 101, 183);
   --main-dark-color: #002434;
-  --main-light-color:rgb(235, 127, 190);
-  --chart-light-color:rgba(241, 101, 183, 0.43);
+  --main-light-color: rgb(235, 127, 190);
+  --chart-light-color: rgba(241, 101, 183, 0.43);
 }
 
 .dusty-sky {
   --main-primary-color: rgb(108, 127, 133);
   --main-dark-color: #002434;
-  --main-light-color:rgb(144, 159, 164);
-  --chart-light-color:rgba(108, 127, 133, 0.43);
+  --main-light-color: rgb(144, 159, 164);
+  --chart-light-color: rgba(108, 127, 133, 0.43);
 }
 
 .dark-brown {
-  --main-primary-color: #A65629;
+  --main-primary-color: #a65629;
   --main-dark-color: #002434;
-  --main-light-color:rgb(180, 108, 66);
-  --chart-light-color:rgba(166, 86, 41, 0.43);
+  --main-light-color: rgb(180, 108, 66);
+  --chart-light-color: rgba(166, 86, 41, 0.43);
 }
-
-
 
 // @import "components/_accordion";
 // @import "components/_checkbox";

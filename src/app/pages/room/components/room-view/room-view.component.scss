@@ -1,7 +1,9 @@
 .green {
-  background-color: rgb(72, 160, 72) !important;
+  background-color: var(--main-primary-color) !important;
+  text-align: center !important;
 }
 
 .yellow {
-  background-color: rgb(207, 162, 78) !important;
+  background-color: var(--main-secondary-color) !important;
+  text-align: center !important;
 }

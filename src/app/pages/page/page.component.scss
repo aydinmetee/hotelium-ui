@@ -1,25 +1,22 @@
-.continer { 
-    transition: all 0.2s ease-in-out;
-    margin-left: calc(280px);
-    margin-right: 25px;
-    margin-top: 2px;
-    
+.continer {
+  transition: all 0.2s ease-in-out;
+  margin-left: calc(280px);
+  margin-right: 25px;
+  margin-top: 2px;
+  padding-left: 1%;
 
-    &.menu-hidden {
-        margin-left: 25px;        
-    }
+  &.menu-hidden {
+    margin-left: 25px;
+  }
 }
 
+@media (max-width: 400px) {
+  .continer {
+    margin-left: initial;
+    margin-left: 25px;
 
-@media(max-width :400px){ 
-    
-    .continer { 
-        margin-left: initial;
-        margin-left:25px;;
-    
-        &.menu-hidden {
-            margin-left: 25px;        
-        }
+    &.menu-hidden {
+      margin-left: 25px;
     }
-    
+  }
 }

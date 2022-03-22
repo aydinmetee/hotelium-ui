@@ -17,6 +17,10 @@ body {
   min-height: 100vh;
 }
 
+.ui-table .ui-paginator-bottom {
+  border-radius: 0 0 10px 10px !important;
+}
+
 body .ui-widget {
   font-family: "Mulish", sans-serif !important;
 }
@@ -266,6 +270,7 @@ body .ui-selectbutton > .ui-button {
 
 body .ui-table .ui-table-caption {
   padding: 0;
+  border-radius: 10px 10px 0 0;
 }
 
 h3.ui-title-bar {

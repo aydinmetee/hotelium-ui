@@ -26,29 +26,24 @@ export class MenuComponent extends BaseComponent implements OnInit {
     menus = {
       children: [
         {
-          children: [],
-          label: 'page.reservation',
-          url: '/page/reservations',
-        },
-        {
-          children: [],
-          label: 'page.rooms',
-          url: '/page/rooms',
-        },
-        {
-          children: [],
-          label: 'page.account',
-          url: '/page/account-transactions',
-        },
-        {
-          children: [],
           label: 'page.company',
           url: '/page/companys',
         },
         {
-          children: [],
           label: 'page.customer',
           url: '/page/customers',
+        },
+        {
+          label: 'page.rooms',
+          url: '/page/rooms',
+        },
+        {
+          label: 'page.reservation',
+          url: '/page/reservations',
+        },
+        {
+          label: 'page.account',
+          url: '/page/account-transactions',
         },
       ],
     };
@@ -76,7 +71,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
             break;
           }
           case 'page.rooms': {
-            i.icon = 'fas fa-home';
+            i.icon = 'fas fa-bed';
             break;
           }
           case 'page.account': {
@@ -157,13 +152,5 @@ export class MenuComponent extends BaseComponent implements OnInit {
       this.menusExpandPath[i].expanded = false;
     }
     this.menusExpandPath.splice(index, this.menusExpandPath.length);
-  }
-
-  public logout() {
-    this.showLoader();
-    this.utilityService.router.navigateByUrl('/login').then(() => {
-      this.utilityService.localStorageService.clearAll();
-      this.hideloader();
-    });
   }
 }

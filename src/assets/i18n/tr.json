@@ -1,172 +1,197 @@
 {
-    "username":"Kullanıcı Adı",
-    "password":"Parola",
-    "sign-in":"Giriş Yap",
-    "dashboard":{
-        "title":"Ana Sayfa",
-        "month-name":"Ay",
-        "total-income":"Toplam Gelir",
-        "total-expense":"Toplam Gider",
-        "case-balance":"Güncel Kasa",
-        "cash-income":"Nakit Geliri",
-        "debit-income":"Kredi Kartı Geliri",
-        "bank-income":"Banka Geliri"
-
-    },
-    "transactions":"İşlemler",
-    "page":{
-        "reservation":"Rezervasyonlar",
-        "rooms":"Odalar",
-        "account":"Cari Hesap",
-        "customer":"Müşteriler",
-        "company":"Firmalar"
-    },
-    "add":"Ekle",
-    "search":"Ara",
-    "code":"Kod",
-    "capacity":"Kapasite",
-    "status":"Durum",
-    "action":"İşlem",
-    "update":"Güncelle",
-    "cancel":"İptal Et",
-    "clean":"Temiz",
-    "filled":"Dolu",
-    "reserved":"Rezerve",
-    "dirty":"Kirli",
-    "select":"Seçiniz",
-    "name":"Adı",
-    "lastname":"Soyadı",
-    "legalId":"T.C. Kimlik No",
-    "phone":"Telefon No",
-    "create":"Oluştur",
-    "alert":{
-        "title":{
-            "success":"Başarılı!"
-        },
-        "message":{
-            "succesfully-created":"Kayıt başarıyla oluşturuldu.",
-            "succesfully-updated":"Kayıt başarıyla güncellendi."
-
-        }
-    },
-    "companyName":"Firma Adı",
-    "address":"Adres",
-    "legalNo":"Vergi Kimlik No",
-    "nameTitle":"Ünvan",
-    "taxOffice":"Vergi Dairesi",
-    "amount":"Tutar",
-    "description":"Açıklama",
-    "source":"Kaynak",
-    "type":"Tip",
-    "debit":"Kredi Kartı",
-    "cash":"Nakit",
-    "bank":"Banka",
-    "income":"Gelir",
-    "expense":"Gider",
-    "assign-company":"Firmaya Ata",
-    "rooms":"Odalar",
-    "roomCode":"Oda No",
-    "new":"Yeni",
-    "booking":"Konaklıyor",
-    "completed":"Tamamlandı",
-    "reservationMasterTitle":"Reservasyon Bilgileri",
-    "form":{
-        "btn":{
-            "back":"Geri",
-            "cancel":"İptal Et",
-            "create":"Oluştur",
-            "no":"Hayır",
-            "yes":"Evet",
-            "close":"Kapat",
-            "reset":"Temizle"
-        },
-        "validation":{
-            "required":"Bu alan zorunludur.",
-            "optionally":"Opsiyonel",
-            "maxlength":"Maksimum uzunluğu aştınız.",
-            "minlength":"Minumum uzunluğun altındasınız.",
-            "min":"Daha büyük bir değer girin."
-        }
-    },
-    "checkInDate":"Giriş Tarihi",
-    "checkOutDate":"Çıkış Tarihi",
-    "reservationDetailTitle":"Reservasyon Detayı",
-    "customerFullName":"Müşteri Adı Soyadı",
-    "bookAmount":"Konaklama Tutarı",
-    "customers":"Müşteriler",
-    "markAsBooking":"Giriş Yaptı",
-    "markAsCompleted":"Çıkış Yaptı",
     "calendar": {
         "firstDayOfWeek": 1,
         "dayNames": [
-          "Pazar",
-          "Pazartesi",
-          "Salı",
-          "Çarşamba",
-          "Perşembe",
-          "Cuma",
-          "Cumartesi"
+            "Pazar",
+            "Pazartesi",
+            "Salı",
+            "Çarşamba",
+            "Perşembe",
+            "Cuma",
+            "Cumartesi"
         ],
-        "dayNamesShort": ["Pzr", "Pzt", "Sal", "Çrş", "Prş", "Cum", "Cmt"],
-        "dayNamesMin": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+        "dayNamesShort": [
+            "Pzr",
+            "Pzt",
+            "Sal",
+            "Çrş",
+            "Prş",
+            "Cum",
+            "Cmt"
+        ],
+        "dayNamesMin": [
+            "Pz",
+            "Pt",
+            "Sa",
+            "Ça",
+            "Pe",
+            "Cu",
+            "Ct"
+        ],
         "monthNames": [
-          "Ocak",
-          "Şubat",
-          "Mart",
-          "Nisan",
-          "Mayıs",
-          "Haziran",
-          "Temmuz",
-          "Ağustos",
-          "Eylül",
-          "Ekim",
-          "Kasım",
-          "Aralık"
+            "Ocak",
+            "Şubat",
+            "Mart",
+            "Nisan",
+            "Mayıs",
+            "Haziran",
+            "Temmuz",
+            "Ağustos",
+            "Eylül",
+            "Ekim",
+            "Kasım",
+            "Aralık"
         ],
         "monthNamesShort": [
-          "Oca",
-          "Şub",
-          "Mar",
-          "Nis",
-          "May",
-          "Haz",
-          "Tem",
-          "Ağu",
-          "Eyl",
-          "Eki",
-          "Kas",
-          "Ara"
+            "Oca",
+            "Şub",
+            "Mar",
+            "Nis",
+            "May",
+            "Haz",
+            "Tem",
+            "Ağu",
+            "Eyl",
+            "Eki",
+            "Kas",
+            "Ara"
         ],
         "today": "Bugün",
         "clear": "Temizle"
-      },
-    "updateTransactionSource":"Kaynağı Güncelle",
-    "details":"Detaya Git",
-    "g":{
-        "error":"Hata!"
     },
-    "markAsClean":"Temizlendi",
-    "phoneNumberFormat": "(000) 000 00 00",
-    "assignCompany":"Firma Ata",
-    "logout":"Çıkış Yap",
-    "creDate":"Oluşturulma Tarihi",
-    "updDate":"Güncellenme Tarihi",
-    "message":{
-        "main-message":"Kayıt silinecek onaylıyor musunuz?",
-        "caution":"Dikkat"
+    "username": "Kullanıcı Adı",
+    "password": "Parola",
+    "sign-in": "Giriş Yap",
+    "dashboard": {
+        "title": "Ana Sayfa",
+        "month-name": "Ay",
+        "total-income": "Toplam Gelir",
+        "total-expense": "Toplam Gider",
+        "case-balance": "Güncel Kasa",
+        "cash-income": "Nakit Geliri",
+        "debit-income": "Kredi Kartı Geliri",
+        "bank-income": "Banka Geliri"
     },
-    "delete":"Kaydı Sil",
-    "confirmation":{
-        "success-message":{
-            "message":{
-                "deleted":"Kayıt başarıyla silindi."
-            }
+    "transactions": "İşlemler",
+    "page": {
+        "reservation": "Rezervasyonlar",
+        "rooms": "Odalar",
+        "account": "Cari Hesap",
+        "customer": "Müşteriler",
+        "company": "Firmalar"
+    },
+    "add": "Ekle",
+    "search": "Ara",
+    "code": "Kod",
+    "capacity": "Kapasite",
+    "status": "Durum",
+    "action": "İşlem",
+    "update": "Güncelle",
+    "cancel": "İptal Et",
+    "clean": "Temiz",
+    "filled": "Dolu",
+    "reserved": "Rezerve",
+    "dirty": "Kirli",
+    "select": "Seçiniz",
+    "name": "Adı",
+    "lastname": "Soyadı",
+    "legalId": "T.C. Kimlik No",
+    "phone": "Telefon No",
+    "create": "Oluştur",
+    "alert": {
+        "title": {
+            "success": "Başarılı!"
+        },
+        "message": {
+            "succesfully-created": "Kayıt başarıyla oluşturuldu.",
+            "succesfully-updated": "Kayıt başarıyla güncellendi."
         }
     },
-    "close":"Kapat",
-    "reset":"Temizle",
-    "no-results-found":"Kayıt Bulunamadı",
-    "reservationDate":"Rezervasyon Tarihi",
-    "room-availability":"Oda-Müsaitlik Tablosu",
-    "available":"Müsait"
+    "companyName": "Firma Adı",
+    "address": "Adres",
+    "legalNo": "Vergi Kimlik No",
+    "nameTitle": "Ünvan",
+    "taxOffice": "Vergi Dairesi",
+    "amount": "Tutar",
+    "description": "Açıklama",
+    "source": "Kaynak",
+    "type": "Tip",
+    "debit": "Kredi Kartı",
+    "cash": "Nakit",
+    "bank": "Banka",
+    "income": "Gelir",
+    "expense": "Gider",
+    "assign-company": "Firmaya Ata",
+    "rooms": "Odalar",
+    "roomCode": "Oda No",
+    "new": "Yeni",
+    "booking": "Konaklıyor",
+    "completed": "Tamamlandı",
+    "reservationMasterTitle": "Rezervasyon Bilgileri",
+    "form": {
+        "btn": {
+            "back": "Geri",
+            "cancel": "İptal Et",
+            "create": "Oluştur",
+            "no": "Hayır",
+            "yes": "Evet",
+            "close": "Kapat",
+            "reset": "Temizle"
+        },
+        "validation": {
+            "required": "Bu alan zorunludur.",
+            "optionally": "Opsiyonel",
+            "maxlength": "Maksimum uzunluğu aştınız.",
+            "minlength": "Minumum uzunluğun altındasınız.",
+            "min": "Daha büyük bir değer girin."
+        },
+        "radio": {
+            "active": "Aktif",
+            "disable": "Pasif"
+        }
+    },
+    "checkInDate": "Giriş Tarihi",
+    "checkOutDate": "Çıkış Tarihi",
+    "reservationDetailTitle": "Rezervasyon Detayı",
+    "customerFullName": "Müşteri Adı Soyadı",
+    "bookAmount": "Konaklama Tutarı",
+    "customers": "Müşteriler",
+    "markAsBooking": "Giriş Yaptı",
+    "markAsCompleted": "Çıkış Yaptı",
+    "updateTransactionSource": "Kaynağı Güncelle",
+    "details": "Detaya Git",
+    "g": {
+        "error": "Hata!"
+    },
+    "markAsClean": "Temizlendi",
+    "phoneNumberFormat": "(000) 000 00 00",
+    "assignCompany": "Firma Ata",
+    "logout": "Çıkış Yap",
+    "creDate": "Oluşturulma Tarihi",
+    "updDate": "Güncellenme Tarihi",
+    "message": {
+        "main-message": "Kayıt silinecek onaylıyor musunuz?",
+        "caution": "Dikkat"
+    },
+    "delete": "Kaydı Sil",
+    "confirmation": {
+        "success-message": {
+            "message": {
+                "deleted": "Kayıt başarıyla silindi."
+            }
+        },
+        "cancel-message": {
+            "reservation-cancel": "Rezervasyon iptal edilecek. Onaylıyor musunuz?"
+        }
+    },
+    "close": "Kapat",
+    "reset": "Temizle",
+    "no-results-found": "Kayıt Bulunamadı",
+    "reservationDate": "Rezervasyon Tarihi",
+    "room-availability": "Oda-Müsaitlik Tablosu",
+    "available": "Müsait",
+    "valid": "Durum",
+    "warning": "Uyarı",
+    "cancelled": "İptal Edildi",
+    "duration": "Gece Sayısı"
 }

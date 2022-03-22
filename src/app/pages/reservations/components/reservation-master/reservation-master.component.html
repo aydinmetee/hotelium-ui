@@ -143,15 +143,6 @@
       </td>
       <td class="text-center">
         <span class="ui-column-title">{{ "g.action" | translate }}</span>
-
-        <button
-          type="button"
-          pButton
-          icon="fas fa-pencil-alt"
-          (click)="initSourceUpdateDialog(rowData)"
-          [pTooltip]="'update' | translate"
-          class="ui-green-button"
-        ></button>
         <button
           type="button"
           pButton
@@ -159,6 +150,25 @@
           (click)="navToDetail(rowData.id)"
           class="ui-green-button"
           [pTooltip]="'details' | translate"
+        ></button>
+        <button
+          *ngIf="rowData.status != 'COMPLETED'"
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="initSourceUpdateDialog(rowData)"
+          [pTooltip]="'update' | translate"
+          class="ui-green-button"
+        ></button>
+
+        <button
+          *ngIf="rowData.status == 'NEW'"
+          type="button"
+          pButton
+          icon="fas fa-times"
+          (click)="markAsCancelled(rowData)"
+          [pTooltip]="'cancel' | translate"
+          class="ui-button-danger"
         ></button>
       </td>
     </tr>
@@ -227,7 +237,25 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
+    <div class="ui-lg-4 ui-md-4 ui-g-12">
+      <label
+        >{{ "duration" | translate }}
+        <form-required controlName="duration"></form-required>
+      </label>
+      <input
+        type="number"
+        class="w-100"
+        pInputText
+        name="duration"
+        formControlName="duration"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="duration"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-8 ui-md-8 ui-g-12">
       <label
         >{{ "description" | translate }}
         <form-required controlName="description"></form-required>
