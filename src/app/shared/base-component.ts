@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TableColumns } from './models/table-columns';
-import { SelectItem } from 'primeng/api';
+import { SelectItem, MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { RestService } from './services/rest.service';
 import { UtilityService } from './services/utility.service';
@@ -38,6 +38,9 @@ export abstract class BaseComponent implements OnDestroy {
   public statusList: SelectItem[] = [];
 
   public minDate = new Date();
+
+  public activeIndex = 0;
+  public stepItems: MenuItem[] = [];
 
   public searchObject: any = {};
   public searchToggle = false;
@@ -415,5 +418,19 @@ export abstract class BaseComponent implements OnDestroy {
         });
       }
     });
+  }
+
+  public initStepItems(items: string[] = []): void {
+    const result = [];
+    if (items.length > 0) {
+      for (let i = 0, l = items.length; i < l; i++) {
+        result.push({
+          label: this.t(items[i]),
+          command: () => (this.activeIndex = i),
+        });
+      }
+
+      this.stepItems = result;
+    }
   }
 }

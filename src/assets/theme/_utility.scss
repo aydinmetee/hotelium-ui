@@ -1,21 +1,21 @@
 .h-full {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 /* reactive form elemnt not valid */
 
 input::placeholder {
-    opacity: 0.5;
-    color: #ccc;
+  opacity: 0.5;
+  color: #ccc;
 }
 
 @mixin in-valid-style {
-    border: 1px solid red;
-    background: rgba(255, 0, 0, 0.35);
-    box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.2) inset !important;
-    &::placeholder {
-        color: rgb(0, 0, 0);
-    }
+  border-bottom: 1px solid red;
+  background: rgba(255, 0, 0, 0.35);
+  box-shadow: 0 0 5px 1px rgba(255, 0, 0, 0.2) inset !important;
+  &::placeholder {
+    color: rgb(0, 0, 0);
+  }
 }
 
 input.ng-invalid.ng-touched,
@@ -30,116 +30,115 @@ p-dropdown.ng-invalid.ng-touched .ui-dropdown-label,
 p-dropdown.ng-invalid.ng-touched .ui-dropdown-trigger,
 p-calendar.ng-invalid.ng-touched input,
 p-calendar.ng-invalid.ng-touched .ui-datepicker-trigger {
-    @include in-valid-style();
+  @include in-valid-style();
 }
 
 .invalid-form {
-    input.ng-invalid,
-    input.ng-invalid:hover,
-    input.ng-invalid.ng-touched,
-    input.ng-invalid.ng-touched:hover,
-    textarea.ng-invalid,
-    textarea.ng-invalid:hover,
-    textarea.ng-invalid.ng-touched,
-    textarea.ng-invalid.ng-touched:hover,
-    .ng-invalid.ui-inputtext:enabled:hover,
-    p-autocomplete.ng-invalid input,
-    p-dropdown.ng-invalid .ui-dropdown-label,
-    p-dropdown.ng-invalid .ui-dropdown-trigger,
-    sis-dropdown.ng-invalid .ui-dropdown-label,
-    sis-dropdown.ng-invalid .ui-dropdown-trigger,
-    p-calendar.ng-invalid input,
-    p-calendar.ng-invalid .ui-datepicker-trigger {
-        @include in-valid-style();
-    }
+  input.ng-invalid,
+  input.ng-invalid:hover,
+  input.ng-invalid.ng-touched,
+  input.ng-invalid.ng-touched:hover,
+  textarea.ng-invalid,
+  textarea.ng-invalid:hover,
+  textarea.ng-invalid.ng-touched,
+  textarea.ng-invalid.ng-touched:hover,
+  .ng-invalid.ui-inputtext:enabled:hover,
+  p-autocomplete.ng-invalid input,
+  p-dropdown.ng-invalid .ui-dropdown-label,
+  p-dropdown.ng-invalid .ui-dropdown-trigger,
+  sis-dropdown.ng-invalid .ui-dropdown-label,
+  sis-dropdown.ng-invalid .ui-dropdown-trigger,
+  p-calendar.ng-invalid input,
+  p-calendar.ng-invalid .ui-datepicker-trigger {
+    @include in-valid-style();
+  }
 }
 
 /* float */
 
 .f-right {
-    float: right;
+  float: right;
 }
 
 .f-left {
-    float: left;
+  float: left;
 }
 
 .mt-0 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .mt-1 {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .mb-0 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .mb-1 {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .centerIt {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .topRight {
-    position: absolute;
-    top: 31%;
-    left: 33%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+  position: absolute;
+  top: 31%;
+  left: 33%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .s-none {
-    user-select: none;
+  user-select: none;
 }
 
 .d-none {
-    display: none !important;
+  display: none !important;
 }
 
 .d-flex {
-    display: flex;
+  display: flex;
 }
 
 .align-items-center {
-    align-items: center;
+  align-items: center;
 }
 
 .justify-content-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .flex-flow-column {
-    flex-flow: column
+  flex-flow: column;
 }
 
 .full-height {
-    height: 100%;
+  height: 100%;
 }
 
 .form-control-error-list {
-    position: absolute;
+  position: absolute;
 }
 
 .font-arial {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .th-text-center {
-    text-align: center !important;
+  text-align: center !important;
 }
 
 .d-block {
-    display: block;
-  }
-  .d-inline-block{
-    display: inline-block !important;
-  }
-  
+  display: block;
+}
+.d-inline-block {
+  display: inline-block !important;
+}

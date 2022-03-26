@@ -136,7 +136,10 @@ export class ReservationDetailComponent
           });
           this.searchForm.disable();
           this.comboService.getDrawees(result.id).subscribe((result) => {
-            this.draweeList = result;
+            this.draweeList = [
+              { label: this.t('choose'), value: null, additionalData: null },
+              ...result,
+            ];
           });
         });
     });
@@ -187,9 +190,9 @@ export class ReservationDetailComponent
     this.paymentForm.get('masterId').setValue(this.reservationMaster.id);
     const drawee = this.draweeList.find(
       (x) => x.value === this.paymentForm.get('draweeId').value
-    ).additionalData;
-    this.paymentForm.get('drawee').setValue(drawee);
+    );
     console.log(drawee);
+    this.paymentForm.get('drawee').setValue(drawee.additionalData);
 
     if (this.paymentForm.invalid) {
       return;

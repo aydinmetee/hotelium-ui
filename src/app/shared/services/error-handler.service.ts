@@ -31,12 +31,21 @@ export class ErrorHandlerService implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         this.loadingService.isLoading = false;
         try {
+          if (err.status == 403) {
+            this.alert.error(
+              this.translateService.instant('g.error'),
+              'Token Expired'
+            );
+            this.loginDialogService.logout();
+          } else {
+            this.alert.error(
+              this.translateService.instant('g.error'),
+              err.error.message
+            );
+          }
           console.log(err);
-          this.alert.error(
-            this.translateService.instant('g.error'),
-            err.error.message
-          );
         } catch (x) {
+          console.log(x);
           this.alert.error(
             this.translateService.instant('g.error'),
             'Error.... '

@@ -203,5 +203,12 @@
     "decimal-format":"dot_separator.3",
     "integer-format":"dot_separator.0",
     "thousandSeparator": ".",
-    "nameOrNameTitle":"Ad-Soyad/Ünvan"
+    "nameOrNameTitle":"Ad-Soyad/Ünvan",
+    "createNewCustomer":"Yeni Müşteri Oluştur",
+    "chooseCreatedCustomer":"Kayıtlı Müşteri Seç",
+    "reservation":{
+        "general":"Genel Bilgiler",
+        "customers":"Müşteriler"
+    },
+    "complete":"Tamamla"
 }

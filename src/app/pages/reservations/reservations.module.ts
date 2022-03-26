@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxMaskModule } from 'src/app/shared/ngx-mask';
 import { PrimengModule } from 'src/app/shared/primeng/primeng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AccountTransactionService } from '../account-transaction/services/account-transaction.service';
@@ -31,6 +32,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     PrimengModule,
     TranslateModule,
+    NgxMaskModule.forRoot(),
     SharedModule,
   ],
   providers: [
