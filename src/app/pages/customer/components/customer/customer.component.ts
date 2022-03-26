@@ -13,7 +13,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomerComponent extends BaseComponent implements OnInit {
   isCompanyDialogVisible = false;
-  companyList: LabelValue<string, number>[] = [];
+  companyList: LabelValue<string, string>[] = [];
   companyId: string;
   constructor(
     private customerService: CustomerService,

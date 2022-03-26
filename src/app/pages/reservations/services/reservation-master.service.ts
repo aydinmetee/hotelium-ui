@@ -22,6 +22,13 @@ export class ReservationMasterService extends RestService {
       `${Urls.BASE_URL.toString()}/reservation/${id}/mark-as-cancelled`
     );
   }
+
+  public getPayment(model: any) {
+    return this.restClientService.post(
+      `${Urls.BASE_URL.toString()}/reservation/${model.masterId}/get-payment`,
+      JSON.stringify(model)
+    );
+  }
 }
 
 @Injectable()

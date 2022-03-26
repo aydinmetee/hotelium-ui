@@ -14,7 +14,7 @@ export class ComboService {
 
   constructor(private _http: RestClientService) {}
 
-  public getRoomsList(status?: any): Observable<LabelValue<string, number>[]> {
+  public getRoomsList(status?: any): Observable<LabelValue<string, string>[]> {
     let body = {
       valid: true,
       status: null,
@@ -31,7 +31,7 @@ export class ComboService {
     );
   }
 
-  public getCompanyList(): Observable<LabelValue<string, number>[]> {
+  public getCompanyList(): Observable<LabelValue<string, string>[]> {
     let body = {};
     return this._http
       .post(`${this.apiUrl}/companys`, JSON.stringify(body))
@@ -44,7 +44,7 @@ export class ComboService {
       );
   }
 
-  public getCustomersList(): Observable<LabelValue<string, number>[]> {
+  public getCustomersList(): Observable<LabelValue<string, string>[]> {
     let body = {};
     return this._http
       .post(`${this.apiUrl}/customers`, JSON.stringify(body))
@@ -55,5 +55,22 @@ export class ComboService {
           })
         )
       );
+  }
+
+  public getDrawees(
+    reservationMasterId: string
+  ): Observable<LabelValue<string, string>[]> {
+    return this._http.get(`${this.apiUrl}/drawee/${reservationMasterId}`).pipe(
+      map((arr) =>
+        arr.map((item) => {
+          console.log(item);
+          return {
+            label: item.key,
+            value: item.value,
+            additionalData: item.additionalData,
+          };
+        })
+      )
+    );
   }
 }

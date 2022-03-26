@@ -18,7 +18,7 @@ export class ReservationMasterComponent
   extends BaseComponent
   implements OnInit
 {
-  roomsList: LabelValue<string, number>[] = [];
+  roomsList: LabelValue<string, string>[] = [];
   statusList: LabelValue<string, string>[] = [];
   public sourceList: LabelValue<string, string>[] = [];
   updateSourceForm: FormGroup;
@@ -43,6 +43,7 @@ export class ReservationMasterComponent
       description: [null],
       reservationDate: [new Date(), Validators.required],
       duration: [1, [Validators.required, Validators.min(1)]],
+      dailyAmount: [1, [Validators.required, Validators.min(1)]],
     });
 
     this.updateSourceForm = this.builder.group({
@@ -83,6 +84,7 @@ export class ReservationMasterComponent
         dateFormat: this.onlyDateFormat,
       },
       { field: 'duration', header: this.t('duration'), default: true },
+      { field: 'dailyAmount', header: this.t('dailyAmount'), default: true },
       {
         field: 'checkInDate',
         header: this.t('checkInDate'),
@@ -97,12 +99,17 @@ export class ReservationMasterComponent
         isDate: true,
         dateFormat: this.dateFormat,
       },
-      { field: 'bookAmount', header: this.t('bookAmount'), default: true },
       {
         field: 'source',
         header: this.t('source'),
         default: true,
         translateKey: TranslateKey.source,
+      },
+      {
+        field: 'isPayed',
+        header: this.t('isPayed'),
+        default: true,
+        translateKey: TranslateKey.yes_no,
       },
       {
         field: 'status',
