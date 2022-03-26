@@ -199,5 +199,9 @@
     "person":"Bireysel",
     "legal":"Tüzel",
     "draweeExplanation":"Cari Hareket kimin için oluşturulsun?",
-    "isPayed":"Ödeme Alındı"
+    "isPayed":"Ödeme Alındı",
+    "decimal-format":"dot_separator.3",
+    "integer-format":"dot_separator.0",
+    "thousandSeparator": ".",
+    "nameOrNameTitle":"Ad-Soyad/Ünvan"
 }

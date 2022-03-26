@@ -1,34 +1,92 @@
-<!-- <span class="ui-column-title">{{ col.header }}</span> -->
-<div [ngClass]="col.textAlign">
-  <ng-container *ngIf="col.isNumber; else other">
-    {{ (+rowData[col.field] | mask: col.numberFormat) || 0 }}
-
-    <ng-container *ngIf="col.currencyField">
-      {{ rowData[col.currencyField] | currencyCode }}
+<div class="container" #elm>
+  <ng-container [ngSwitch]="col.type">
+    <ng-container *ngSwitchCase="'Observable'">
+      {{ rowData[col.field] | async }}
     </ng-container>
 
-    <ng-container *ngIf="col.showParentCurrency">
-      {{ parentCurrency | currencyCode }}
+    <ng-container *ngSwitchCase="'UserName'">
+      {{ (rowData[col.field] | userInfo | async)?.fullName }}
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <div
+        [ngStyle]="{
+          'text-align': col.textAlign
+        }"
+        [ngClass]="{
+          'c-pointer': col.showTooltip
+        }"
+        tooltipPosition="top"
+        [pTooltip]="col.showTooltip ? rowData[col.field] : ''"
+      >
+        <ng-container *ngIf="col.customRender; else base">
+          {{ rowData | render: col.renderMethod }}
+        </ng-container>
+        <ng-template #base>
+          <ng-container *ngIf="col.isNumber; else other">
+            {{ (+rowData[col.field] | mask: col.numberFormat) || 0 }}
+
+            <ng-container *ngIf="col.currencyField">
+              {{ rowData[col.currencyField] | currencyCode }}
+            </ng-container>
+
+            <ng-container *ngIf="col.showParentCurrency">
+              {{ parentCurrency | currencyCode }}
+            </ng-container>
+          </ng-container>
+
+          <ng-template #other>
+            <span
+              *ngIf="col.field.toString() === 'status' || col.isStatus"
+              class="circle"
+              [ngClass]="'' + rowData[col.field] | lowercase"
+            ></span>
+
+            <ng-container *ngIf="col.isDate; else translateRender">
+              {{
+                col.totalTextColumn &&
+                (rowData[col.field] === null ||
+                  rowData[col.field] === undefined)
+                  ? "TOPLAM"
+                  : (rowData[col.field] | date: col.dateFormat:null:"tr")
+              }}
+            </ng-container>
+
+            <ng-template #translateRender>
+              <ng-container *ngIf="col.translateKey; else baseString">
+                {{
+                  col.nullable &&
+                  (rowData[col.field] === null ||
+                    rowData[col.field] === undefined)
+                    ? ""
+                    : colTranslateServ.getValue(
+                        rowData[col.field],
+                        col.translateKey,
+                        col
+                      )
+                }}
+              </ng-container>
+            </ng-template>
+
+            <ng-template #baseString>
+              <ng-container [ngSwitch]="col.case">
+                <ng-container *ngSwitchCase="'upperCase'">
+                  {{ rowData[col.field] | uppercase }}
+                </ng-container>
+                <ng-container *ngSwitchCase="'lowerCase'">
+                  {{ rowData[col.field] | lowercase }}
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  {{ rowData[col.field] }}
+                </ng-container>
+              </ng-container>
+            </ng-template>
+          </ng-template>
+        </ng-template>
+        <ng-container *ngIf="col.symbol">
+          {{ col.symbol }}
+        </ng-container>
+      </div>
     </ng-container>
   </ng-container>
-  <ng-template #other>
-    <span
-      *ngIf="
-        col.field.toString() === 'status' || col.field.toString() === 'type'
-      "
-      class="circle"
-      [ngClass]="rowData[col.field] | lowercase"
-    ></span>
-
-    {{
-      col.isDate
-        ? (rowData[col.field] | date: col.dateFormat)
-        : colTranslateServ.getValue(
-            rowData[col.field],
-            col.translateKey,
-            col,
-            rowData
-          )
-    }}
-  </ng-template>
 </div>

@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormRequiredComponent } from './components/form-required/form-required.component';
 import { FormValidationSummaryComponent } from './components/form-validation-summary/form-validation-summary.component';
 import { SisColValueComponent } from './components/sis-col-value/sis-col-value.component';
+import { NgxMaskModule } from './ngx-mask';
 import { CurrencyCodePipe } from './pipes/currency-code.pipe';
 import { PrimengModule } from './primeng/primeng.module';
 import { HeaderComponent } from './theme/header/header.component';
@@ -12,7 +13,13 @@ import { MenuRenderComponent } from './theme/menu/menu-render/menu-render.compon
 import { MenuComponent } from './theme/menu/menu.component';
 
 @NgModule({
-  imports: [TranslateModule, CommonModule, FormsModule, PrimengModule],
+  imports: [
+    TranslateModule,
+    CommonModule,
+    FormsModule,
+    PrimengModule,
+    NgxMaskModule.forChild(),
+  ],
   declarations: [
     HeaderComponent,
     MenuComponent,

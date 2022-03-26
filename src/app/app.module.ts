@@ -12,7 +12,7 @@ import {
 } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe, registerLocaleData } from '@angular/common';
 import { ConfirmationService, MessageService } from 'primeng';
 import { LoginModule } from './pages/login/login.module';
 import { LoginDialogService } from './pages/login/services/login-dialog.service';
@@ -22,10 +22,14 @@ import { PagesModule } from './pages/pages.module';
 import { ErrorPagesModule } from './pages/error-pages/errors-pages.module';
 import { AppInjector } from './shared/services/Injector.service';
 import { ColumnTranslationService } from './shared/services/column-translation.service';
-import { NgxMaskModule } from './shared/ngx-mask';
+import { MaskPipe, NgxMaskModule } from './shared/ngx-mask';
+import localeTr from '@angular/common/locales/tr';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+registerLocaleData(localeTr, 'tr');
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -51,6 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     DatePipe,
+    DecimalPipe,
+    MaskPipe,
     MessageService,
     ConfirmationService,
     LoginDialogService,

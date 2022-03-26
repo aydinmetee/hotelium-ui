@@ -390,6 +390,14 @@ export abstract class BaseComponent implements OnDestroy {
     return this.t('phoneNumberFormat');
   }
 
+  public get decimalFormat(): string {
+    return this.t('decimal-format');
+  }
+
+  public get integerFormat(): string {
+    return this.t('integer-format');
+  }
+
   public confirm({
     title = 'warning',
     message = 'confirmOperation',
