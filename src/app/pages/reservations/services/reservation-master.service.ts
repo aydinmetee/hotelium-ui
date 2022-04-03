@@ -11,9 +11,9 @@ export class ReservationMasterService extends RestService {
     return Urls.BASE_URL.toString() + '/reservation';
   }
 
-  public getWeeklyReservations() {
+  public getPeriodReservations(period: 'WEEKLY' | 'MONTHLY' = 'WEEKLY') {
     return this.restClientService.get(
-      `${this.apiUrl}/get-weekly-reservations/WEEKLY`
+      `${this.apiUrl}/get-weekly-reservations/${period}`
     );
   }
 
