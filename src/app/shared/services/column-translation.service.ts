@@ -77,6 +77,8 @@ export class ColumnTranslationService {
         return value
           ? this.t('form.radio.active')
           : this.t('form.radio.disable');
+      case TranslateKey.yes_no:
+        return value ? this.t('form.btn.yes') : this.t('form.btn.no');
       default:
         return value;
     }

@@ -13,56 +13,20 @@
     <div class="ui-g">
       <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>
-          {{ "amount" | translate }}
+          {{ "nameOrNameTitle" | translate }}
         </label>
-        <input
-          pInputText
-          type="number"
-          class="w-100"
-          name="amount"
-          formControlName="amount"
-          [min]="1"
-        />
-        <form-validation-summary
-          [form]="searchForm"
-          name="amount"
-          [visable]="invalidForm"
-        ></form-validation-summary>
-      </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
-        <label>
-          {{ "description" | translate }}
-        </label>
-        <input
-          type="text"
-          class="w-100"
-          pInputText
-          name="description"
-          formControlName="description"
-          maxlength="30"
-        />
-      </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
-        <label>
-          {{ "source" | translate }}
-        </label>
-        <p-dropdown
-          [options]="sourceList"
-          formControlName="source"
-          class="w-100"
-          appendTo="body"
-        ></p-dropdown>
-      </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
-        <label>
-          {{ "type" | translate }}
-        </label>
-        <p-dropdown
-          [options]="typeList"
-          formControlName="type"
-          class="w-100"
-          appendTo="body"
-        ></p-dropdown>
+        <p-autoComplete
+          formControlName="draweeId"
+          (completeMethod)="getDraweesList($event)"
+          [suggestions]="draweesResult"
+          [size]="30"
+          [placeholder]="'nameOrNameTitle' | translate"
+          [minLength]="1"
+          field="key"
+          dataKey="value"
+          [emptyMessage]="'no-results-found' | translate"
+          (onFocus)="onFocus(autoDrawees)"
+        ></p-autoComplete>
       </div>
     </div>
   </form>

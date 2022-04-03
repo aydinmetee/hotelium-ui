@@ -1,4 +1,3 @@
-import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { BaseComponent } from 'src/app/shared/base-component';
@@ -13,7 +12,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomerComponent extends BaseComponent implements OnInit {
   isCompanyDialogVisible = false;
-  companyList: LabelValue<string, number>[] = [];
+  companyList: LabelValue<string, string>[] = [];
   companyId: string;
   constructor(
     private customerService: CustomerService,

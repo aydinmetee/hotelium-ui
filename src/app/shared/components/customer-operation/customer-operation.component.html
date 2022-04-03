@@ -1,0 +1,94 @@
+<div
+  class="pb-2"
+  [formGroup]="form"
+  #formsCon
+  [ngClass]="{ 'invalid-form': invalidForm }"
+>
+  <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <label
+      >{{ "name" | translate }}
+      <form-required controlName="name"></form-required>
+    </label>
+    <input
+      type="text"
+      class="w-100"
+      pInputText
+      formControlName="name"
+      required
+      maxlength="100"
+    />
+    <form-validation-summary
+      [form]="form"
+      name="name"
+      [visable]="invalidForm"
+    ></form-validation-summary>
+  </div>
+  <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <label
+      >{{ "lastname" | translate }}
+      <form-required controlName="lastname"></form-required>
+    </label>
+    <input
+      type="text"
+      class="w-100"
+      pInputText
+      formControlName="lastname"
+      required
+      maxlength="100"
+    />
+    <form-validation-summary
+      [form]="form"
+      name="lastname"
+      [visable]="invalidForm"
+    ></form-validation-summary>
+  </div>
+  <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <label
+      >{{ "legalId" | translate }}
+      <form-required controlName="legalId"></form-required
+    ></label>
+    <input
+      type="text"
+      class="w-100"
+      pInputText
+      formControlName="legalId"
+      required
+      [maxLength]="11"
+    />
+    <form-validation-summary
+      [form]="form"
+      name="legalId"
+      [visable]="invalidForm"
+    ></form-validation-summary>
+  </div>
+  <div class="ui-lg-6 ui-md-6 ui-g-12">
+    <label
+      >{{ "phone" | translate }}
+      <form-required controlName="phone"></form-required
+    ></label>
+    <input
+      type="text"
+      class="w-100"
+      pInputText
+      formControlName="phone"
+      [placeholder]="phoneNumberFormat"
+      [mask]="phoneNumberFormat"
+    />
+    <form-validation-summary
+      [form]="form"
+      name="phone"
+      [visable]="invalidForm"
+    ></form-validation-summary>
+  </div>
+  <div class="ui-g-12 pt-1 pb-1 text-right">
+    <button
+      *ngIf="dialogType"
+      type="button"
+      pButton
+      icon="fas fa-plus"
+      label="{{ 'create' | translate }}"
+      (click)="create()"
+      class="ui-green-button"
+    ></button>
+  </div>
+</div>

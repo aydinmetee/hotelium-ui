@@ -4,4 +4,5 @@ export enum TranslateKey {
   transactionType = 'transactionType',
   reservationStatus = 'reservationStatus',
   valid = 'valid',
+  yes_no = 'yes_no',
 }

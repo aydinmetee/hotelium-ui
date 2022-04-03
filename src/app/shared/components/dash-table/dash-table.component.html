@@ -1,0 +1,48 @@
+<p-table
+  #pTable
+  [columns]="columns"
+  [value]="data"
+  [paginator]="pagination"
+  [rows]="pageSize"
+  [totalRecords]="total"
+  [lazy]="isLazy"
+  (onLazyLoad)="loadLazy($event)"
+  [rowsPerPageOptions]="rowsPerPage"
+  [customSort]="false"
+  dataKey="id"
+  [reorderableColumns]="true"
+  [styleClass]="'grid'"
+  [responsive]="true"
+  [resizableColumns]="true"
+  selectionMode="single"
+  [(selection)]="selectedItem"
+  (onRowSelect)="onRowSelect($event)"
+>
+  <ng-template pTemplate="caption" *ngIf="title">
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-left">
+          {{ title }}
+        </div>
+
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-right"></div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" pResizableColumn>
+        {{ col.header }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr [pSelectableRow]="rowData">
+      <td *ngFor="let col of columns" class="ui-resizable-column">
+        <span class="ui-column-title">{{ col.header }}</span>
+        <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

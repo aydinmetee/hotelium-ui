@@ -152,12 +152,12 @@
     },
     "checkInDate": "Giriş Tarihi",
     "checkOutDate": "Çıkış Tarihi",
-    "reservationDetailTitle": "Rezervasyon Detayı",
+    "reservationDetailTitle": "Müşteri Bilgileri",
     "customerFullName": "Müşteri Adı Soyadı",
     "bookAmount": "Konaklama Tutarı",
     "customers": "Müşteriler",
     "markAsBooking": "Giriş Yaptı",
-    "markAsCompleted": "Çıkış Yaptı",
+    "markAsCompleted": "Rezervasyonu Tamamla",
     "updateTransactionSource": "Kaynağı Güncelle",
     "details": "Detaya Git",
     "g": {
@@ -193,5 +193,22 @@
     "valid": "Durum",
     "warning": "Uyarı",
     "cancelled": "İptal Edildi",
-    "duration": "Gece Sayısı"
+    "duration": "Gece Sayısı",
+    "dailyAmount":"Gecelik Fiyat",
+    "getPayment":"Ödeme Al",
+    "person":"Bireysel",
+    "legal":"Tüzel",
+    "draweeExplanation":"Cari Hareket kimin için oluşturulsun?",
+    "isPayed":"Ödeme Alındı",
+    "decimal-format":"dot_separator.3",
+    "integer-format":"dot_separator.0",
+    "thousandSeparator": ".",
+    "nameOrNameTitle":"Ad-Soyad/Ünvan",
+    "createNewCustomer":"Yeni Müşteri Oluştur",
+    "chooseCreatedCustomer":"Kayıtlı Müşteri Seç",
+    "reservation":{
+        "general":"Genel Bilgiler",
+        "customers":"Müşteriler"
+    },
+    "complete":"Tamamla"
 }

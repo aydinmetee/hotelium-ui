@@ -175,6 +175,7 @@
   [styleClass]="'grid'"
   [responsive]="true"
   [scrollable]="true"
+  [style]="{ width: '100%' }"
 >
   <ng-template pTemplate="caption">
     <div class="ui-helper-clearfix">
@@ -184,10 +185,23 @@
             "room-availability" | translate
           }}</span>
         </div>
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-right">
+          <p-dropdown
+            [options]="periodList"
+            [(ngModel)]="period"
+            appendTo="body"
+            class="period"
+            (onChange)="initTableData()"
+          ></p-dropdown>
+        </div>
       </div>
     </div>
   </ng-template>
-
+  <ng-template pTemplate="colgroup" let-columns>
+    <colgroup>
+      <col *ngFor="let col of dateList" style="width: 100px" />
+    </colgroup>
+  </ng-template>
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let col of dateList">

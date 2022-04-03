@@ -11,15 +11,22 @@ export class ReservationMasterService extends RestService {
     return Urls.BASE_URL.toString() + '/reservation';
   }
 
-  public getWeeklyReservations() {
+  public getPeriodReservations(period: 'WEEKLY' | 'MONTHLY' = 'WEEKLY') {
     return this.restClientService.get(
-      `${this.apiUrl}/get-weekly-reservations/WEEKLY`
+      `${this.apiUrl}/get-weekly-reservations/${period}`
     );
   }
 
   public markAsCancelled(id: string) {
     return this.restClientService.get(
       `${Urls.BASE_URL.toString()}/reservation/${id}/mark-as-cancelled`
+    );
+  }
+
+  public getPayment(model: any) {
+    return this.restClientService.post(
+      `${Urls.BASE_URL.toString()}/reservation/${model.masterId}/get-payment`,
+      JSON.stringify(model)
     );
   }
 }

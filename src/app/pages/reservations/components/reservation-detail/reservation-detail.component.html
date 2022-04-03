@@ -13,7 +13,7 @@
   </p-header>
   <div [formGroup]="searchForm" [ngClass]="{ 'invalid-form': invalidForm }">
     <div class="ui-g">
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
         <label>
           {{ "roomCode" | translate | titlecase }}
         </label>
@@ -25,18 +25,7 @@
           formControlName="roomCode"
         />
       </div>
-
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
-        <label>{{ "description" | translate }} </label>
-        <input
-          type="text"
-          class="w-100"
-          pInputText
-          name="description"
-          formControlName="description"
-        />
-      </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
         <label>{{ "reservationDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
@@ -48,8 +37,43 @@
           [minDate]="minDate"
         ></p-calendar>
       </div>
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
+        <label>
+          {{ "duration" | translate | titlecase }}
+        </label>
+        <input
+          type="number"
+          class="w-100"
+          pInputText
+          name="duration"
+          formControlName="duration"
+        />
+      </div>
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
+        <label>
+          {{ "dailyAmount" | translate | titlecase }}
+        </label>
+        <input
+          type="number"
+          class="w-100"
+          pInputText
+          name="dailyAmount"
+          formControlName="dailyAmount"
+        />
+      </div>
 
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
+        <label>{{ "description" | translate }} </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="description"
+          formControlName="description"
+        />
+      </div>
+
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
         <label>{{ "checkInDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
@@ -63,7 +87,7 @@
         ></p-calendar>
       </div>
 
-      <div class="ui-lg-4 ui-md-4 ui-g-12">
+      <div class="ui-lg-3 ui-md-3 ui-g-12">
         <label>{{ "checkOutDate" | translate }}</label>
         <p-calendar
           [dateFormat]="'dd/mm/yy'"
@@ -76,7 +100,7 @@
           [showTime]="true"
         ></p-calendar>
       </div>
-      <div class="ui-lg-4 ui-md-4 ui-g-12 p-1">
+      <div class="ui-lg-3 ui-md-3 ui-g-12 p-1">
         <label style="padding-top: 20px"
           >{{ "status" | translate }}:
           <span
@@ -106,6 +130,16 @@
         icon="fas fa-check"
         pButton
         label="{{ 'markAsCompleted' | translate }}"
+        class="ui-green-button"
+        style="margin-bottom: 10px"
+      ></button>
+      <button
+        *ngIf="reservationMaster?.status !== 'COMPLETED'"
+        (click)="initPaymentDialog()"
+        [disabled]="reservationMaster?.isPayed"
+        icon="fas fa-check"
+        pButton
+        label="{{ 'getPayment' | translate }}"
         class="ui-green-button"
         style="margin-bottom: 10px"
       ></button>
@@ -282,42 +316,6 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "amount" | translate }}
-        <form-required controlName="amount"></form-required>
-      </label>
-      <input
-        type="number"
-        class="w-100"
-        pInputText
-        name="amount"
-        formControlName="amount"
-        [min]="1"
-      />
-      <form-validation-summary
-        [form]="bookingForm"
-        name="amount"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "source" | translate }}
-        <form-required controlName="source"></form-required>
-      </label>
-      <p-dropdown
-        [options]="sourceList"
-        formControlName="source"
-        class="w-100"
-        appendTo="body"
-      ></p-dropdown>
-      <form-validation-summary
-        [form]="bookingForm"
-        name="source"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
   </div>
   <p-footer>
     <div class="ui-g">
@@ -336,6 +334,100 @@
           icon="fas fa-plus"
           (click)="markAsBooking()"
           label="{{ 'markAsBooking' | translate }}"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="paymentDialog"
+  [responsive]="true"
+  [style]="{ width: '400px', minWidth: 200 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+  (onHide)="onHideEvent()"
+>
+  <div
+    class="pb-2"
+    [formGroup]="paymentForm"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "dailyAmount" | translate }}
+        <form-required controlName="amount"></form-required>
+      </label>
+      <input
+        type="number"
+        class="w-100"
+        pInputText
+        name="amount"
+        formControlName="amount"
+        [min]="1"
+      />
+      <form-validation-summary
+        [form]="paymentForm"
+        name="amount"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "source" | translate }}
+        <form-required controlName="source"></form-required>
+      </label>
+      <p-dropdown
+        [options]="sourceList"
+        formControlName="source"
+        class="w-100"
+        appendTo="body"
+      ></p-dropdown>
+      <form-validation-summary
+        [form]="paymentForm"
+        name="source"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "draweeExplanation" | translate }}
+        <form-required controlName="draweeId"></form-required>
+      </label>
+      <p-dropdown
+        [options]="draweeList"
+        formControlName="draweeId"
+        class="w-100"
+        appendTo="body"
+      ></p-dropdown>
+      <form-validation-summary
+        [form]="paymentForm"
+        name="draweeId"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'form.btn.close' | translate }}"
+          (click)="paymentDialog = false"
+          class="ui-dark-button"
+        ></button>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-check"
+          (click)="getPayment()"
+          label="{{ 'getPayment' | translate }}"
           class="ui-green-button"
         ></button>
       </div>

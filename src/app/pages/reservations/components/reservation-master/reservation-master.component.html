@@ -56,7 +56,7 @@
           class="w-100"
           name="bookAmount"
           formControlName="bookAmount"
-          maxlength="30"
+          [min]="1"
         />
       </div>
     </div>
@@ -152,16 +152,6 @@
           [pTooltip]="'details' | translate"
         ></button>
         <button
-          *ngIf="rowData.status != 'COMPLETED'"
-          type="button"
-          pButton
-          icon="fas fa-pencil-alt"
-          (click)="initSourceUpdateDialog(rowData)"
-          [pTooltip]="'update' | translate"
-          class="ui-green-button"
-        ></button>
-
-        <button
           *ngIf="rowData.status == 'NEW'"
           type="button"
           pButton
@@ -189,89 +179,194 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '400px', minWidth: 350 }"
+  [style]="{ width: '1000px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
 >
-  <div
-    class="pb-2"
-    [formGroup]="form"
-    #formsCon
-    [ngClass]="{ 'invalid-form': invalidForm }"
-  >
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "reservationDate" | translate }}
-        <form-required controlName="reservationDate"></form-required>
-      </label>
-      <p-calendar
-        [dateFormat]="'dd/mm/yy'"
-        name="reservationDate"
-        formControlName="reservationDate"
-        [locale]="calendar"
-        [showIcon]="true"
-        appendTo="body"
-        [minDate]="minDate"
-      ></p-calendar>
-      <form-validation-summary
-        [form]="form"
-        name="reservationDate"
-        [visable]="invalidForm"
-      ></form-validation-summary>
+  <div class="ui-g-12">
+    <p-steps
+      [(activeIndex)]="activeIndex"
+      [model]="stepItems"
+      [readonly]="true"
+      [styleClass]="'steps'"
+      #s
+    ></p-steps>
+  </div>
+  <div class="pb-2" #formsCon [ngClass]="{ 'invalid-form': invalidForm }">
+    <div
+      class="ui-lg-12 ui-md-12 ui-g-12 p-0"
+      [formGroup]="form"
+      [hidden]="activeIndex != 0"
+    >
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label
+          >{{ "reservationDate" | translate }}
+          <form-required controlName="reservationDate"></form-required>
+        </label>
+        <p-calendar
+          [dateFormat]="'dd/mm/yy'"
+          name="reservationDate"
+          formControlName="reservationDate"
+          [locale]="calendar"
+          [showIcon]="true"
+          appendTo="body"
+          [minDate]="minDate"
+        ></p-calendar>
+        <form-validation-summary
+          [form]="form"
+          name="reservationDate"
+          [visable]="invalidForm"
+        ></form-validation-summary>
+      </div>
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label
+          >{{ "rooms" | translate }}
+          <form-required controlName="roomId"></form-required>
+        </label>
+        <p-dropdown
+          [options]="roomsList"
+          formControlName="roomId"
+          class="w-100"
+          appendTo="body"
+        ></p-dropdown>
+        <form-validation-summary
+          [form]="form"
+          name="roomId"
+          [visable]="invalidForm"
+        ></form-validation-summary>
+      </div>
+      <div class="ui-lg-6 ui-md-6 ui-g-12">
+        <label
+          >{{ "duration" | translate }}
+          <form-required controlName="duration"></form-required>
+        </label>
+        <input
+          type="number"
+          class="w-100"
+          pInputText
+          name="duration"
+          formControlName="duration"
+          [min]="1"
+        />
+        <form-validation-summary
+          [form]="form"
+          name="duration"
+          [visable]="invalidForm"
+        ></form-validation-summary>
+      </div>
+      <div class="ui-lg-6 ui-md-6 ui-g-12">
+        <label
+          >{{ "dailyAmount" | translate }}
+          <form-required controlName="dailyAmount"></form-required>
+        </label>
+        <input
+          type="number"
+          class="w-100"
+          pInputText
+          name="dailyAmount"
+          formControlName="dailyAmount"
+          [min]="1"
+        />
+        <form-validation-summary
+          [form]="form"
+          name="dailyAmount"
+          [visable]="invalidForm"
+        ></form-validation-summary>
+      </div>
+      <div class="ui-lg-12 ui-md-12 ui-g-12">
+        <label
+          >{{ "description" | translate }}
+          <form-required controlName="description"></form-required>
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          formControlName="description"
+          maxlength="255"
+        />
+        <form-validation-summary
+          [form]="form"
+          name="description"
+          [visable]="invalidForm"
+        ></form-validation-summary>
+      </div>
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          label="{{ 'create' | translate }}"
+          (click)="create()"
+          class="ui-green-button"
+        ></button>
+      </div>
     </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "rooms" | translate }}
-        <form-required controlName="roomId"></form-required>
-      </label>
-      <p-dropdown
-        [options]="roomsList"
-        formControlName="roomId"
-        class="w-100"
-        appendTo="body"
-      ></p-dropdown>
-      <form-validation-summary
-        [form]="form"
-        name="roomId"
-        [visable]="invalidForm"
-      ></form-validation-summary>
+    <div class="ui-lg-6 ui-md-6 ui-g-12 p-0" [hidden]="activeIndex != 1">
+      <p-tabView>
+        <p-tabPanel header="{{ 'createNewCustomer' | translate }}">
+          <div class="ui-g">
+            <app-customer-operation
+              #customerOperation
+              (created)="createDetail($event)"
+            ></app-customer-operation>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel
+          header="{{ 'chooseCreatedCustomer' | translate }}"
+          [formGroup]="detailForm"
+        >
+          <div class="ui-g">
+            <div class="ui-lg-12 ui-md-12 ui-g-12">
+              <div class="ui-lg-12 ui-md-12 ui-g-12">
+                <label
+                  >{{ "customers" | translate }}
+                  <form-required controlName="customerId"></form-required>
+                </label>
+                <div class="w-100">
+                  <p-dropdown
+                    [filter]="true"
+                    [options]="customerList"
+                    formControlName="customerId"
+                    class="w-100"
+                    appendTo="body"
+                    emptyFilterMessage="{{ 'no-results-found' | translate }}"
+                  ></p-dropdown>
+                  <form-validation-summary
+                    [form]="form"
+                    name="customerId"
+                    [visable]="invalidForm"
+                  ></form-validation-summary>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p-footer>
+            <div class="ui-g">
+              <div class="ui-g-12 pt-1 pb-1 text-right">
+                <button
+                  type="button"
+                  pButton
+                  icon="fas fa-plus"
+                  label="{{ 'create' | translate }}"
+                  (click)="createDetailWithSelectedCustomer()"
+                  class="ui-green-button"
+                ></button>
+              </div>
+            </div>
+          </p-footer>
+        </p-tabPanel>
+      </p-tabView>
     </div>
-    <div class="ui-lg-4 ui-md-4 ui-g-12">
-      <label
-        >{{ "duration" | translate }}
-        <form-required controlName="duration"></form-required>
-      </label>
-      <input
-        type="number"
-        class="w-100"
-        pInputText
-        name="duration"
-        formControlName="duration"
-      />
-      <form-validation-summary
-        [form]="form"
-        name="duration"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-8 ui-md-8 ui-g-12">
-      <label
-        >{{ "description" | translate }}
-        <form-required controlName="description"></form-required>
-      </label>
-      <input
-        type="text"
-        class="w-100"
-        pInputText
-        formControlName="description"
-        maxlength="255"
-      />
-      <form-validation-summary
-        [form]="form"
-        name="description"
-        [visable]="invalidForm"
-      ></form-validation-summary>
+    <div class="ui-lg-6 ui-md-6 ui-g-12 p-0" [hidden]="activeIndex != 1">
+      <dash-table
+        [pageSize]="pageSize"
+        [pagination]="false"
+        [service]="reservationDetailService"
+        [columns]="detailColumns"
+      >
+      </dash-table>
     </div>
   </div>
   <p-footer>
@@ -285,99 +380,12 @@
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
-
-        <button
-          *ngIf="dialogType"
-          type="button"
-          pButton
-          icon="fas fa-plus"
-          label="{{ 'create' | translate }}"
-          (click)="create()"
-          class="ui-green-button"
-        ></button>
-
-        <button
-          *ngIf="!dialogType"
-          type="button"
-          pButton
-          icon="fas fa-edit"
-          label="{{ 'update' | translate }}"
-          (action)="update()"
-          class="ui-green-button"
-        ></button>
-      </div>
-    </div>
-  </p-footer>
-</p-dialog>
-
-<p-dialog
-  [header]="dialogTitle"
-  [(visible)]="isSourceDialogVisible"
-  [responsive]="true"
-  [style]="{ width: '400px', minWidth: 200 }"
-  [modal]="true"
-  [draggable]="false"
-  [contentStyle]="{ 'max-height': '600px' }"
->
-  <div
-    class="pb-2"
-    [formGroup]="updateSourceForm"
-    #formsCon
-    [ngClass]="{ 'invalid-form': invalidForm }"
-  >
-    <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label
-        >{{ "amount" | translate }}
-        <form-required controlName="amount"></form-required>
-      </label>
-      <input
-        type="number"
-        class="w-100"
-        pInputText
-        name="amount"
-        formControlName="amount"
-      />
-      <form-validation-summary
-        [form]="updateSourceForm"
-        name="amount"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-6 ui-md-6 ui-g-12">
-      <label
-        >{{ "source" | translate }}
-        <form-required controlName="source"></form-required>
-      </label>
-      <p-dropdown
-        [options]="sourceList"
-        formControlName="source"
-        class="w-100"
-        appendTo="body"
-      ></p-dropdown>
-      <form-validation-summary
-        [form]="updateSourceForm"
-        name="source"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-  </div>
-  <p-footer>
-    <div class="ui-g">
-      <div class="ui-g-12 pt-1 pb-1 text-right">
-        <button
-          type="button"
-          pButton
-          icon="fas fa-times"
-          label="{{ 'form.btn.cancel' | translate }}"
-          (click)="isSourceDialogVisible = false"
-          class="ui-dark-button"
-        ></button>
         <button
           type="button"
           pButton
           icon="fas fa-plus"
-          (click)="updateTransactionSource()"
-          label="{{ 'updateTransactionSource' | translate }}"
+          (click)="navToDetail()"
+          label="{{ 'complete' | translate }}"
           class="ui-green-button"
         ></button>
       </div>
