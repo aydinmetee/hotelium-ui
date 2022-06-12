@@ -16,6 +16,7 @@
           {{ "nameOrNameTitle" | translate }}
         </label>
         <p-autoComplete
+        #autoDrawees
           formControlName="draweeId"
           (completeMethod)="getDraweesList($event)"
           [suggestions]="draweesResult"

@@ -110,13 +110,11 @@ export class AccountTransactionComponent
     this.autoCompleteService
       .getDrawees({ nameTitle: searchQuery.query })
       .subscribe((result) => {
-        console.log(result);
         this.draweesResult = result;
       });
   }
 
   public onFocus(auto: AutoComplete): void {
-    console.log(auto);
     if (this.draweesResult.length > 0) {
       if (!auto.suggestions) {
         auto.suggestions = this.draweesResult;
