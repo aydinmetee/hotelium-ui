@@ -211,7 +211,7 @@
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
       <label
         >{{ "legalNo" | translate }}
         <form-required controlName="legalNo"></form-required>
@@ -226,6 +226,60 @@
       <form-validation-summary
         [form]="form"
         name="legalNo"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "country" | translate }}
+        <form-required controlName="country"></form-required>
+      </label>
+      <p-dropdown
+      #country
+      [options]="countryList"
+      class="w-100"
+      appendTo="body"
+      (onChange)="getCityList(country.value)"
+    ></p-dropdown>
+      <form-validation-summary
+        [form]="form"
+        name="country"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "city" | translate }}
+        <form-required controlName="city"></form-required>
+      </label>
+      <p-dropdown
+      #city
+      [options]="cityList"
+      [disabled]="!country.value"
+      class="w-100"
+      appendTo="body"
+      (onChange)="getTownList(city.value)"
+    ></p-dropdown>
+      <form-validation-summary
+        [form]="form"
+        name="city"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "town" | translate }}
+        <form-required controlName="town"></form-required>
+      </label>
+      <p-dropdown
+      [options]="townList"
+      class="w-100"
+      appendTo="body"
+      [disabled]="!city.value"
+    ></p-dropdown>
+      <form-validation-summary
+        [form]="form"
+        name="town"
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>

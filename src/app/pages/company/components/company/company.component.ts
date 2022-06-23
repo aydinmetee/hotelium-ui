@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { BaseComponent } from 'src/app/shared/base-component';
+import { LabelValue } from 'src/app/shared/models/label-value';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import { CompanyService } from '../../services/company.service';
 
@@ -27,7 +28,13 @@ export class CompanyComponent extends BaseComponent implements OnInit {
       legalNo: [null, [Validators.required, Validators.minLength(10)]],
       nameTitle: [null, Validators.required],
       taxOffice: [null, Validators.required],
+      country:[null,Validators.required],
+      city:[null,Validators.required],
+      town:[null,Validators.required]
     });
+
+    this.getCountryList();
+
   }
 
   ngOnInit(): void {

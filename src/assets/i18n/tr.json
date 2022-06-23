@@ -210,5 +210,8 @@
         "general":"Genel Bilgiler",
         "customers":"Müşteriler"
     },
-    "complete":"Tamamla"
+    "complete":"Tamamla",
+    "country":"Ülke",
+    "city":"Şehir",
+    "town":"İlçe"
 }

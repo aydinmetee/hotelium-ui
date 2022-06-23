@@ -5,11 +5,16 @@ import { SelectItem, MenuItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { RestService } from './services/rest.service';
 import { UtilityService } from './services/utility.service';
+import { LabelValue } from './models/label-value';
 
 @Component({
   template: '',
 })
 export abstract class BaseComponent implements OnDestroy {
+  public countryList: LabelValue<string, string>[] = [];
+  public cityList: LabelValue<string, string>[] = [];
+  public townList: LabelValue<string, string>[] = [];
+
   public form: FormGroup;
   public searchForm: FormGroup;
   public dateFormat = 'dd/MM/yyyy HH:mm';
@@ -135,7 +140,7 @@ export abstract class BaseComponent implements OnDestroy {
     this.calendarInit();
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 
   public create() {
     if (this.isInValid()) {
@@ -270,7 +275,7 @@ export abstract class BaseComponent implements OnDestroy {
           cb(result);
         }
       },
-      error: (err) => {},
+      error: (err) => { },
       complete: () => {
         // this.enableProgressButtons();
         this.hideloader();
@@ -432,5 +437,17 @@ export abstract class BaseComponent implements OnDestroy {
 
       this.stepItems = result;
     }
+  }
+
+  public getCountryList() {
+    this.utilityService.comboService.getCountryList().subscribe(res => this.countryList = [{ label: this.t('select'), value: null }, ...res]);
+  }
+
+  public getCityList(countryId:any){
+    this.utilityService.comboService.getCityList(countryId).subscribe(res => this.cityList = [{ label: this.t('select'), value: null }, ...res]);
+  }
+
+  public getTownList(cityId:any){
+    this.utilityService.comboService.getTownList(cityId).subscribe(res => this.townList = [{ label: this.t('select'), value: null }, ...res]);
   }
 }

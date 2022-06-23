@@ -73,4 +73,40 @@ export class ComboService {
       )
     );
   }
+
+  public getCountryList(): Observable<LabelValue<string, string>[]> {
+    return this._http
+      .get(`${this.apiUrl}/countries`)
+      .pipe(
+        map((arr) =>
+          arr.map((item) => {
+            return { label: item.key, value: item.value };
+          })
+        )
+      );
+  }
+
+  public getCityList(countryId:string): Observable<LabelValue<string, string>[]> {
+    return this._http
+      .get(`${this.apiUrl}/cities/${countryId}`)
+      .pipe(
+        map((arr) =>
+          arr.map((item) => {
+            return { label: item.key, value: item.value };
+          })
+        )
+      );
+  }
+
+  public getTownList(cityId:string): Observable<LabelValue<string, string>[]> {
+    return this._http
+      .get(`${this.apiUrl}/towns/${cityId}`)
+      .pipe(
+        map((arr) =>
+          arr.map((item) => {
+            return { label: item.key, value: item.value };
+          })
+        )
+      );
+  }
 }
