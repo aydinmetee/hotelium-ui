@@ -1,0 +1,305 @@
+<p-card styleClass="search-box" *ngIf="searchToggle">
+  <p-header>
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-6 title">
+          {{ "search" | translate }}
+        </div>
+      </div>
+    </div>
+  </p-header>
+
+  <form [formGroup]="searchForm" (ngSubmit)="search()">
+    <div class="ui-g">
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "name" | translate }}
+        </label>
+        <input
+          pInputText
+          type="text"
+          class="w-100"
+          name="name"
+          formControlName="name"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "code" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="code"
+          formControlName="code"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "stock" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="stock"
+          formControlName="stock"
+          maxlength="30"
+          [mask]="integerFormat"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "unitPrice" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="unitPrice"
+          formControlName="unitPrice"
+          maxlength="30"
+          [mask]="decimalFormat"
+        />
+      </div>
+    </div>
+  </form>
+  <p-footer>
+    <div class="w-100 text-right">
+      <button
+        (click)="reset()"
+        pButton
+        icon="fas fa-times"
+        label="{{ 'cancel' | translate }}"
+        class="ui-dark-button"
+      ></button>
+      <button
+        (click)="search()"
+        pButton
+        icon="fas fa-search"
+        label="{{ 'search' | translate }}"
+        class="ui-green-button"
+      ></button>
+    </div>
+  </p-footer>
+</p-card>
+
+<p-table
+  #pTable
+  [value]="data"
+  [columns]="selectedColumns"
+  [paginator]="true"
+  [rows]="pageSize"
+  [totalRecords]="total"
+  [lazy]="true"
+  (onLazyLoad)="loadLazy($event)"
+  [rowsPerPageOptions]="rowsPerPage"
+  [customSort]="true"
+  [reorderableColumns]="true"
+  [styleClass]="'grid'"
+  [responsive]="true"
+  [resizableColumns]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="ui-helper-clearfix">
+      <div class="ui-g">
+        <div class="ui-lg-6 ui-md-6 ui-g-12 text-left">
+          <button
+            (click)="showCreateDialog()"
+            pButton
+            icon="fas fa-plus"
+            class="ui-green-button"
+            label="{{ 'add' | translate }}"
+          ></button>
+          <button
+            (click)="searchToggle = !searchToggle"
+            pButton
+            icon="fas fa-search"
+            class="ui-green-button"
+            label="{{ 'search' | translate }}"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th
+        *ngFor="let col of columns"
+        [pSortableColumn]="col.field"
+        pReorderableColumn
+        pResizableColumn
+      >
+        {{ col.header }}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+      <th>
+        {{ "action" | translate }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" class="ui-resizable-column">
+        <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+      <td class="text-center">
+        <span class="ui-column-title">{{ "g.action" | translate }}</span>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="showUpdateDialog(rowData)"
+          class="ui-green-button"
+          [pTooltip]="'update' | translate"
+        ></button>
+        <button
+          type="text"
+          class="ui-button-danger"
+          (click)="deleteDialog(rowData)"
+          [pTooltip]="'delete' | translate"
+          pButton
+          icon="fas fa-trash"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td
+        [attr.colspan]="columns.length"
+        style="text-align: center !important; font-weight: bold"
+      >
+        {{ "no-results-found" | translate }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog
+  [header]="dialogTitle"
+  [(visible)]="isDialogVisible"
+  [responsive]="true"
+  [style]="{ width: '400px', minWidth: 350 }"
+  [modal]="true"
+  [draggable]="false"
+  [contentStyle]="{ 'max-height': '600px' }"
+>
+  <div
+    class="pb-2"
+    [formGroup]="form"
+    #formsCon
+    [ngClass]="{ 'invalid-form': invalidForm }"
+  >
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "name" | translate }}
+        <form-required controlName="name"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="name"
+        maxlength="100"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="name"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "code" | translate }}
+        <form-required controlName="code"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="code"
+        maxlength="10"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="code"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "unitPrice" | translate }}
+        <form-required controlName="unitPrice"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="unitPrice"
+        [mask]="decimalFormat"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="unitPrice"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "stock" | translate }}
+        <form-required controlName="stock"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="stock"
+        [mask]="integerFormat"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="stock"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-g">
+      <div class="ui-g-12 pt-1 pb-1 text-right">
+        <button
+          type="button"
+          pButton
+          icon="fas fa-times"
+          label="{{ 'cancel' | translate }}"
+          (click)="isDialogVisible = false"
+          class="ui-dark-button"
+        ></button>
+
+        <button
+          *ngIf="dialogType"
+          type="button"
+          pButton
+          icon="fas fa-plus"
+          label="{{ 'create' | translate }}"
+          (click)="create()"
+          class="ui-green-button"
+        ></button>
+
+        <button
+          *ngIf="!dialogType"
+          type="button"
+          pButton
+          icon="fas fa-edit"
+          label="{{ 'update' | translate }}"
+          (click)="update()"
+          class="ui-green-button"
+        ></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>

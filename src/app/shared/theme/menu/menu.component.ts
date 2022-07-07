@@ -45,6 +45,10 @@ export class MenuComponent extends BaseComponent implements OnInit {
           label: 'page.account',
           url: '/page/account-transactions',
         },
+        {
+          label: 'page.sku-def',
+          url: '/page/sku-def',
+        },
       ],
     };
 
@@ -76,6 +80,10 @@ export class MenuComponent extends BaseComponent implements OnInit {
           }
           case 'page.account': {
             i.icon = 'fas fa-coins';
+            break;
+          }
+          case 'page.sku-def': {
+            i.icon = 'fas fa-bong';
             break;
           }
           default: {
