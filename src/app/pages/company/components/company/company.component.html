@@ -232,54 +232,57 @@
     <div class="ui-lg-6 ui-md-6 ui-g-12">
       <label
         >{{ "country" | translate }}
-        <form-required controlName="country"></form-required>
+        <form-required controlName="countryId"></form-required>
       </label>
       <p-dropdown
       #country
       [options]="countryList"
+      formControlName="countryId"
       class="w-100"
       appendTo="body"
       (onChange)="getCityList(country.value)"
     ></p-dropdown>
       <form-validation-summary
         [form]="form"
-        name="country"
+        name="countryId"
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-12">
       <label
         >{{ "city" | translate }}
-        <form-required controlName="city"></form-required>
+        <form-required controlName="cityId"></form-required>
       </label>
       <p-dropdown
       #city
       [options]="cityList"
       [disabled]="!country.value"
+      formControlName="cityId"
       class="w-100"
       appendTo="body"
       (onChange)="getTownList(city.value)"
     ></p-dropdown>
       <form-validation-summary
         [form]="form"
-        name="city"
+        name="cityId"
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
     <div class="ui-lg-6 ui-md-6 ui-g-12">
       <label
         >{{ "town" | translate }}
-        <form-required controlName="town"></form-required>
+        <form-required controlName="townId"></form-required>
       </label>
       <p-dropdown
       [options]="townList"
+      formControlName="townId"
       class="w-100"
       appendTo="body"
       [disabled]="!city.value"
     ></p-dropdown>
       <form-validation-summary
         [form]="form"
-        name="town"
+        name="townId"
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>

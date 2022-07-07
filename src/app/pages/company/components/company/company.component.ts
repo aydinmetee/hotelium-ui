@@ -28,9 +28,9 @@ export class CompanyComponent extends BaseComponent implements OnInit {
       legalNo: [null, [Validators.required, Validators.minLength(10)]],
       nameTitle: [null, Validators.required],
       taxOffice: [null, Validators.required],
-      country:[null,Validators.required],
-      city:[null,Validators.required],
-      town:[null,Validators.required]
+      countryId:[null,Validators.required],
+      cityId:[null,Validators.required],
+      townId:[null,Validators.required]
     });
 
     this.getCountryList();
@@ -44,6 +44,10 @@ export class CompanyComponent extends BaseComponent implements OnInit {
       { field: 'address', header: this.t('address'), default: true },
       { field: 'legalNo', header: this.t('legalNo'), default: true },
       { field: 'nameTitle', header: this.t('nameTitle'), default: true },
+      { field: 'countryName', header: this.t('country'), default: true },
+      { field: 'cityName', header: this.t('city'), default: true },
+      { field: 'townName', header: this.t('town'), default: true },
+
       { field: 'taxOffice', header: this.t('taxOffice'), default: true },
       {
         field: 'creDate',
