@@ -79,7 +79,8 @@
         "account": "Cari Hesap",
         "customer": "Müşteriler",
         "company": "Firmalar",
-        "sku-def":"Ürün Tanımı"
+        "sku-def":"Ürün Tanımı",
+        "expenses":"Oda Harcamaları"
     },
     "add": "Ekle",
     "search": "Ara",

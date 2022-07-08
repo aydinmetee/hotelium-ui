@@ -52,6 +52,13 @@ const pageRoutes: Routes = [
             (m) => m.SkuDefModule
           ),
       },
+      {
+        path: 'expenses',
+        loadChildren: () =>
+          import('./expenses/expenses.module').then(
+            (m) => m.ExpensesModule
+          ),
+      },
     ],
   },
 ];
