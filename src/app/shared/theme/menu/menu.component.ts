@@ -45,6 +45,14 @@ export class MenuComponent extends BaseComponent implements OnInit {
           label: 'page.account',
           url: '/page/account-transactions',
         },
+        {
+          label: 'page.sku-def',
+          url: '/page/sku-def',
+        },
+        {
+          label: 'page.expenses',
+          url: '/page/expenses',
+        },
       ],
     };
 
@@ -76,6 +84,14 @@ export class MenuComponent extends BaseComponent implements OnInit {
           }
           case 'page.account': {
             i.icon = 'fas fa-coins';
+            break;
+          }
+          case 'page.sku-def': {
+            i.icon = 'fas fa-bong';
+            break;
+          }
+          case 'page.expenses': {
+            i.icon = 'fas fa-money';
             break;
           }
           default: {

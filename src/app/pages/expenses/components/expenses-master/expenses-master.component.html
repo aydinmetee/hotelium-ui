@@ -13,21 +13,51 @@
     <div class="ui-g">
       <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>
-          {{ "nameOrNameTitle" | translate }}
+          {{ "description" | translate }}
         </label>
-        <p-autoComplete
-        #autoDrawees
-          formControlName="draweeId"
-          (completeMethod)="getDraweesList($event)"
-          [suggestions]="draweesResult"
-          [size]="30"
-          [placeholder]="'nameOrNameTitle' | translate"
-          [minLength]="1"
-          field="key"
-          dataKey="value"
-          [emptyMessage]="'no-results-found' | translate"
-          (onFocus)="onFocus(autoDrawees)"
-        ></p-autoComplete>
+        <input
+          pInputText
+          type="text"
+          class="w-100"
+          name="description"
+          formControlName="description"
+          maxlength="100"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "rooms" | translate }}
+        </label>
+        <p-dropdown
+          [options]="roomsList"
+          formControlName="roomId"
+          class="w-100"
+          appendTo="body"
+        ></p-dropdown>
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "status" | translate }}
+        </label>
+        <p-dropdown
+          [options]="statusList"
+          formControlName="status"
+          class="w-100"
+          appendTo="body"
+        ></p-dropdown>
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "bookAmount" | translate }}
+        </label>
+        <input
+          pInputText
+          type="number"
+          class="w-100"
+          name="bookAmount"
+          formControlName="bookAmount"
+          [min]="1"
+        />
       </div>
     </div>
   </form>
@@ -37,7 +67,7 @@
         (click)="reset()"
         pButton
         icon="fas fa-times"
-        label="{{ 'reset' | translate }}"
+        label="{{ 'cancel' | translate }}"
         class="ui-dark-button"
       ></button>
       <button
@@ -46,7 +76,6 @@
         icon="fas fa-search"
         label="{{ 'search' | translate }}"
         class="ui-green-button"
-        [disabled]="searchForm.invalid"
       ></button>
     </div>
   </p-footer>
@@ -102,12 +131,35 @@
         {{ col.header }}
         <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
+      <th>
+        {{ "action" | translate }}
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
       <td *ngFor="let col of columns" class="ui-resizable-column">
         <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+      <td class="text-center">
+        <span class="ui-column-title">{{ "g.action" | translate }}</span>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-arrow-right"
+          (click)="navToDetail(rowData.id)"
+          class="ui-green-button"
+          [pTooltip]="'details' | translate"
+        ></button>
+        <button
+          *ngIf="rowData.status == 'NEW'"
+          type="button"
+          pButton
+          icon="fas fa-times"
+          (click)="markAsCancelled(rowData)"
+          [pTooltip]="'cancel' | translate"
+          class="ui-button-danger"
+        ></button>
       </td>
     </tr>
   </ng-template>
@@ -127,69 +179,31 @@
   [header]="dialogTitle"
   [(visible)]="isDialogVisible"
   [responsive]="true"
-  [style]="{ width: '400px', minWidth: 350 }"
+  [style]="{ width: '1000px', minWidth: 350 }"
   [modal]="true"
   [draggable]="false"
   [contentStyle]="{ 'max-height': '600px' }"
 >
-  <div
-    class="pb-2"
-    [formGroup]="form"
-    #formsCon
-    [ngClass]="{ 'invalid-form': invalidForm }"
-  >
+  <div class="ui-g-12">
+   
+  </div>
+  <div class="pb-2" #formsCon [ngClass]="{ 'invalid-form': invalidForm }">
+    <div
+      class="ui-lg-12 ui-md-12 ui-g-12 p-0"
+      [formGroup]="form"
+    >
     <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "amount" | translate }}
-        <form-required controlName="amount"></form-required>
-      </label>
-      <input
-        type="number"
-        class="w-100"
-        pInputText
-        formControlName="amount"
-        [min]="1"
-      />
-      <form-validation-summary
-        [form]="form"
-        name="amount"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "source" | translate }}
-        <form-required controlName="source"></form-required>
+      <label>
+        {{ "reservations" | translate }}
       </label>
       <p-dropdown
-        [options]="sourceList"
-        formControlName="source"
+        [options]="reservationList"
+        formControlName="reservationMasterId"
         class="w-100"
         appendTo="body"
       ></p-dropdown>
-      <form-validation-summary
-        [form]="form"
-        name="source"
-        [visable]="invalidForm"
-      ></form-validation-summary>
     </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "description" | translate }}
-        <form-required controlName="description"></form-required>
-      </label>
-      <input
-        type="text"
-        class="w-100"
-        pInputText
-        formControlName="description"
-        maxlength="10"
-      />
-      <form-validation-summary
-        [form]="form"
-        name="description"
-        [visable]="invalidForm"
-      ></form-validation-summary>
+      
     </div>
   </div>
   <p-footer>
@@ -199,28 +213,16 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'close' | translate }}"
+          label="{{ 'cancel' | translate }}"
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
-
         <button
-          *ngIf="dialogType"
           type="button"
           pButton
           icon="fas fa-plus"
           label="{{ 'create' | translate }}"
           (click)="create()"
-          class="ui-green-button"
-        ></button>
-
-        <button
-          *ngIf="!dialogType"
-          type="button"
-          pButton
-          icon="fas fa-edit"
-          label="{{ 'update' | translate }}"
-          (action)="update()"
           class="ui-green-button"
         ></button>
       </div>

@@ -13,21 +13,57 @@
     <div class="ui-g">
       <div class="ui-lg-4 ui-md-4 ui-g-12">
         <label>
-          {{ "nameOrNameTitle" | translate }}
+          {{ "name" | translate }}
         </label>
-        <p-autoComplete
-        #autoDrawees
-          formControlName="draweeId"
-          (completeMethod)="getDraweesList($event)"
-          [suggestions]="draweesResult"
-          [size]="30"
-          [placeholder]="'nameOrNameTitle' | translate"
-          [minLength]="1"
-          field="key"
-          dataKey="value"
-          [emptyMessage]="'no-results-found' | translate"
-          (onFocus)="onFocus(autoDrawees)"
-        ></p-autoComplete>
+        <input
+          pInputText
+          type="text"
+          class="w-100"
+          name="name"
+          formControlName="name"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "code" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="code"
+          formControlName="code"
+          maxlength="30"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "stock" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="stock"
+          formControlName="stock"
+          maxlength="30"
+          [mask]="integerFormat"
+        />
+      </div>
+      <div class="ui-lg-4 ui-md-4 ui-g-12">
+        <label>
+          {{ "unitPrice" | translate }}
+        </label>
+        <input
+          type="text"
+          class="w-100"
+          pInputText
+          name="unitPrice"
+          formControlName="unitPrice"
+          maxlength="30"
+          [mask]="decimalFormat"
+        />
       </div>
     </div>
   </form>
@@ -37,7 +73,7 @@
         (click)="reset()"
         pButton
         icon="fas fa-times"
-        label="{{ 'reset' | translate }}"
+        label="{{ 'cancel' | translate }}"
         class="ui-dark-button"
       ></button>
       <button
@@ -46,7 +82,6 @@
         icon="fas fa-search"
         label="{{ 'search' | translate }}"
         class="ui-green-button"
-        [disabled]="searchForm.invalid"
       ></button>
     </div>
   </p-footer>
@@ -102,12 +137,34 @@
         {{ col.header }}
         <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
+      <th>
+        {{ "action" | translate }}
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
       <td *ngFor="let col of columns" class="ui-resizable-column">
         <sis-col-value [col]="col" [rowData]="rowData"> </sis-col-value>
+      </td>
+      <td class="text-center">
+        <span class="ui-column-title">{{ "g.action" | translate }}</span>
+        <button
+          type="button"
+          pButton
+          icon="fas fa-pencil-alt"
+          (click)="showUpdateDialog(rowData)"
+          class="ui-green-button"
+          [pTooltip]="'update' | translate"
+        ></button>
+        <button
+          type="text"
+          class="ui-button-danger"
+          (click)="deleteDialog(rowData)"
+          [pTooltip]="'delete' | translate"
+          pButton
+          icon="fas fa-trash"
+        ></button>
       </td>
     </tr>
   </ng-template>
@@ -140,54 +197,73 @@
   >
     <div class="ui-lg-12 ui-md-12 ui-g-12">
       <label
-        >{{ "amount" | translate }}
-        <form-required controlName="amount"></form-required>
-      </label>
-      <input
-        type="number"
-        class="w-100"
-        pInputText
-        formControlName="amount"
-        [min]="1"
-      />
-      <form-validation-summary
-        [form]="form"
-        name="amount"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "source" | translate }}
-        <form-required controlName="source"></form-required>
-      </label>
-      <p-dropdown
-        [options]="sourceList"
-        formControlName="source"
-        class="w-100"
-        appendTo="body"
-      ></p-dropdown>
-      <form-validation-summary
-        [form]="form"
-        name="source"
-        [visable]="invalidForm"
-      ></form-validation-summary>
-    </div>
-    <div class="ui-lg-12 ui-md-12 ui-g-12">
-      <label
-        >{{ "description" | translate }}
-        <form-required controlName="description"></form-required>
+        >{{ "name" | translate }}
+        <form-required controlName="name"></form-required>
       </label>
       <input
         type="text"
         class="w-100"
         pInputText
-        formControlName="description"
+        formControlName="name"
+        maxlength="100"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="name"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-12 ui-md-12 ui-g-12">
+      <label
+        >{{ "code" | translate }}
+        <form-required controlName="code"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="code"
         maxlength="10"
       />
       <form-validation-summary
         [form]="form"
-        name="description"
+        name="code"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "unitPrice" | translate }}
+        <form-required controlName="unitPrice"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="unitPrice"
+        [mask]="decimalFormat"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="unitPrice"
+        [visable]="invalidForm"
+      ></form-validation-summary>
+    </div>
+    <div class="ui-lg-6 ui-md-6 ui-g-12">
+      <label
+        >{{ "stock" | translate }}
+        <form-required controlName="stock"></form-required>
+      </label>
+      <input
+        type="text"
+        class="w-100"
+        pInputText
+        formControlName="stock"
+        [mask]="integerFormat"
+      />
+      <form-validation-summary
+        [form]="form"
+        name="stock"
         [visable]="invalidForm"
       ></form-validation-summary>
     </div>
@@ -199,7 +275,7 @@
           type="button"
           pButton
           icon="fas fa-times"
-          label="{{ 'close' | translate }}"
+          label="{{ 'cancel' | translate }}"
           (click)="isDialogVisible = false"
           class="ui-dark-button"
         ></button>
@@ -220,7 +296,7 @@
           pButton
           icon="fas fa-edit"
           label="{{ 'update' | translate }}"
-          (action)="update()"
+          (click)="update()"
           class="ui-green-button"
         ></button>
       </div>

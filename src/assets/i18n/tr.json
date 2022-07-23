@@ -78,7 +78,9 @@
         "rooms": "Odalar",
         "account": "Cari Hesap",
         "customer": "Müşteriler",
-        "company": "Firmalar"
+        "company": "Firmalar",
+        "sku-def":"Ürün Tanımı",
+        "expenses":"Oda Harcamaları"
     },
     "add": "Ekle",
     "search": "Ara",
@@ -210,5 +212,10 @@
         "general":"Genel Bilgiler",
         "customers":"Müşteriler"
     },
-    "complete":"Tamamla"
+    "complete":"Tamamla",
+    "country":"Ülke",
+    "city":"Şehir",
+    "town":"İlçe",
+    "unitPrice":"Birim Fiyat",
+    "stock":"Stok Miktarı"
 }

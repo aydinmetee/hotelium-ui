@@ -45,6 +45,20 @@ const pageRoutes: Routes = [
             (m) => m.ReservationsModule
           ),
       },
+      {
+        path: 'sku-def',
+        loadChildren: () =>
+          import('./sku-def/sku-def.module').then(
+            (m) => m.SkuDefModule
+          ),
+      },
+      {
+        path: 'expenses',
+        loadChildren: () =>
+          import('./expenses/expenses.module').then(
+            (m) => m.ExpensesModule
+          ),
+      },
     ],
   },
 ];
