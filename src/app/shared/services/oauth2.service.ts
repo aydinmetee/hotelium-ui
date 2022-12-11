@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Register } from 'src/app/pages/register/models/register';
 import { Urls } from '../models/urls';
 import { LocalStorageService } from './local-storage.service';
 import { RestClientService } from './rest-client.service';
@@ -26,6 +27,20 @@ export class Oauth2Service {
       .post<any>(
         `${Urls.BASE_URL.toString()}/auth/login`,
         this.oAuth2RequestBody(email, password),
+        this.oAuthRequestOptions()
+      )
+      .pipe(
+        map((res) => {
+          this.handleAuthorization(res, cb);
+        })
+      );
+  }
+
+  public register(register:Register, cb: any) {
+    return this._http
+      .post<any>(
+        `${Urls.BASE_URL.toString()}/auth/register`,
+        {...register},
         this.oAuthRequestOptions()
       )
       .pipe(

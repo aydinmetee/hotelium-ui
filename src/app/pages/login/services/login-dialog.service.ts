@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { throwError as observableThrowError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { Oauth2Service } from 'src/app/shared/services/oauth2.service';

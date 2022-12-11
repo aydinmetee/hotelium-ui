@@ -217,5 +217,9 @@
     "city":"Şehir",
     "town":"İlçe",
     "unitPrice":"Birim Fiyat",
-    "stock":"Stok Miktarı"
+    "stock":"Stok Miktarı",
+    "sign-up":"Kayıt Ol",
+    "organization":"Organizasyon",
+    "re-password":"Parola Tekrarı",
+    "go-back":"Geri Git"
 }

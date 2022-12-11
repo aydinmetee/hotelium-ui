@@ -25,6 +25,14 @@ export class RestClientService {
       .pipe(catchError(this.handlerError));
   }
 
+  public getNoSession(url: string, options?): Observable<any> {
+    const authOptions = this.createUnAuthorizedRequestOptions(options);
+
+    return this.httpClient
+      .get(url, authOptions)
+      .pipe(catchError(this.handlerError));
+  }
+
   public post(url: string, body: string, options?): Observable<any> {
     const authOptions = this.createAuthorizedRequestOptions(options);
 
@@ -56,9 +64,19 @@ export class RestClientService {
     authOptions.headers = new HttpHeaders();
     authOptions.headers = authOptions.headers
       .append('Content-Type', 'application/json')
-      .append('Authorization', 'Bearer ' + this.access_token)
-      .append('Accept', 'application/json');
+      .append('Accept', 'application/json')
+      .append('Authorization', 'Bearer ' + this.access_token);
 
+    return authOptions;
+  }
+
+  public createUnAuthorizedRequestOptions(options?) {
+    let authOptions;
+    authOptions = { headers: new HttpHeaders() };
+    authOptions.headers = new HttpHeaders();
+    authOptions.headers = authOptions.headers
+      .append('Content-Type', 'application/json')
+      .append('Accept', 'application/json');
     return authOptions;
   }
 

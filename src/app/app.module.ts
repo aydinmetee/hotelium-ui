@@ -24,6 +24,7 @@ import { AppInjector } from './shared/services/Injector.service';
 import { ColumnTranslationService } from './shared/services/column-translation.service';
 import { MaskPipe, NgxMaskModule } from './shared/ngx-mask';
 import localeTr from '@angular/common/locales/tr';
+import { RegisterModule } from './pages/register/register.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -52,6 +53,7 @@ registerLocaleData(localeTr, 'tr');
     }),
     AppRoutingModule,
     LoginModule,
+    RegisterModule
   ],
   providers: [
     DatePipe,

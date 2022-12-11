@@ -4,7 +4,7 @@
   <div class="ui-g pt-3">
     <div class="ui-lg-4 ui-g-12"></div>
     <div class="ui-lg-4 ui-g-12 p-1" @fadeAndSlideUp>
-      <form novalidate [formGroup]="form" (submit)="login()">
+      <form novalidate [formGroup]="form" (submit)="register()">
         <p-card class="nice-border" styleClass="ui-card-shadow">
           <p-header
             class="login-block"
@@ -25,9 +25,17 @@
               </div>
             </div>
           </p-header>
-          <div class="ui-g" *ngIf="isLoginedByToken == false; else loginedTem">
-            <!-- <div class="ui-lg-12 ui-g-12 hr"></div> -->
-
+          <div class="ui-g" >
+            <div class="ui-lg-12 ui-md-12 ui-g-12">
+                <label
+                  ><b>{{ "organization" | translate }}</b></label
+                >      <p-dropdown
+                [options]="orgList"
+                formControlName="orgId"
+                class="w-100"
+                appendTo="body"
+              ></p-dropdown>
+              </div>
             <div class="ui-lg-12 ui-md-12 ui-g-12">
               <label
                 ><b>{{ "username" | translate }}</b></label
@@ -35,9 +43,9 @@
               <input
                 type="text"
                 pInputText
-                name="email"
+                name="username"
                 class="w-100"
-                formControlName="email"
+                formControlName="username"
               />
             </div>
 
@@ -54,47 +62,30 @@
                 formControlName="password"
               />
             </div>
-          </div>
-          <ng-template #loginedTem>
-            <div class="ui-g">
-              <div class="ui-g-12 ui-lg-12 ui-md-12 text-center">
-                <h2>{{ "logined" | translate }}</h2>
+            <div class="ui-lg-12 ui-md-12 ui-g-12">
+                <label
+                  ><b>{{ "re-password" | translate }}</b></label
+                >
+                <input
+                  type="password"
+                  class="w-100"
+                  pPassword
+                  [feedback]="false"
+                  name="rePassword"
+                  formControlName="rePassword"
+                />
               </div>
-            </div>
-          </ng-template>
+          </div>
           <p-footer
             style="
               display: block;
               padding: 0.5rem;
               border-top: 1px solid rgba(204, 204, 204, 0.48);
             "
-            *ngIf="isLoginedByToken == false"
           >
             <div class="ui-g">
               <div class="ui-lg-12 ui-g-12 ui-md-12 text-right">
                 <button
-                  [disabled]="isLoginValid"
-                  class="
-                    btn-login
-                    ui-green-button
-                    w-100
-                    ui-button
-                    ui-widget
-                    ui-state-default
-                    ui-corner-all
-                    ui-button-text-only
-                    p-0-5
-                  "
-                >
-                  <span>
-                    {{ "sign-in" | translate }}
-                  </span>
-                </button>
-              </div>
-              <div class="ui-lg-12 ui-g-12 ui-md-12 text-right">
-                <button
-                type="button"
-                  [routerLink]="'/register'"
                   class="
                     btn-login
                     ui-green-button
@@ -109,6 +100,27 @@
                 >
                   <span>
                     {{ "sign-up" | translate }}
+                  </span>
+                </button>
+              </div>
+              <div class="ui-lg-12 ui-g-12 ui-md-12 text-right">
+                <button
+                type="button"
+                  [routerLink]="'/login'"
+                  class="
+                    btn-login
+                    ui-green-button
+                    w-100
+                    ui-button
+                    ui-widget
+                    ui-state-default
+                    ui-corner-all
+                    ui-button-text-only
+                    p-0-5
+                  "
+                >
+                  <span>
+                    {{ "go-back" | translate }}
                   </span>
                 </button>
               </div>
